@@ -12,22 +12,32 @@
 <h1>OmniStudio Finder</h1>
 <p class="sub">Find OmniScripts, Integration Procedures, DataRaptors and FlexCards in your Salesforce org. See every version, open the right one.</p>
 
-<p>Debugging an OmniScript is not a friendly experience. The data is in there somewhere,
-the remote actions happen out of sight, and a Data Mapper can fail while the response
-comes back as a cheerful HTTP 200. This adds a DevTools tab that just shows it.</p>
+<p>Opening an OmniScript takes longer than it should. You go to the right list view,
+filter it, work out which of the eleven versions is the live one, and click through.
+This makes it one keystroke and one click, from whatever tab you are already on.</p>
 
 <h2>What it does</h2>
 <ul>
-  <li><strong>Data</strong> — the live payload as a collapsible tree, highlighting what changed as you click through the script.</li>
-  <li><strong>Structure</strong> — every element the script is built from, with its current value, required and conditional markers, and visibility rules as readable expressions.</li>
-  <li><strong>Remote actions</strong> — every Apex call the page makes, with Data Mappers and Integration Procedures named by bundle or key, batched calls split apart, and errors flagged even inside a successful response.</li>
+  <li><strong>Searches the org you are looking at</strong> — every OmniScript, Integration Procedure, DataRaptor and FlexCard, filtered as you type on name, type, subtype, language or author. Switching orgs is switching tabs.</li>
+  <li><strong>Shows every version at once</strong> — one chip per version, with the active one in green, so you stop opening three of them to find the live one.</li>
+  <li><strong>Opens the right one</strong> — one button for the active version, or click any chip to open exactly that version in its designer.</li>
 </ul>
+
+<h2>Both flavours of OmniStudio</h2>
+<p>Designer URLs are built in for core (Lightning-native) OmniStudio and for the Vlocity
+managed packages, across namespaces. Nothing to configure.</p>
+<p>Which designer an org opens and where it keeps its records are two different things —
+an org can store data in the standard <code>OmniProcess</code> object while an admin has
+switched on the Managed Package Designer. Both are detected independently, and the popup
+tells you which designer it is about to use, so you do not land on
+<em>"you can't edit this record in the standard designer"</em>.</p>
 
 <h2>Install</h2>
 <p><a href="">Chrome Web Store</a></p>
 
 <h2>Privacy</h2>
-<p>No permissions requested. Nothing is sent anywhere.
+<p>No server, no analytics, nothing sent anywhere. Your Salesforce session cookie is used to
+query your own org and is never stored. Asset lists are not cached.
 Read the <a href="privacy.html">full privacy policy</a>.</p>
 
 <h2>Support</h2>
