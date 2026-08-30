@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Privacy policy — OmniStudio Finder</title>
+<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+<nav class="crumbs"><a href="../index.html">← All extensions</a></nav>
+<h1>Privacy policy — OmniStudio Finder</h1>
+<p class="date">Last updated: 30 August 2026</p>
+
+<h2>The short version</h2>
+<p>There is no server. Every request goes straight from your browser to your own Salesforce org. Nothing is collected, nothing is sent to the author or to anyone else, and no org data is written to disk.</p>
+
+<h2>What it reads, and when</h2>
+<p>The extension does nothing until you open the popup.</p>
+<p><strong>Your Salesforce session.</strong> To query your org as you, it reads the <code>sid</code> session cookie for the org shown in your current tab and uses it as the <code>Authorization</code> header on calls to that same org. The cookie is held in memory for as long as the popup is open and then discarded. It is never written to storage, never logged, and never sent anywhere other than the Salesforce org it came from.</p>
+<p><strong>The URL of your current tab.</strong> Used only to work out which org you are looking at, so results and designer links point at the right place. If the tab is not a Salesforce domain, the extension stops there.</p>
+<p><strong>OmniStudio metadata.</strong> Names, types, subtypes, languages, authors, version numbers, active flags, last-modified dates and record ids, read from <code>OmniProcess</code>, <code>OmniDataTransform</code> and <code>OmniUiCard</code>, or their managed-package equivalents. It also reads the object descriptions to find out which fields exist in your org before it queries them.</p>
+<p>This is metadata about your OmniStudio configuration. The extension does not read the data your OmniScripts process, does not run them, and does not touch customer records.</p>
+
+<h2>What is stored</h2>
+<p>Two things, both local to your browser, neither containing org data or credentials.</p>
+<ul>
+  <li><strong>Your settings</strong> — designer preference, namespace override, and any custom designer URL patterns. These live in <code>chrome.storage.sync</code>, so if you have Chrome Sync switched on they follow your Google account to your other devices, exactly as any extension setting does.</li>
+  <li><strong>A detection note</strong> — the object names and package namespace last seen in an org, so the settings page can tell you which designer it will open. Object names only.</li>
+</ul>
+<p>Asset lists are not cached. Each time you open the popup it queries your org afresh, so a version you just activated shows as active immediately.</p>
+
+<h2>What leaves your machine</h2>
+<p>Only the API calls to your own Salesforce org, over HTTPS.</p>
+<p>The extension has no analytics, no telemetry, no crash reporting, no advertising, no accounts, and contacts no third-party service of any kind. No data is sold or shared, because none is collected.</p>
+
+<h2>Permissions, and why each one exists</h2>
+<ul>
+  <li><code>cookies</code> — to read the Salesforce session cookie described above. This is the only reason the permission is requested.</li>
+  <li><code>storage</code> — to keep your settings and the detection note.</li>
+  <li>Access to <code>*.salesforce.com</code>, <code>*.force.com</code>, <code>*.salesforce-setup.com</code> and <code>*.cloudforce.com</code> — the domains Salesforce orgs are served from. A single org uses several of them: Lightning lives on <code>lightning.force.com</code>, the API on <code>my.salesforce.com</code>, and some managed-package designers on <code>vf.force.com</code>. No other site is accessed.</li>
+</ul>
+<p>There is no remote code. Everything the extension runs ships inside the package.</p>
+
+<h2>It can only see what you can see</h2>
+<p>The extension acts as your Salesforce user and inherits your permissions exactly. If your profile cannot see an OmniScript, neither can this. It performs no writes: it reads metadata and opens designer URLs in a tab, nothing more.</p>
+<p>That said, the popup lists the names of assets in whatever org you are signed in to, and those names can be client-identifiable. Bear that in mind before screen-sharing or screenshotting against a production org — the same care you would take with any Salesforce window. Your employer&#x27;s policies, your client&#x27;s agreements, and data protection law such as the GDPR apply to what you see through this tool exactly as they do anywhere else.</p>
+<p>The author provides this tool as-is and accepts no responsibility for how information viewed through it is handled or disclosed. This is a plain description of how the tool works, not legal advice.</p>
+
+<h2>Removing it</h2>
+<p>Uninstalling deletes the settings and the detection note along with the extension. There is nothing held anywhere else to delete.</p>
+
+<h2>Changes</h2>
+<p>If any of this ever changes, the policy will be updated and the change disclosed on the Chrome Web Store listing before the update ships.</p>
+
+<h2>Contact</h2>
+<p>Mikołaj Skrzypczyński — <a href="mailto:mskrz@proton.me">mskrz@proton.me</a></p>
+<p>This is an independent, unofficial developer tool. It is not affiliated with, endorsed by, or sponsored by Salesforce, Inc.</p>
+
+<footer>Mikołaj Skrzypczyński · independent developer tools. Not affiliated with Salesforce, Inc.</footer>
+</body>
+</html>

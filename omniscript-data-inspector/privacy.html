@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Privacy policy — OmniScript Data Inspector</title>
+<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+<nav class="crumbs"><a href="../index.html">← All extensions</a></nav>
+<h1>Privacy policy — OmniScript Data Inspector</h1>
+<p class="date">Last updated: 30 August 2026</p>
+<h2>The short version</h2>
+<p>This extension collects nothing, stores nothing, and sends nothing anywhere.</p>
+<p>It requests no permissions. It has no background service worker, no content scripts, and makes no network requests of its own.</p>
+<h2>What it reads, and when</h2>
+<p>The extension only does anything while you have Chrome DevTools open and the <strong>OmniScript</strong> panel in view.</p>
+<p><strong>Page data.</strong> It reads properties of elements on the page you are inspecting, using the standard <code>chrome.devtools.inspectedWindow</code> API — the same access the DevTools Console already gives you. It looks for DESCRIBE WHAT IT READS HERE.</p>
+<p><strong>Network traffic.</strong> The Remote actions tab observes requests the inspected page makes, using <code>chrome.devtools.network</code>. For requests that look like Apex calls it reads the request and response bodies in order to decode the remote action, its input and its output. This is the same traffic already visible to you in the Network tab.</p>
+<p><strong>Frames.</strong> It asks DevTools which documents are loaded, so it can find an OmniScript inside an iframe such as the OmniScript Designer preview.</p>
+<p>All of this stays in the DevTools panel in your browser. It is never transmitted, and it is discarded when you close DevTools or navigate away.</p>
+<h2>What leaves your machine</h2>
+<p>Nothing, unless you ask for it.</p>
+<p>The <strong>Save file</strong> and <strong>Export</strong> buttons write data to your own disk when you press them. Nothing is uploaded.</p>
+<p>The toolbar popup and the help panel contain a link to <code><a href="https://buycoffee.to/mskrz">buycoffee.to</a></code>, which opens in a new tab only if you click it. That site is operated by someone else and has its own privacy policy. No information about you is passed to it by this extension.</p>
+<h2>Analytics and third parties</h2>
+<p>There are none. No analytics, no telemetry, no crash reporting, no advertising, no cookies, no user accounts, no third-party services of any kind. No data is sold or shared, because none is collected.</p>
+<h2>Data you retrieve from your org is your responsibility</h2>
+<p>This extension is a viewer. It shows you data that is already on the page you are inspecting and that your Salesforce user is already authorised to see. What that data contains, and what happens to it once you look at it, is outside the extension&#x27;s control and squarely within yours.</p>
+<p>Be aware that an OmniScript payload or a captured remote action can carry personal data, customer records, and internal identifiers. Request payloads may also carry session tokens.</p>
+<p>So, concretely:</p>
+<ul><li><strong>Where you point it matters.</strong> Prefer a scratch org, a sandbox, or test records when you are exploring or capturing screenshots. Anything you capture from a production org is production data.</li><li><strong>Exports are ordinary files.</strong> Pressing &quot;Save file&quot; or &quot;Export&quot; writes org data to your disk with no protection of any kind. Where it then goes — a ticket, a chat message, a shared drive, a colleague&#x27;s laptop — is entirely your decision.</li><li><strong>Screenshots and screen shares count too.</strong> The panel is designed to make data legible, which also makes it legible to whoever is watching your screen.</li><li><strong>Your own obligations still apply.</strong> Your employer&#x27;s policies, your client&#x27;s agreements, and data protection law such as the GDPR govern this data regardless of which tool you viewed it through. Using this extension does not change what you are permitted to do with what you see.</li></ul>
+<p>The author provides this tool as-is and accepts no responsibility for how data retrieved through it is handled, stored, or disclosed. This is a plain description of how the tool works, not legal advice — if you handle regulated or client data, follow your organisation&#x27;s guidance.</p>
+<h2>Changes</h2>
+<p>If any of this ever changes, the policy will be updated and the change disclosed on the Chrome Web Store listing before the update ships.</p>
+<h2>Contact</h2>
+<p>Mikołaj Skrzypczyński — <a href="mailto:mskrz@proton.me">mskrz@proton.me</a></p>
+<p>This is an independent, unofficial developer tool. It is not affiliated with, endorsed by, or sponsored by Salesforce, Inc.</p>
+<footer>Mikołaj Skrzypczyński · independent developer tools. Not affiliated with Salesforce, Inc.</footer>
+</body>
+</html>
