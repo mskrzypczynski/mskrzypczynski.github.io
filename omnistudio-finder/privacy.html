@@ -9,7 +9,7 @@
 <body>
 <nav class="crumbs"><a href="../index.html">← All extensions</a></nav>
 <h1>Privacy policy — OmniStudio Finder</h1>
-<p class="date">Last updated: 30 August 2026</p>
+<p class="date">Last updated: 31 August 2026</p>
 
 <h2>The short version</h2>
 <p>There is no server. Every request goes straight from your browser to your own Salesforce org. Nothing is collected, nothing is sent to the author or to anyone else, and no org data is written to disk.</p>
@@ -19,6 +19,7 @@
 <p><strong>Your Salesforce session.</strong> To query your org as you, it reads the <code>sid</code> session cookie for the org shown in your current tab and uses it as the <code>Authorization</code> header on calls to that same org. The cookie is held in memory for as long as the popup is open and then discarded. It is never written to storage, never logged, and never sent anywhere other than the Salesforce org it came from.</p>
 <p><strong>The URL of your current tab.</strong> Used only to work out which org you are looking at, so results and designer links point at the right place. If the tab is not a Salesforce domain, the extension stops there.</p>
 <p><strong>OmniStudio metadata.</strong> Names, types, subtypes, languages, authors, version numbers, active flags, last-modified dates and record ids, read from <code>OmniProcess</code>, <code>OmniDataTransform</code> and <code>OmniUiCard</code>, or their managed-package equivalents. It also reads the object descriptions to find out which fields exist in your org before it queries them.</p>
+<p><strong>Lightning app names.</strong> If you use the navigation-bar setting, the extension reads <code>AppDefinition</code> to list the apps with &quot;OmniStudio&quot; in the name, so it can offer them as a choice. Names and ids only.</p>
 <p>This is metadata about your OmniStudio configuration. The extension does not read the data your OmniScripts process, does not run them, and does not touch customer records.</p>
 
 <h2>What is stored</h2>
