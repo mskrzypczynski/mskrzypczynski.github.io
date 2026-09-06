@@ -9,7 +9,7 @@
 <body>
 <nav class="crumbs"><a href="../index.html">← All extensions</a></nav>
 <h1>Privacy policy — OmniStudio Finder</h1>
-<p class="date">Last updated: 31 August 2026</p>
+<p class="date">Last updated: 6 September 2026</p>
 
 <h2>The short version</h2>
 <p>There is no server. Every request goes straight from your browser to your own Salesforce org. Nothing is collected, nothing is sent to the author or to anyone else, and no records from your org are written to disk — only your settings and a small note of what the last org looked like.</p>
@@ -23,10 +23,11 @@
 <p>This is metadata about your OmniStudio configuration. The extension does not read the data your OmniScripts process, does not run them, and does not touch customer records.</p>
 
 <h2>What is stored</h2>
-<p>Two things, both local to your browser. Neither contains any records from your org or your credentials.</p>
+<p>All of it local to your browser. None of it contains any records from your org or your credentials.</p>
 <ul>
-  <li><strong>Your settings</strong> — designer preference, namespace override, and any custom designer URL patterns. These live in <code>chrome.storage.sync</code>, so if you have Chrome Sync switched on they follow your Google account to your other devices, exactly as any extension setting does.</li>
+  <li><strong>Your settings</strong> — designer preference, namespace override, any custom designer URL patterns, whether links open in a new tab or the current one, and an optional Lightning app id to scope pages to. These live in <code>chrome.storage.sync</code>, so if you have Chrome Sync switched on they follow your Google account to your other devices, exactly as any extension setting does.</li>
   <li><strong>A detection note</strong> — what the popup last saw in an org so the Settings page can label its controls without a session of its own: the org&#x27;s host, the detected designer flavour and package namespace(s), the OmniProcess object name, and the OmniStudio app list described above. No records, no field values, no credentials. Lives in <code>chrome.storage.local</code>.</li>
+  <li><strong>A navigation hand-off</strong> — opening one of the managed-package designers with a Lightning app pinned takes two steps: switch the tab to the app, then follow through to the designer once it has loaded. The destination URL and a timestamp are held in <code>chrome.storage.session</code>, keyed by tab, and cleared the moment the navigation completes. <code>chrome.storage.session</code> is wiped when the browser closes in any case.</li>
 </ul>
 <p>Asset lists are not cached. Each time you open the popup it queries your org afresh, so a version you just activated shows as active immediately. (Older builds did cache them; the current one deletes any such leftover entries on first run.)</p>
 
@@ -37,7 +38,7 @@
 <h2>Permissions, and why each one exists</h2>
 <ul>
   <li><code>cookies</code> — to read the Salesforce session cookie described above. This is the only reason the permission is requested.</li>
-  <li><code>storage</code> — to keep your settings and the detection note.</li>
+  <li><code>storage</code> — to keep your settings, the detection note, and the short-lived navigation hand-off described above.</li>
   <li>Access to <code>*.salesforce.com</code>, <code>*.force.com</code>, <code>*.salesforce-setup.com</code> and <code>*.cloudforce.com</code> — the domains Salesforce orgs are served from. A single org uses several of them: Lightning lives on <code>lightning.force.com</code>, the API on <code>my.salesforce.com</code>, and some managed-package designers on <code>vf.force.com</code>. No other site is accessed.</li>
 </ul>
 <p>There is no remote code. Everything the extension runs ships inside the package.</p>
