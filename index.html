@@ -137,13 +137,41 @@
             <a href="omniscript-data-inspector/privacy.html">Privacy</a>
           </p>
         </div>
-        <figure class="shot">
-          <picture>
-            <source srcset="assets/screens/inspector-dark.png" media="(prefers-color-scheme: dark)" />
-            <img src="assets/screens/inspector-light.png" width="1280" height="800" loading="lazy"
-              alt="OmniScript Data Inspector's Structure tab: the script's steps and elements on the left, and the visibility rule of a hidden field on the right." />
-          </picture>
-        </figure>
+        <div class="tour" data-tour style="--ratio: 1280 / 800">
+          <div class="tour-stage">
+          <figure class="tour-slide" id="inspector-slide-1" role="tabpanel" aria-labelledby="inspector-tab-1">
+            <div class="tour-frame"><img src="assets/tours/inspector/1-data-tree.webp" width="1280" height="800" loading="lazy" alt="Data tab: the OmniScript's data as a tree, with the values that changed in the last read highlighted." /></div>
+            <figcaption><b>The live data</b> The data JSON of the OmniScript on the page, as a tree, a form or raw text, read as you click through.</figcaption>
+          </figure>
+          <figure class="tour-slide" id="inspector-slide-2" role="tabpanel" aria-labelledby="inspector-tab-2">
+            <div class="tour-frame"><img src="assets/tours/inspector/2-structure.webp" width="1280" height="800" loading="lazy" alt="Structure tab: the script's elements on the left, and the visibility rule of a hidden field on the right with the value it needs and the value it has." /></div>
+            <figcaption><b>Why is this field hidden?</b> Every element joined to its data; Visibility shows which rule hides it and what the field holds now.</figcaption>
+          </figure>
+          <figure class="tour-slide" id="inspector-slide-3" role="tabpanel" aria-labelledby="inspector-tab-3">
+            <div class="tour-frame"><img src="assets/tours/inspector/4-step-validation.webp" width="1280" height="800" loading="lazy" alt="Structure tab with a step selected: its Validation lists a required field that is empty." /></div>
+            <figcaption><b>Why can't I press Next?</b> The step's Validation lists what is required and still empty, and the Valid column marks each step.</figcaption>
+          </figure>
+          <figure class="tour-slide" id="inspector-slide-4" role="tabpanel" aria-labelledby="inspector-tab-4">
+            <div class="tour-frame"><img src="assets/tours/inspector/3-remote-actions.webp" width="1280" height="800" loading="lazy" alt="Calls tab: five calls listed, the failed Integration Procedure selected, with the reason and its output." /></div>
+            <figcaption><b>Every call, failures flagged</b> Data Mapper and Integration Procedure calls with their input and output; a failure is flagged even when the response says it succeeded.</figcaption>
+          </figure>
+          <figure class="tour-slide" id="inspector-slide-5" role="tabpanel" aria-labelledby="inspector-tab-5">
+            <div class="tour-frame"><img src="assets/tours/inspector/5-dark-structure.webp" width="1280" height="800" loading="lazy" alt="The Structure tab in the dark theme." /></div>
+            <figcaption><b>Light or dark</b> The panel follows the DevTools theme.</figcaption>
+          </figure>
+          </div>
+          <div class="tour-bar">
+            <button type="button" class="tour-step" data-step="-1" aria-label="Previous screenshot">‹</button>
+            <div class="tour-tabs" role="tablist" aria-label="OmniScript Data Inspector screenshots">
+            <button type="button" role="tab" id="inspector-tab-1" aria-controls="inspector-slide-1" aria-selected="true">Data</button>
+            <button type="button" role="tab" id="inspector-tab-2" aria-controls="inspector-slide-2" aria-selected="false" tabindex="-1">Structure</button>
+            <button type="button" role="tab" id="inspector-tab-3" aria-controls="inspector-slide-3" aria-selected="false" tabindex="-1">Next</button>
+            <button type="button" role="tab" id="inspector-tab-4" aria-controls="inspector-slide-4" aria-selected="false" tabindex="-1">Calls</button>
+            <button type="button" role="tab" id="inspector-tab-5" aria-controls="inspector-slide-5" aria-selected="false" tabindex="-1">Dark</button>
+            </div>
+            <button type="button" class="tour-step" data-step="1" aria-label="Next screenshot">›</button>
+          </div>
+        </div>
       </article>
 
       <article class="tool small">

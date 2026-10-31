@@ -245,3 +245,17 @@ kbd { border: 1px solid var(--line); border-bottom-width: 2px; padding: 0 5px; b
 .tour-step:hover { background: var(--surface-2); }
 @media (max-width: 520px) { .tour-step { display: none; } }
 .tour.narrow { max-width: 500px; justify-self: center; width: 100%; }
+
+.zoom-open {
+  display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;
+  padding: 0; border: 0; background: none; cursor: zoom-in;
+}
+.zoom-open img { cursor: zoom-in; }
+.zoom { padding: 0; border: 0; background: transparent; max-width: 96vw; max-height: 94vh; overflow: visible; }
+.zoom::backdrop { background: rgb(8 10 14 / 82%); }
+.zoom img { display: block; max-width: 96vw; max-height: 90vh; width: auto; height: auto; border-radius: 10px; box-shadow: 0 10px 40px rgb(0 0 0 / 50%); cursor: zoom-out; }
+.zoom-close {
+  position: absolute; top: -40px; right: 0; font: 600 14px system-ui, sans-serif;
+  color: #fff; background: rgb(255 255 255 / 14%); border: 1px solid rgb(255 255 255 / 30%);
+  border-radius: 8px; padding: 5px 12px; cursor: pointer;
+}

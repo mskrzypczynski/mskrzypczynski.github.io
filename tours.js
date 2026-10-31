@@ -46,11 +46,48 @@ function setupTour(tour) {
     const dx = event.clientX - start.x;
     const dy = event.clientY - start.y;
     start = null;
-    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) show(current + (dx < 0 ? 1 : -1));
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      tour.dataset.swiped = 'yes'; // the click that ends a swipe must not enlarge
+      show(current + (dx < 0 ? 1 : -1));
+    }
   });
 
   tour.classList.add('ready');
   show(0);
 }
 
+/* A screenshot opens full size in a dialog: the panel screenshots carry
+ * small text. Esc, the Close button or a click anywhere closes it. */
+function setupZoom() {
+  const dialog = document.createElement('dialog');
+  dialog.className = 'zoom';
+  dialog.setAttribute('aria-label', 'Screenshot');
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.className = 'zoom-close';
+  close.textContent = 'Close';
+  const image = document.createElement('img');
+  dialog.append(close, image);
+  document.body.appendChild(dialog);
+  dialog.addEventListener('click', () => dialog.close());
+
+  document.querySelectorAll('.tour-frame img').forEach((shot) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'zoom-open';
+    button.setAttribute('aria-label', `Enlarge: ${shot.alt}`);
+    shot.replaceWith(button);
+    button.appendChild(shot);
+    button.addEventListener('click', () => {
+      const tour = button.closest('[data-tour]');
+      if (tour && tour.dataset.swiped) { delete tour.dataset.swiped; return; }
+      image.src = shot.currentSrc || shot.src;
+      image.alt = shot.alt;
+      dialog.showModal();
+      close.focus();
+    });
+  });
+}
+
 document.querySelectorAll('[data-tour]').forEach(setupTour);
+setupZoom();
