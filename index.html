@@ -60,6 +60,65 @@
     <div class="wrap">
       <h2 id="tools-title" class="section-title">Tools</h2>
 
+      <article class="tool wide">
+        <div class="tool-text">
+          <div class="tool-head">
+            <img class="tool-icon" src="assets/omniscript-data-inspector.png" alt="" width="40" height="40" />
+            <div>
+              <h3><a href="omniscript-data-inspector/index.html">OmniScript Data Inspector</a></h3>
+              <p class="kind">Chrome extension · DevTools panel</p>
+            </div>
+          </div>
+          <p class="badges"><span class="badge live">On the Chrome Web Store</span><span class="badge">Free</span></p>
+          <p>See what a running OmniScript holds, in a DevTools panel.</p>
+          <ul class="ticks">
+            <li>The live data, as you click through.</li>
+            <li>Why a field is hidden or Next is blocked.</li>
+            <li>Every call, failures flagged.</li>
+          </ul>
+          <p class="links">
+            <a class="btn primary" href="https://chromewebstore.google.com/detail/lpijhdhnblimbdlhgkdapdldahdhkfpc?utm_source=item-share-cb">Add to Chrome</a>
+            <a href="omniscript-data-inspector/index.html">Details</a>
+            <a href="omniscript-data-inspector/privacy.html">Privacy</a>
+          </p>
+        </div>
+        <div class="tour" data-tour style="--ratio: 1280 / 800">
+          <div class="tour-stage">
+            <button type="button" class="tour-step prev" data-step="-1" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <button type="button" class="tour-step next" data-step="1" aria-label="Next screenshot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          <figure class="tour-slide" id="inspector-slide-1" role="tabpanel" aria-labelledby="inspector-tab-1">
+            <div class="tour-frame"><img src="assets/tours/inspector/1-data-tree.webp" width="1280" height="800" loading="lazy" alt="Data tab: the OmniScript's data as a tree, with the values that changed in the last read highlighted." /></div>
+            <figcaption><b>The live data</b> Tree, form or raw, updated as you go.</figcaption>
+          </figure>
+          <figure class="tour-slide" id="inspector-slide-2" role="tabpanel" aria-labelledby="inspector-tab-2">
+            <div class="tour-frame"><img src="assets/tours/inspector/2-structure.webp" width="1280" height="800" loading="lazy" alt="Structure tab: the script's elements on the left, and the visibility rule of a hidden field on the right with the value it needs and the value it has." /></div>
+            <figcaption><b>Why is this field hidden?</b> The rule that hides it and the value it sees.</figcaption>
+          </figure>
+          <figure class="tour-slide" id="inspector-slide-3" role="tabpanel" aria-labelledby="inspector-tab-3">
+            <div class="tour-frame"><img src="assets/tours/inspector/4-step-validation.webp" width="1280" height="800" loading="lazy" alt="Structure tab with a step selected: its Validation lists a required field that is empty." /></div>
+            <figcaption><b>Why can't I press Next?</b> What is required and still empty.</figcaption>
+          </figure>
+          <figure class="tour-slide" id="inspector-slide-4" role="tabpanel" aria-labelledby="inspector-tab-4">
+            <div class="tour-frame"><img src="assets/tours/inspector/3-remote-actions.webp" width="1280" height="800" loading="lazy" alt="Calls tab: five calls listed, the failed Integration Procedure selected, with the reason and its output." /></div>
+            <figcaption><b>Every call, failures flagged</b> Input and output; failures flagged even with HTTP 200.</figcaption>
+          </figure>
+          <figure class="tour-slide" id="inspector-slide-5" role="tabpanel" aria-labelledby="inspector-tab-5">
+            <div class="tour-frame"><img src="assets/tours/inspector/5-dark-structure.webp" width="1280" height="800" loading="lazy" alt="The Structure tab in the dark theme." /></div>
+            <figcaption><b>Light or dark</b> Follows the DevTools theme.</figcaption>
+          </figure>
+          </div>
+          <div class="tour-bar">
+            <div class="tour-tabs" role="tablist" aria-label="OmniScript Data Inspector screenshots">
+            <button type="button" role="tab" id="inspector-tab-1" aria-controls="inspector-slide-1" aria-selected="true">Data</button>
+            <button type="button" role="tab" id="inspector-tab-2" aria-controls="inspector-slide-2" aria-selected="false" tabindex="-1">Structure</button>
+            <button type="button" role="tab" id="inspector-tab-3" aria-controls="inspector-slide-3" aria-selected="false" tabindex="-1">Next</button>
+            <button type="button" role="tab" id="inspector-tab-4" aria-controls="inspector-slide-4" aria-selected="false" tabindex="-1">Calls</button>
+            <button type="button" role="tab" id="inspector-tab-5" aria-controls="inspector-slide-5" aria-selected="false" tabindex="-1">Dark</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
       <article class="tool">
         <div class="tool-text">
           <div class="tool-head">
@@ -119,65 +178,6 @@
           </div>
         </div>
       </article>
-
-      <article class="tool wide">
-        <div class="tool-text">
-          <div class="tool-head">
-            <img class="tool-icon" src="assets/omniscript-data-inspector.png" alt="" width="40" height="40" />
-            <div>
-              <h3><a href="omniscript-data-inspector/index.html">OmniScript Data Inspector</a></h3>
-              <p class="kind">Chrome extension · DevTools panel</p>
-            </div>
-          </div>
-          <p class="badges"><span class="badge live">On the Chrome Web Store</span><span class="badge">Free</span></p>
-          <p>See what a running OmniScript holds, in a DevTools panel.</p>
-          <ul class="ticks">
-            <li>The live data, as you click through.</li>
-            <li>Why a field is hidden or Next is blocked.</li>
-            <li>Every call, failures flagged.</li>
-          </ul>
-          <p class="links">
-            <a class="btn primary" href="https://chromewebstore.google.com/detail/lpijhdhnblimbdlhgkdapdldahdhkfpc?utm_source=item-share-cb">Add to Chrome</a>
-            <a href="omniscript-data-inspector/index.html">Details</a>
-            <a href="omniscript-data-inspector/privacy.html">Privacy</a>
-          </p>
-        </div>
-        <div class="tour" data-tour style="--ratio: 1280 / 800">
-          <div class="tour-stage">
-            <button type="button" class="tour-step prev" data-step="-1" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-            <button type="button" class="tour-step next" data-step="1" aria-label="Next screenshot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-          <figure class="tour-slide" id="inspector-slide-1" role="tabpanel" aria-labelledby="inspector-tab-1">
-            <div class="tour-frame"><img src="assets/tours/inspector/1-data-tree.webp" width="1280" height="800" loading="lazy" alt="Data tab: the OmniScript's data as a tree, with the values that changed in the last read highlighted." /></div>
-            <figcaption><b>The live data</b> Tree, form or raw, updated as you go.</figcaption>
-          </figure>
-          <figure class="tour-slide" id="inspector-slide-2" role="tabpanel" aria-labelledby="inspector-tab-2">
-            <div class="tour-frame"><img src="assets/tours/inspector/2-structure.webp" width="1280" height="800" loading="lazy" alt="Structure tab: the script's elements on the left, and the visibility rule of a hidden field on the right with the value it needs and the value it has." /></div>
-            <figcaption><b>Why is this field hidden?</b> The rule that hides it and the value it sees.</figcaption>
-          </figure>
-          <figure class="tour-slide" id="inspector-slide-3" role="tabpanel" aria-labelledby="inspector-tab-3">
-            <div class="tour-frame"><img src="assets/tours/inspector/4-step-validation.webp" width="1280" height="800" loading="lazy" alt="Structure tab with a step selected: its Validation lists a required field that is empty." /></div>
-            <figcaption><b>Why can't I press Next?</b> What is required and still empty.</figcaption>
-          </figure>
-          <figure class="tour-slide" id="inspector-slide-4" role="tabpanel" aria-labelledby="inspector-tab-4">
-            <div class="tour-frame"><img src="assets/tours/inspector/3-remote-actions.webp" width="1280" height="800" loading="lazy" alt="Calls tab: five calls listed, the failed Integration Procedure selected, with the reason and its output." /></div>
-            <figcaption><b>Every call, failures flagged</b> Input and output; failures flagged even with HTTP 200.</figcaption>
-          </figure>
-          <figure class="tour-slide" id="inspector-slide-5" role="tabpanel" aria-labelledby="inspector-tab-5">
-            <div class="tour-frame"><img src="assets/tours/inspector/5-dark-structure.webp" width="1280" height="800" loading="lazy" alt="The Structure tab in the dark theme." /></div>
-            <figcaption><b>Light or dark</b> Follows the DevTools theme.</figcaption>
-          </figure>
-          </div>
-          <div class="tour-bar">
-            <div class="tour-tabs" role="tablist" aria-label="OmniScript Data Inspector screenshots">
-            <button type="button" role="tab" id="inspector-tab-1" aria-controls="inspector-slide-1" aria-selected="true">Data</button>
-            <button type="button" role="tab" id="inspector-tab-2" aria-controls="inspector-slide-2" aria-selected="false" tabindex="-1">Structure</button>
-            <button type="button" role="tab" id="inspector-tab-3" aria-controls="inspector-slide-3" aria-selected="false" tabindex="-1">Next</button>
-            <button type="button" role="tab" id="inspector-tab-4" aria-controls="inspector-slide-4" aria-selected="false" tabindex="-1">Calls</button>
-            <button type="button" role="tab" id="inspector-tab-5" aria-controls="inspector-slide-5" aria-selected="false" tabindex="-1">Dark</button>
-            </div>
-          </div>
-        </div>
-      </article>
     </div>
   </section>
 
@@ -199,12 +199,12 @@
       <p class="section-lede">What each tool reads, keeps and sends.</p>
       <ul class="grid2">
         <li>
-          <a href="omnistudio-finder/privacy.html"><b>OmniStudio Finder</b></a>
-          <span>Uses your session for the org in your tab. Keeps settings in your browser.</span>
-        </li>
-        <li>
           <a href="omniscript-data-inspector/privacy.html"><b>OmniScript Data Inspector</b></a>
           <span>Reads the page you inspect. Your data stays with you.</span>
+        </li>
+        <li>
+          <a href="omnistudio-finder/privacy.html"><b>OmniStudio Finder</b></a>
+          <span>Uses your session for the org in your tab. Keeps settings in your browser.</span>
         </li>
       </ul>
     </div>
