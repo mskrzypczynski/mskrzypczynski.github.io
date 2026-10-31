@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Why is this field hidden? · OmniScript Data Inspector</title>
+<meta name="description" content="Find the rule that hides an element and see what the data holds now, condition by condition, in plain words." />
+<link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="../../favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="../../assets/brand/apple-touch-icon.png" />
+<meta name="color-scheme" content="light dark" />
+<link rel="stylesheet" href="../../portfolio.css" />
+<link rel="stylesheet" href="../../style.css" />
+<style>
+.sub { margin-bottom: 18px; }
+.lede { color: var(--dim, #57606a); margin: 0 0 14px; }
+kbd {
+  display: inline-block; min-width: 1.5em; padding: 0 5px; text-align: center;
+  border: 1px solid var(--line, #d8dee4); border-bottom-width: 2px; border-radius: 4px;
+  background: var(--card, #f9fafb); font: 12px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.ctl-chip {
+  display: inline-block; padding: 0 6px; white-space: nowrap; font-size: 0.92em; line-height: 1.45;
+  color: var(--fg, #1f2328); background: var(--card, #f9fafb);
+  border: 1px solid var(--line, #d8dee4); border-bottom-width: 2px; border-radius: 4px;
+}
+.search { position: sticky; top: 0; z-index: 2; margin: 0 -22px 18px; padding: 10px 22px; background: var(--bg, #fff); border-bottom: 1px solid var(--line, #d8dee4); }
+.search input {
+  width: 100%; padding: 8px 10px; font: inherit; color: var(--fg, #1f2328);
+  background: var(--card, #f9fafb); border: 1px solid var(--line, #d8dee4); border-radius: 6px;
+}
+.search input:focus { outline: 2px solid var(--accent, #0969da); outline-offset: 1px; }
+.toc { padding: 12px 16px; margin: 0 0 8px; border: 1px solid var(--line, #d8dee4); border-radius: 8px; background: var(--card, #f9fafb); }
+.toc > ul { list-style: none; margin: 0; padding: 0; }
+.toc > ul > li { margin: 0 0 4px; }
+.toc details { margin-top: 2px; }
+.toc summary { cursor: pointer; color: var(--dim, #57606a); font-size: 14px; }
+.toc details ul { columns: 2; column-gap: 24px; padding-left: 18px; margin: 6px 0; font-size: 14px; }
+.toc details li { margin: 0 0 2px; break-inside: avoid; }
+.group > h2 { margin-top: 40px; }
+h2[id], h3[id], h4[id] { scroll-margin-top: 70px; }
+.entry { margin: 0 0 6px; }
+.entry h3, .entry h4 { margin: 20px 0 4px; font-size: 16px; }
+.entry h3 a, .entry h4 a, .group > h2 a { color: inherit; text-decoration: none; }
+.entry h3 a:hover, .entry h4 a:hover, .group > h2 a:hover { text-decoration: underline; }
+.entry p, .entry ul { margin: 0 0 6px; }
+.entry li { margin-bottom: 4px; }
+.subsection { font-size: 15px; color: var(--dim, #57606a); margin: 26px 0 0; }
+.start { margin: 4px 0 8px; padding: 10px 16px; border: 1px solid var(--line, #d8dee4); border-radius: 8px; background: var(--card, #f9fafb); }
+.start h3 { margin: 0 0 4px; font-size: 15px; }
+.start ol { margin: 0; padding-left: 22px; }
+table.keys, table.plain { width: 100%; border-collapse: collapse; font-size: 14px; margin: 8px 0 16px; }
+table.keys th, table.keys td, table.plain th, table.plain td { padding: 6px 8px; border-bottom: 1px solid var(--line, #d8dee4); vertical-align: top; text-align: left; }
+table.keys th { white-space: nowrap; font-weight: 400; width: 1%; }
+blockquote.note { margin: 14px 0; padding: 8px 14px; border-left: 3px solid var(--accent, #0969da); background: var(--card, #f9fafb); color: var(--fg, #1f2328); }
+.related { margin-top: 30px; }
+.empty { color: var(--dim, #57606a); }
+[hidden] { display: none !important; }
+@media (max-width: 520px) {
+  body { padding: 28px 16px 60px; }
+  .search { margin: 0 -16px 18px; padding: 10px 16px; }
+  .toc details ul { columns: 1; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="../../" aria-label="Home">
+      <img class="brand-mark" src="../../assets/brand/ms-icon-dark.svg" alt="" width="32" height="32" />
+      <span>Mikołaj Skrzypczyński</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="../../#tools">Tools</a>
+      <a href="../../#privacy">Privacy</a>
+      <a href="../../#about">About me</a>
+      <a href="../../#coffee">Coffee</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="doc">
+<nav class="crumbs"><a href="../index.html">OmniScript Data Inspector</a> · <a href="index.html">Guides</a></nav>
+<h1>Why is this field hidden?</h1>
+<p class="sub">Find the rule that hides an element and see what the data holds now, condition by condition, in plain words.</p>
+<p>A field you expected is not on the screen. In OmniScript that usually means a show rule is false, or that the field sits inside something hidden. The Structure tab can tell you which, using the data the script holds right now, so you do not have to read the rule JSON.</p>
+<h3>Find the rule</h3>
+<ol><li>Open the <strong>Structure</strong> tab and pick your OmniScript in the top bar. Press <span class="ctl-chip">Rescan</span> if the list is empty.</li><li>Type part of the field's name, type or label in the filter box. See <a href="../reference.html#structure-filter">Filter</a>.</li><li>Look for a dimmed row with a closed eye: it is not shown right now, and the status bar counts these (&quot;2 hidden&quot;). Leave <span class="ctl-chip">Visible only</span> (in the <span class="ctl-chip">View</span> menu) off, or hidden rows are not listed. See <a href="../reference.html#structure-hidden-elements">Hidden elements</a>.</li><li>Click the row. When a rule hides the element, the <strong>Visibility</strong> tab opens with the reason. On another detail tab, the grey chip in the head brings you back to it.</li></ol>
+<p>If there is no <strong>Visibility</strong> tab, the element has no show rule the panel can see. Children of a hidden element are hidden too, so check the step or block above it: the card then has a <strong>Hidden by</strong> row naming it.</p>
+<h3>Read the Visibility card</h3>
+<p>The tag in the card's header says <strong>Hidden</strong>, <strong>Shown</strong> or <strong>Can't tell</strong>. Hover it for one plain sentence, such as <code>Hidden: Step:Plan is &quot;Standard&quot;, not &quot;Gold&quot;</code>. Below it is the rule as a table, one row per condition:</p>
+<ul><li>The mark says whether the condition is met now: ● met, ○ not met, ? the panel cannot tell.</li><li><strong>Field</strong> is what the rule reads. If the script has an element by that name, the name is a link that selects it.</li><li><strong>Must be</strong> is what the rule wants, for example <code>= &quot;Gold&quot;</code>.</li><li><strong>Is now</strong> is what the data holds. It reads empty or not in data rather than staying blank.</li></ul>
+<p>Under each condition the same is said in plain words. A group says what it needs and how it stands, such as &quot;All of these must be true; 1 of 2 is not&quot;. The <strong>As written</strong> row ends the card with the rule exactly as the Designer defines it. More in the <a href="../reference.html#structure-visibility-tab">Visibility tab</a> entry.</p>
+<h3>Follow the field back</h3>
+<ol><li>Press <strong>Show in Data</strong> to open the Data tab at the element's value, or choose it in the row menu.</li><li>If <strong>Is now</strong> says not in data, the data holds nothing at that key yet. A Data Mapper or Set Values element that should have written it has not run, or wrote it somewhere else.</li><li>To see what a call sent and returned, open the element's <strong>Calls</strong> tab, or read <a href="where-did-this-value-come-from.html">Where did this value come from?</a>.</li></ol>
+<h3>When the panel is unsure</h3>
+<ul><li>A <strong>?</strong> means an unusual operator or a formula the panel cannot evaluate. It never guesses.</li><li><strong>estimated ≈</strong> marks a formula the panel worked out itself. Treat it as a good hint, not a verdict. See <a href="../reference.html#structure-formulas">Formulas</a>.</li></ul>
+<p>The panel judges rules against the live data, not the <code>bShow</code> flag saved in the definition. If the two disagree, trust the Visibility tab.</p>
+<p>Next: if the field is visible but <strong>Next</strong> will not advance, read <a href="why-cant-i-press-next.html">Why can't I press Next?</a>.</p>
+<p class="related">Every control is described in the <a href="../reference.html">reference</a>. More <a href="index.html">guides</a>.</p>
+<p class="stamp">Written for OmniScript Data Inspector 2.0.0.</p>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <span>© 2026 Mikołaj Skrzypczyński. Not affiliated with Salesforce, Inc.</span>
+    <nav aria-label="Footer">
+      <a href="../../#privacy">Privacy policies</a>
+      <a href="https://github.com/mskrzypczynski">GitHub</a>
+      <a href="mailto:mskrz@proton.me">Email</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

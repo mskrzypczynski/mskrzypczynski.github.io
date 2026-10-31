@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Where did this value come from? · OmniScript Data Inspector</title>
+<meta name="description" content="Go from a value in the data to the element that owns it, the Set Values that computes it and the calls that sent or returned it." />
+<link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="../../favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="../../assets/brand/apple-touch-icon.png" />
+<meta name="color-scheme" content="light dark" />
+<link rel="stylesheet" href="../../portfolio.css" />
+<link rel="stylesheet" href="../../style.css" />
+<style>
+.sub { margin-bottom: 18px; }
+.lede { color: var(--dim, #57606a); margin: 0 0 14px; }
+kbd {
+  display: inline-block; min-width: 1.5em; padding: 0 5px; text-align: center;
+  border: 1px solid var(--line, #d8dee4); border-bottom-width: 2px; border-radius: 4px;
+  background: var(--card, #f9fafb); font: 12px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.ctl-chip {
+  display: inline-block; padding: 0 6px; white-space: nowrap; font-size: 0.92em; line-height: 1.45;
+  color: var(--fg, #1f2328); background: var(--card, #f9fafb);
+  border: 1px solid var(--line, #d8dee4); border-bottom-width: 2px; border-radius: 4px;
+}
+.search { position: sticky; top: 0; z-index: 2; margin: 0 -22px 18px; padding: 10px 22px; background: var(--bg, #fff); border-bottom: 1px solid var(--line, #d8dee4); }
+.search input {
+  width: 100%; padding: 8px 10px; font: inherit; color: var(--fg, #1f2328);
+  background: var(--card, #f9fafb); border: 1px solid var(--line, #d8dee4); border-radius: 6px;
+}
+.search input:focus { outline: 2px solid var(--accent, #0969da); outline-offset: 1px; }
+.toc { padding: 12px 16px; margin: 0 0 8px; border: 1px solid var(--line, #d8dee4); border-radius: 8px; background: var(--card, #f9fafb); }
+.toc > ul { list-style: none; margin: 0; padding: 0; }
+.toc > ul > li { margin: 0 0 4px; }
+.toc details { margin-top: 2px; }
+.toc summary { cursor: pointer; color: var(--dim, #57606a); font-size: 14px; }
+.toc details ul { columns: 2; column-gap: 24px; padding-left: 18px; margin: 6px 0; font-size: 14px; }
+.toc details li { margin: 0 0 2px; break-inside: avoid; }
+.group > h2 { margin-top: 40px; }
+h2[id], h3[id], h4[id] { scroll-margin-top: 70px; }
+.entry { margin: 0 0 6px; }
+.entry h3, .entry h4 { margin: 20px 0 4px; font-size: 16px; }
+.entry h3 a, .entry h4 a, .group > h2 a { color: inherit; text-decoration: none; }
+.entry h3 a:hover, .entry h4 a:hover, .group > h2 a:hover { text-decoration: underline; }
+.entry p, .entry ul { margin: 0 0 6px; }
+.entry li { margin-bottom: 4px; }
+.subsection { font-size: 15px; color: var(--dim, #57606a); margin: 26px 0 0; }
+.start { margin: 4px 0 8px; padding: 10px 16px; border: 1px solid var(--line, #d8dee4); border-radius: 8px; background: var(--card, #f9fafb); }
+.start h3 { margin: 0 0 4px; font-size: 15px; }
+.start ol { margin: 0; padding-left: 22px; }
+table.keys, table.plain { width: 100%; border-collapse: collapse; font-size: 14px; margin: 8px 0 16px; }
+table.keys th, table.keys td, table.plain th, table.plain td { padding: 6px 8px; border-bottom: 1px solid var(--line, #d8dee4); vertical-align: top; text-align: left; }
+table.keys th { white-space: nowrap; font-weight: 400; width: 1%; }
+blockquote.note { margin: 14px 0; padding: 8px 14px; border-left: 3px solid var(--accent, #0969da); background: var(--card, #f9fafb); color: var(--fg, #1f2328); }
+.related { margin-top: 30px; }
+.empty { color: var(--dim, #57606a); }
+[hidden] { display: none !important; }
+@media (max-width: 520px) {
+  body { padding: 28px 16px 60px; }
+  .search { margin: 0 -16px 18px; padding: 10px 16px; }
+  .toc details ul { columns: 1; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="../../" aria-label="Home">
+      <img class="brand-mark" src="../../assets/brand/ms-icon-dark.svg" alt="" width="32" height="32" />
+      <span>Mikołaj Skrzypczyński</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="../../#tools">Tools</a>
+      <a href="../../#privacy">Privacy</a>
+      <a href="../../#about">About me</a>
+      <a href="../../#coffee">Coffee</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="doc">
+<nav class="crumbs"><a href="../index.html">OmniScript Data Inspector</a> · <a href="index.html">Guides</a></nav>
+<h1>Where did this value come from?</h1>
+<p class="sub">Go from a value in the data to the element that owns it, the Set Values that computes it and the calls that sent or returned it.</p>
+<p>A field holds a value you did not type, or a value is not what you expect. Somewhere a call, a Set Values element or a user action put it there. The panel links the data, the script's elements and the calls, so you can follow the value back.</p>
+<h3>Find the value</h3>
+<ol><li>Open the <strong>Data</strong> tab and find the key: type part of its name or value in the filter box, or an OmniScript path such as <code>Step:Rows|2:Field</code>. See <a href="../reference.html#data-filter">Filter</a>.</li><li>Keep the tab open while you use the page. A value that changes flashes amber, and a collapsed branch that holds a change is marked with a dot. See <a href="../reference.html#data-amber-highlight">Amber highlight</a>.</li><li>To freeze the data while you read it, untick <strong>Auto-refresh</strong>; <strong>Refresh</strong> then reads once. See <a href="../reference.html#data-auto-refresh">Auto-refresh</a>.</li></ol>
+<h3>Go to the element that owns the key</h3>
+<ol><li>Hover the row and press its Structure icon, or right-click and choose <span class="ctl-chip">Show in Structure</span>. The Structure tab opens with the element that owns that key selected, or its nearest parent. See <a href="../reference.html#data-show-in-structure-button">Show in Structure button</a>.</li><li>On the <strong>Current value</strong> tab you see what the element holds now. <strong>Show in Data</strong> goes back to the row.</li><li>If a Set Values element writes the key, select it: its <strong>Set Values</strong> tab lists each assignment with the Target, the Expression as written, the Computed value it gives now and the Current value the target holds. An amber differs tag marks a mismatch. See <a href="../reference.html#structure-set-values">Set Values</a>.</li></ol>
+<h3>Find the call behind it</h3>
+<ol><li>Open the <strong>Calls</strong> tab and type <code>in:</code> and the value, or part of it, in the filter box. Only the calls whose input, options or output contain it stay, with the matching lines shown. See <a href="../reference.html#actions-filter-box">Filter box</a>.</li><li>Select a call and read its <strong>Output</strong> tab: a response node that holds the value tells you which call returned it.</li><li>If an element of the script makes the call, press <span class="ctl-chip">Show in Structure</span> in the detail pane. The element's <strong>Calls</strong> tab then says what it sends and where the answer lands in the data. See <a href="../reference.html#actions-show-in-structure">Show in Structure</a>.</li></ol>
+<h3>When the answer is &quot;not in data&quot;</h3>
+<p>If the element's value reads not in data, the element that should have written it has not run, or wrote another key. Check the element's <strong>Calls</strong> tab for <strong>Response node</strong>: when none is set, the answer lands at the top level of the data. To find out why a call failed, see <a href="why-did-this-call-fail.html">Why did this call fail, and what did it send?</a>.</p>
+<p>Turn <span class="ctl-chip">Mask values</span> on before you copy any of this into a ticket. See <a href="../reference.html#everywhere-mask-values">Mask values</a>.</p>
+<p class="related">Every control is described in the <a href="../reference.html">reference</a>. More <a href="index.html">guides</a>.</p>
+<p class="stamp">Written for OmniScript Data Inspector 2.0.0.</p>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <span>© 2026 Mikołaj Skrzypczyński. Not affiliated with Salesforce, Inc.</span>
+    <nav aria-label="Footer">
+      <a href="../../#privacy">Privacy policies</a>
+      <a href="https://github.com/mskrzypczynski">GitHub</a>
+      <a href="mailto:mskrz@proton.me">Email</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

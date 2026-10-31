@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Guides · OmniScript Data Inspector</title>
+<meta name="description" content="Task-based guides for the OmniScript Data Inspector: hidden fields, a blocked Next, failed calls and how to report a problem." />
+<link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="../../favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="../../assets/brand/apple-touch-icon.png" />
+<meta name="color-scheme" content="light dark" />
+<link rel="stylesheet" href="../../portfolio.css" />
+<link rel="stylesheet" href="../../style.css" />
+<style>
+.sub { margin-bottom: 18px; }
+.lede { color: var(--dim, #57606a); margin: 0 0 14px; }
+kbd {
+  display: inline-block; min-width: 1.5em; padding: 0 5px; text-align: center;
+  border: 1px solid var(--line, #d8dee4); border-bottom-width: 2px; border-radius: 4px;
+  background: var(--card, #f9fafb); font: 12px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.ctl-chip {
+  display: inline-block; padding: 0 6px; white-space: nowrap; font-size: 0.92em; line-height: 1.45;
+  color: var(--fg, #1f2328); background: var(--card, #f9fafb);
+  border: 1px solid var(--line, #d8dee4); border-bottom-width: 2px; border-radius: 4px;
+}
+.search { position: sticky; top: 0; z-index: 2; margin: 0 -22px 18px; padding: 10px 22px; background: var(--bg, #fff); border-bottom: 1px solid var(--line, #d8dee4); }
+.search input {
+  width: 100%; padding: 8px 10px; font: inherit; color: var(--fg, #1f2328);
+  background: var(--card, #f9fafb); border: 1px solid var(--line, #d8dee4); border-radius: 6px;
+}
+.search input:focus { outline: 2px solid var(--accent, #0969da); outline-offset: 1px; }
+.toc { padding: 12px 16px; margin: 0 0 8px; border: 1px solid var(--line, #d8dee4); border-radius: 8px; background: var(--card, #f9fafb); }
+.toc > ul { list-style: none; margin: 0; padding: 0; }
+.toc > ul > li { margin: 0 0 4px; }
+.toc details { margin-top: 2px; }
+.toc summary { cursor: pointer; color: var(--dim, #57606a); font-size: 14px; }
+.toc details ul { columns: 2; column-gap: 24px; padding-left: 18px; margin: 6px 0; font-size: 14px; }
+.toc details li { margin: 0 0 2px; break-inside: avoid; }
+.group > h2 { margin-top: 40px; }
+h2[id], h3[id], h4[id] { scroll-margin-top: 70px; }
+.entry { margin: 0 0 6px; }
+.entry h3, .entry h4 { margin: 20px 0 4px; font-size: 16px; }
+.entry h3 a, .entry h4 a, .group > h2 a { color: inherit; text-decoration: none; }
+.entry h3 a:hover, .entry h4 a:hover, .group > h2 a:hover { text-decoration: underline; }
+.entry p, .entry ul { margin: 0 0 6px; }
+.entry li { margin-bottom: 4px; }
+.subsection { font-size: 15px; color: var(--dim, #57606a); margin: 26px 0 0; }
+.start { margin: 4px 0 8px; padding: 10px 16px; border: 1px solid var(--line, #d8dee4); border-radius: 8px; background: var(--card, #f9fafb); }
+.start h3 { margin: 0 0 4px; font-size: 15px; }
+.start ol { margin: 0; padding-left: 22px; }
+table.keys, table.plain { width: 100%; border-collapse: collapse; font-size: 14px; margin: 8px 0 16px; }
+table.keys th, table.keys td, table.plain th, table.plain td { padding: 6px 8px; border-bottom: 1px solid var(--line, #d8dee4); vertical-align: top; text-align: left; }
+table.keys th { white-space: nowrap; font-weight: 400; width: 1%; }
+blockquote.note { margin: 14px 0; padding: 8px 14px; border-left: 3px solid var(--accent, #0969da); background: var(--card, #f9fafb); color: var(--fg, #1f2328); }
+.related { margin-top: 30px; }
+.empty { color: var(--dim, #57606a); }
+[hidden] { display: none !important; }
+@media (max-width: 520px) {
+  body { padding: 28px 16px 60px; }
+  .search { margin: 0 -16px 18px; padding: 10px 16px; }
+  .toc details ul { columns: 1; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="../../" aria-label="Home">
+      <img class="brand-mark" src="../../assets/brand/ms-icon-dark.svg" alt="" width="32" height="32" />
+      <span>Mikołaj Skrzypczyński</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="../../#tools">Tools</a>
+      <a href="../../#privacy">Privacy</a>
+      <a href="../../#about">About me</a>
+      <a href="../../#coffee">Coffee</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="doc">
+<nav class="crumbs"><a href="../index.html">OmniScript Data Inspector</a></nav>
+<h1>Guides</h1>
+<p class="sub">One question at a time, with the exact controls to use. For everything else, see the <a href="../reference.html">reference</a>.</p>
+<a class="card" href="get-started.html"><h3>Get started in five minutes</h3><p>Open the panel, pick the script, turn Mask values on, learn what the three tabs are for and where the help is.</p></a>
+<a class="card" href="why-is-this-field-hidden.html"><h3>Why is this field hidden?</h3><p>Find the rule that hides an element and see what the data holds now, condition by condition, in plain words.</p></a>
+<a class="card" href="why-cant-i-press-next.html"><h3>Why can't I press Next?</h3><p>List what may be stopping Next on the current step: empty required fields, firing Set Errors and validations, and custom components.</p></a>
+<a class="card" href="why-did-this-call-fail.html"><h3>Why did this call fail, and what did it send?</h3><p>Find a failed Data Mapper, Integration Procedure or Remote Action call, read the reason and see exactly what the script sent.</p></a>
+<a class="card" href="compare-two-runs.html"><h3>What changed in this step?</h3><p>Watch the data change as you use the page, see what each call sent and returned during a step, and check what a Set Values computes.</p></a>
+<a class="card" href="where-did-this-value-come-from.html"><h3>Where did this value come from?</h3><p>Go from a value in the data to the element that owns it, the Set Values that computes it and the calls that sent or returned it.</p></a>
+<a class="card" href="what-the-panel-keeps.html"><h3>What the panel keeps on this computer</h3><p>See what is stored in the browser, what stays in memory, and how to clear each part.</p></a>
+<a class="card" href="file-an-issue.html"><h3>Report a problem</h3><p>Turn Mask values on, copy the panel's short report, add what you did and what you saw, and fill in the issue form.</p></a>
+<p class="stamp">Written for OmniScript Data Inspector 2.0.0.</p>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <span>© 2026 Mikołaj Skrzypczyński. Not affiliated with Salesforce, Inc.</span>
+    <nav aria-label="Footer">
+      <a href="../../#privacy">Privacy policies</a>
+      <a href="https://github.com/mskrzypczynski">GitHub</a>
+      <a href="mailto:mskrz@proton.me">Email</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

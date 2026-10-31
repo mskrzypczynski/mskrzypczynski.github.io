@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>What the panel keeps on this computer · OmniScript Data Inspector</title>
+<meta name="description" content="See what is stored in the browser, what stays in memory, and how to clear each part." />
+<link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="../../favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="../../assets/brand/apple-touch-icon.png" />
+<meta name="color-scheme" content="light dark" />
+<link rel="stylesheet" href="../../portfolio.css" />
+<link rel="stylesheet" href="../../style.css" />
+<style>
+.sub { margin-bottom: 18px; }
+.lede { color: var(--dim, #57606a); margin: 0 0 14px; }
+kbd {
+  display: inline-block; min-width: 1.5em; padding: 0 5px; text-align: center;
+  border: 1px solid var(--line, #d8dee4); border-bottom-width: 2px; border-radius: 4px;
+  background: var(--card, #f9fafb); font: 12px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.ctl-chip {
+  display: inline-block; padding: 0 6px; white-space: nowrap; font-size: 0.92em; line-height: 1.45;
+  color: var(--fg, #1f2328); background: var(--card, #f9fafb);
+  border: 1px solid var(--line, #d8dee4); border-bottom-width: 2px; border-radius: 4px;
+}
+.search { position: sticky; top: 0; z-index: 2; margin: 0 -22px 18px; padding: 10px 22px; background: var(--bg, #fff); border-bottom: 1px solid var(--line, #d8dee4); }
+.search input {
+  width: 100%; padding: 8px 10px; font: inherit; color: var(--fg, #1f2328);
+  background: var(--card, #f9fafb); border: 1px solid var(--line, #d8dee4); border-radius: 6px;
+}
+.search input:focus { outline: 2px solid var(--accent, #0969da); outline-offset: 1px; }
+.toc { padding: 12px 16px; margin: 0 0 8px; border: 1px solid var(--line, #d8dee4); border-radius: 8px; background: var(--card, #f9fafb); }
+.toc > ul { list-style: none; margin: 0; padding: 0; }
+.toc > ul > li { margin: 0 0 4px; }
+.toc details { margin-top: 2px; }
+.toc summary { cursor: pointer; color: var(--dim, #57606a); font-size: 14px; }
+.toc details ul { columns: 2; column-gap: 24px; padding-left: 18px; margin: 6px 0; font-size: 14px; }
+.toc details li { margin: 0 0 2px; break-inside: avoid; }
+.group > h2 { margin-top: 40px; }
+h2[id], h3[id], h4[id] { scroll-margin-top: 70px; }
+.entry { margin: 0 0 6px; }
+.entry h3, .entry h4 { margin: 20px 0 4px; font-size: 16px; }
+.entry h3 a, .entry h4 a, .group > h2 a { color: inherit; text-decoration: none; }
+.entry h3 a:hover, .entry h4 a:hover, .group > h2 a:hover { text-decoration: underline; }
+.entry p, .entry ul { margin: 0 0 6px; }
+.entry li { margin-bottom: 4px; }
+.subsection { font-size: 15px; color: var(--dim, #57606a); margin: 26px 0 0; }
+.start { margin: 4px 0 8px; padding: 10px 16px; border: 1px solid var(--line, #d8dee4); border-radius: 8px; background: var(--card, #f9fafb); }
+.start h3 { margin: 0 0 4px; font-size: 15px; }
+.start ol { margin: 0; padding-left: 22px; }
+table.keys, table.plain { width: 100%; border-collapse: collapse; font-size: 14px; margin: 8px 0 16px; }
+table.keys th, table.keys td, table.plain th, table.plain td { padding: 6px 8px; border-bottom: 1px solid var(--line, #d8dee4); vertical-align: top; text-align: left; }
+table.keys th { white-space: nowrap; font-weight: 400; width: 1%; }
+blockquote.note { margin: 14px 0; padding: 8px 14px; border-left: 3px solid var(--accent, #0969da); background: var(--card, #f9fafb); color: var(--fg, #1f2328); }
+.related { margin-top: 30px; }
+.empty { color: var(--dim, #57606a); }
+[hidden] { display: none !important; }
+@media (max-width: 520px) {
+  body { padding: 28px 16px 60px; }
+  .search { margin: 0 -16px 18px; padding: 10px 16px; }
+  .toc details ul { columns: 1; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="../../" aria-label="Home">
+      <img class="brand-mark" src="../../assets/brand/ms-icon-dark.svg" alt="" width="32" height="32" />
+      <span>Mikołaj Skrzypczyński</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="../../#tools">Tools</a>
+      <a href="../../#privacy">Privacy</a>
+      <a href="../../#about">About me</a>
+      <a href="../../#coffee">Coffee</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="doc">
+<nav class="crumbs"><a href="../index.html">OmniScript Data Inspector</a> · <a href="index.html">Guides</a></nav>
+<h1>What the panel keeps on this computer</h1>
+<p class="sub">See what is stored in the browser, what stays in memory, and how to clear each part.</p>
+<p>The panel sends nothing anywhere. It keeps your preferences, never your data. The data itself lives in memory and goes when DevTools closes. This guide lists what is stored in your browser, so you can decide what to keep and how to remove it.</p>
+<h3>What is always kept</h3>
+<ol><li><strong>The tab order.</strong> If you drag the tabs into another order, the order is kept in the browser's extension storage. To clear it, press <span class="ctl-chip">Reset</span> next to Tab order in Settings (the gear, or press <code>,</code>), or <span class="ctl-chip">Restore default settings</span>. See <a href="../reference.html#everywhere-tab-order">Tab order</a>.</li><li><strong>The tour flags.</strong> Four yes-or-no flags record which tours you have seen: the panel tour and one for each tab. To see the tours again, use <span class="ctl-chip">Show the tour again</span> at the end of Start here in the help, or <strong>Show tours again</strong> in Settings, which clear them. <strong>Don't show tours</strong> on any card stops them all. See <a href="../reference.html#everywhere-tour">Tour</a>.</li><li><strong>Mask values at start.</strong> One flag, kept only while it is ticked. Untick it in Settings, under General, and it is deleted. The Mask values switch itself is never stored. See <a href="../reference.html#everywhere-mask-values-at-start">Mask values at start</a>.</li></ol>
+<h3>What is kept by default, and can be turned off</h3>
+<p><span class="ctl-chip">Remember my settings</span>, in Settings under General, is on by default. While it is on, your settings are kept in the browser's extension storage on this computer and put back the next time DevTools opens: Text size, Refresh rate, Follow current step, Highlight on hover, Time format, Clear on reload, Open in Designer and its namespace, Show the Frame row and Embedded scripts, and the views you last chose (the Data view, Structure's Current value view, the detail tab you picked by hand and Show internal, and the Calls detail tab). These are preferences only. See <a href="../reference.html#everywhere-remember-my-settings">Remember my settings</a>.</p>
+<p>To clear all of it, untick <span class="ctl-chip">Remember my settings</span>. That deletes what was kept, and nothing is stored from then on.</p>
+<h3>What is never kept</h3>
+<p>The data, the filter text, the captured calls, <span class="ctl-chip">Mask values</span> and Auto-refresh are never stored. They live in memory and are gone when DevTools closes, or when you pick another script.</p>
+<p>Some settings start fresh in every DevTools session even with Remember my settings on: <span class="ctl-chip">Failed only</span>, <span class="ctl-chip">Visible only</span> and the two property names, <strong>Data property</strong> and <strong>Definition property</strong>. A filter that hides rows, or a property name from yesterday's page, would make a list look short or empty with nothing on screen to say why.</p>
+<p>Files you save yourself, with Export in Data or Calls, are ordinary files on your computer. The panel does not keep them, and they may contain org data unless Mask values was on.</p>
+<h3>Put everything back</h3>
+<ol><li>Open Settings. The list of settings that differ shows what is not at its default, with <span class="ctl-chip">Reset</span> for each.</li><li>Press <span class="ctl-chip">Restore default settings</span> to put them all back at once. It asks first. This also turns off Mask values at start and resets the tab order. Remember my settings stays as you set it.</li><li>To remove the stored settings and views, untick <span class="ctl-chip">Remember my settings</span>. <span class="ctl-chip">Show the tour again</span> clears the tour flags, but the tour writes one again when it ends.</li></ol>
+<p>Removing the extension from the browser deletes its storage too. See <a href="../reference.html#everywhere-settings">Settings</a>.</p>
+<p class="related">Every control is described in the <a href="../reference.html">reference</a>. More <a href="index.html">guides</a>.</p>
+<p class="stamp">Written for OmniScript Data Inspector 2.0.0.</p>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <span>© 2026 Mikołaj Skrzypczyński. Not affiliated with Salesforce, Inc.</span>
+    <nav aria-label="Footer">
+      <a href="../../#privacy">Privacy policies</a>
+      <a href="https://github.com/mskrzypczynski">GitHub</a>
+      <a href="mailto:mskrz@proton.me">Email</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

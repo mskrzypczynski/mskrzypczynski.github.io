@@ -4,51 +4,62 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>OmniStudio Finder</title>
+<meta name="description" content="Find OmniScripts, Integration Procedures, Data Mappers and FlexCards in your Salesforce org, see every version and open the right one." />
+<link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="../favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png" />
+<meta name="color-scheme" content="light dark" />
+<link rel="stylesheet" href="../portfolio.css" />
 <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
-<nav class="crumbs"><a href="../index.html">← All extensions</a></nav>
+<a class="skip" href="#main">Skip to the content</a>
 
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="../" aria-label="Home">
+      <img class="brand-mark" src="../assets/brand/ms-icon-dark.svg" alt="" width="32" height="32" />
+      <span>Mikołaj Skrzypczyński</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="../#tools">Tools</a>
+      <a href="../#privacy">Privacy</a>
+      <a href="../#about">About me</a>
+      <a href="../#coffee">Coffee</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="doc">
 <h1>OmniStudio Finder</h1>
-<p class="sub">Find OmniScripts, Integration Procedures, DataRaptors and FlexCards in your Salesforce org. See every version, open the right one.</p>
+<p class="sub">Find OmniScripts, Integration Procedures, Data Mappers and FlexCards in your Salesforce org, see every version and open the right one.</p>
 
-<p>Opening an OmniScript takes longer than it should. You go to the right list view,
-filter it, work out which of the eleven versions is the live one, and click through.
-This makes it one keystroke and one click, from whatever tab you are already on.</p>
+<p class="actions"><a class="btn primary" href="https://chromewebstore.google.com/detail/fjoaadephbjggbhejmphobgkfcgmlmmp?utm_source=item-share-cb">Chrome Web Store</a> <a class="btn" href="https://github.com/mskrzypczynski/omnistudio-finder">Source on GitHub</a></p>
 
 <h2>What it does</h2>
 <ul>
-  <li><strong>Searches the org you are looking at</strong> — every OmniScript, Integration Procedure, DataRaptor and FlexCard, filtered as you type on name, type, subtype, language or author. Switching orgs is switching tabs.</li>
-  <li><strong>Takes the key you already have</strong> — paste an OmniScript or Integration Procedure key, <code>Type_SubType_Language</code> or <code>Type_SubType</code>, straight from a log or an element name, and that script comes first. The run-together LWC spelling works too.</li>
-  <li><strong>Shows every version at once</strong> — one chip per version, with the active one in green, so you stop opening three of them to find the live one.</li>
-  <li><strong>Opens the right one</strong> — one button (or <kbd>Enter</kbd>) for the active version, or click any chip to open exactly that version in its designer. Shift-click opens the plain record page.</li>
+  <li><strong>Searches the org you are on.</strong> Filter by name, type, subtype, language or author as you type.</li>
+  <li><strong>Takes the key you already have.</strong> Paste <code>Type_SubType_Language</code> from a log and that script comes first.</li>
+  <li><strong>Shows every version.</strong> One chip per version, the active one in green.</li>
+  <li><strong>Opens the right designer.</strong> <kbd>Enter</kbd> opens the active version; click a chip for another. Core and Vlocity managed packages are both handled.</li>
 </ul>
 
-<h2>Both flavours of OmniStudio</h2>
-<p>Designer URLs are built in for core (Lightning-native) OmniStudio and for the Vlocity
-managed packages, across namespaces. Nothing to configure. The managed Integration
-Procedure and DataRaptor designers open on the first click, even on the first visit of a
-browser session.</p>
-<p>Which designer an org opens and where it keeps its records are two different things —
-an org can store data in the standard <code>OmniProcess</code> object while an admin has
-switched on the Managed Package Designer. Both are detected independently, and the popup
-tells you which designer it is about to use, so you do not land on
-<em>"you can't edit this record in the standard designer"</em>.</p>
-
-<h2>Install</h2>
-<p><a href="https://chromewebstore.google.com/detail/fjoaadephbjggbhejmphobgkfcgmlmmp?utm_source=item-share-cb">Chrome Web Store</a> ·
-<a href="https://github.com/mskrzypczynski/omnistudio-finder">source on GitHub</a> (GPL-3.0)</p>
-
 <h2>Privacy</h2>
-<p>No server, no analytics, nothing sent anywhere. Your Salesforce session cookie is used to
-query your own org and is never stored. Asset lists are not cached.
-Read the <a href="privacy.html">full privacy policy</a>, or the
-<a href="https://github.com/mskrzypczynski/omnistudio-finder">full source on GitHub</a> (GPL-3.0) — worth doing for anything that touches your session.</p>
+<p>No server, no analytics, nothing sent anywhere. Your session is used to read your own org and is never stored. Read the <a href="privacy.html">privacy policy</a>.</p>
 
 <h2>Support</h2>
-<p>Free, and staying that way. If it saved you an afternoon, you can
-<a href="https://buycoffee.to/mskrz">buy me a coffee ☕</a>.</p>
+<p>Free and open source (GPL-3.0). If it saved you time, you can <a href="https://buycoffee.to/mskrz">buy me a coffee ☕</a>.</p>
+</main>
 
-<footer>Mikołaj Skrzypczyński · independent developer tools. Not affiliated with Salesforce, Inc.</footer>
+<footer class="foot">
+  <div class="wrap foot-row">
+    <span>© 2026 Mikołaj Skrzypczyński. Not affiliated with Salesforce, Inc.</span>
+    <nav aria-label="Footer">
+      <a href="../#privacy">Privacy policies</a>
+      <a href="https://github.com/mskrzypczynski">GitHub</a>
+      <a href="mailto:mskrz@proton.me">Email</a>
+    </nav>
+  </div>
+</footer>
 </body>
 </html>

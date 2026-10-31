@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Why did this call fail, and what did it send? · OmniScript Data Inspector</title>
+<meta name="description" content="Find a failed Data Mapper, Integration Procedure or Remote Action call, read the reason and see exactly what the script sent." />
+<link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="../../favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="../../assets/brand/apple-touch-icon.png" />
+<meta name="color-scheme" content="light dark" />
+<link rel="stylesheet" href="../../portfolio.css" />
+<link rel="stylesheet" href="../../style.css" />
+<style>
+.sub { margin-bottom: 18px; }
+.lede { color: var(--dim, #57606a); margin: 0 0 14px; }
+kbd {
+  display: inline-block; min-width: 1.5em; padding: 0 5px; text-align: center;
+  border: 1px solid var(--line, #d8dee4); border-bottom-width: 2px; border-radius: 4px;
+  background: var(--card, #f9fafb); font: 12px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.ctl-chip {
+  display: inline-block; padding: 0 6px; white-space: nowrap; font-size: 0.92em; line-height: 1.45;
+  color: var(--fg, #1f2328); background: var(--card, #f9fafb);
+  border: 1px solid var(--line, #d8dee4); border-bottom-width: 2px; border-radius: 4px;
+}
+.search { position: sticky; top: 0; z-index: 2; margin: 0 -22px 18px; padding: 10px 22px; background: var(--bg, #fff); border-bottom: 1px solid var(--line, #d8dee4); }
+.search input {
+  width: 100%; padding: 8px 10px; font: inherit; color: var(--fg, #1f2328);
+  background: var(--card, #f9fafb); border: 1px solid var(--line, #d8dee4); border-radius: 6px;
+}
+.search input:focus { outline: 2px solid var(--accent, #0969da); outline-offset: 1px; }
+.toc { padding: 12px 16px; margin: 0 0 8px; border: 1px solid var(--line, #d8dee4); border-radius: 8px; background: var(--card, #f9fafb); }
+.toc > ul { list-style: none; margin: 0; padding: 0; }
+.toc > ul > li { margin: 0 0 4px; }
+.toc details { margin-top: 2px; }
+.toc summary { cursor: pointer; color: var(--dim, #57606a); font-size: 14px; }
+.toc details ul { columns: 2; column-gap: 24px; padding-left: 18px; margin: 6px 0; font-size: 14px; }
+.toc details li { margin: 0 0 2px; break-inside: avoid; }
+.group > h2 { margin-top: 40px; }
+h2[id], h3[id], h4[id] { scroll-margin-top: 70px; }
+.entry { margin: 0 0 6px; }
+.entry h3, .entry h4 { margin: 20px 0 4px; font-size: 16px; }
+.entry h3 a, .entry h4 a, .group > h2 a { color: inherit; text-decoration: none; }
+.entry h3 a:hover, .entry h4 a:hover, .group > h2 a:hover { text-decoration: underline; }
+.entry p, .entry ul { margin: 0 0 6px; }
+.entry li { margin-bottom: 4px; }
+.subsection { font-size: 15px; color: var(--dim, #57606a); margin: 26px 0 0; }
+.start { margin: 4px 0 8px; padding: 10px 16px; border: 1px solid var(--line, #d8dee4); border-radius: 8px; background: var(--card, #f9fafb); }
+.start h3 { margin: 0 0 4px; font-size: 15px; }
+.start ol { margin: 0; padding-left: 22px; }
+table.keys, table.plain { width: 100%; border-collapse: collapse; font-size: 14px; margin: 8px 0 16px; }
+table.keys th, table.keys td, table.plain th, table.plain td { padding: 6px 8px; border-bottom: 1px solid var(--line, #d8dee4); vertical-align: top; text-align: left; }
+table.keys th { white-space: nowrap; font-weight: 400; width: 1%; }
+blockquote.note { margin: 14px 0; padding: 8px 14px; border-left: 3px solid var(--accent, #0969da); background: var(--card, #f9fafb); color: var(--fg, #1f2328); }
+.related { margin-top: 30px; }
+.empty { color: var(--dim, #57606a); }
+[hidden] { display: none !important; }
+@media (max-width: 520px) {
+  body { padding: 28px 16px 60px; }
+  .search { margin: 0 -16px 18px; padding: 10px 16px; }
+  .toc details ul { columns: 1; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="../../" aria-label="Home">
+      <img class="brand-mark" src="../../assets/brand/ms-icon-dark.svg" alt="" width="32" height="32" />
+      <span>Mikołaj Skrzypczyński</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="../../#tools">Tools</a>
+      <a href="../../#privacy">Privacy</a>
+      <a href="../../#about">About me</a>
+      <a href="../../#coffee">Coffee</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="doc">
+<nav class="crumbs"><a href="../index.html">OmniScript Data Inspector</a> · <a href="index.html">Guides</a></nav>
+<h1>Why did this call fail, and what did it send?</h1>
+<p class="sub">Find a failed Data Mapper, Integration Procedure or Remote Action call, read the reason and see exactly what the script sent.</p>
+<p>A Data Mapper or Integration Procedure fails, and the script shows a vague message or nothing at all. The Calls tab lists the calls the page makes, decoded, so you can read the real reason and the exact input.</p>
+<h3>Find the failed call</h3>
+<ol><li>Open the <strong>Calls</strong> tab and use the page as you normally would. Calls appear as they are made. They are captured only while DevTools is open, so if the list is empty press <strong>Reload page to capture from the start</strong> and repeat the steps. See <a href="../reference.html#actions-empty-list">Empty list</a>.</li><li>The number on the tab turns red as soon as any call failed, so you will see it from the other tabs too. See <a href="../reference.html#actions-tab-badge">Tab badge</a>.</li><li>Find the red row. In a long list, tick <span class="ctl-chip">Failed only</span>, or type the class, method, bundle or key in the filter box.</li><li>Click it. A failed call opens on its <strong>Output</strong> tab, where the reason is. Press <span class="ctl-chip">Show more</span> on the failure banner for the rest. See <a href="../reference.html#actions-failed-calls">Failed calls</a>.</li></ol>
+<h3>Read the result carefully</h3>
+<p>The <strong>Result</strong> mark in the last column of the list is what the answer says, and the HTTP status is only the transport. A call can come back with HTTP 200 and still have failed: &quot;HTTP 200 · Failed&quot; means Apex returned an error inside a successful response. A grey – means nothing useful came back (aborted or offline). See <a href="../reference.html#actions-http-vs-result">HTTP vs Result</a>.</p>
+<h3>See what it sent</h3>
+<ol><li>Open the <strong>Input</strong> tab. Right-click any row to copy a value, a key, the OmniScript path or the %merge% field. See <a href="../reference.html#actions-trees-in-the-call-detail">Trees in the call detail</a>.</li><li>The <strong>Options</strong> tab holds the call's settings, such as <code>chainable</code>.</li><li>To see the request exactly as the page sent it, and the answer exactly as it came back, right-click the call and choose <strong>Show raw</strong>. Fields that look like credentials show as &lt;hidden&gt;.</li></ol>
+<h3>Look at the calls around it</h3>
+<ol><li>A tag such as &quot;repeat ×2&quot; marks a call with the same input and options as one a few seconds before: a double-fired action or a re-render loop. Type <code>repeat:</code> in the filter box to keep only those.</li><li>A chainable Integration Procedure that ran as several calls is one row with a chain tag. Open it with its chevron to see each call.</li><li>Type <code>step:</code> and the step's name in the filter box to keep the calls made on that step, or <code>in:</code> and a word to search inside inputs and outputs. See <a href="../reference.html#actions-filter-box">Filter box</a>.</li></ol>
+<h3>Take it outside the page</h3>
+<ul><li><span class="ctl-chip">Copy input</span> (the { } button) copies the bare input as JSON, ready to paste into a test or another tool. See <a href="../reference.html#actions-copy-input">Copy input</a>.</li><li><strong>Export</strong> writes the calls in view to a JSON file. It may contain org data, so turn <span class="ctl-chip">Mask values</span> on first. See <a href="../reference.html#actions-export-calls">Export calls</a>.</li></ul>
+<h3>Which element made the call?</h3>
+<p>If an element makes this call, the detail pane has a <span class="ctl-chip">Show in Structure</span> button. There, the element's <strong>Calls</strong> tab shows what it sends and where the answer lands. See <a href="../reference.html#structure-calls-tab">Calls tab</a>.</p>
+<p>Turn <span class="ctl-chip">Mask values</span> on before you copy any of this into a ticket. See <a href="file-an-issue.html">Report a problem</a>.</p>
+<p class="related">Every control is described in the <a href="../reference.html">reference</a>. More <a href="index.html">guides</a>.</p>
+<p class="stamp">Written for OmniScript Data Inspector 2.0.0.</p>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <span>© 2026 Mikołaj Skrzypczyński. Not affiliated with Salesforce, Inc.</span>
+    <nav aria-label="Footer">
+      <a href="../../#privacy">Privacy policies</a>
+      <a href="https://github.com/mskrzypczynski">GitHub</a>
+      <a href="mailto:mskrz@proton.me">Email</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
