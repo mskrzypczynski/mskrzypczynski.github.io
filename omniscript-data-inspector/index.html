@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OmniScript Data Inspector</title>
+<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+<nav class="crumbs"><a href="../index.html">← All extensions</a></nav>
+
+<h1>OmniScript Data Inspector</h1>
+<p class="sub">Live OmniScript data, structure and remote action calls, in a Chrome DevTools panel.</p>
+
+<p>Debugging an OmniScript is not a friendly experience. The data is in there somewhere,
+the remote actions happen out of sight, and a Data Mapper can fail while the response
+comes back as a cheerful HTTP 200. This adds a DevTools tab that just shows it.</p>
+
+<h2>What it does</h2>
+<ul>
+  <li><strong>Data</strong> — the live payload as a collapsible tree or pretty-printed Raw text, re-read about once a second (less often while nothing changes) and highlighting what changed as you click through the script. Changed values stay marked, with Prev / Next to jump between them and a hover showing the previous value. Filter keys and values (branches still expand and collapse while filtering), keep values you care about in a watch list, and compare any two of the last 20 payloads. Line numbers in the tree match the Raw view. Untick Auto-refresh for true manual mode: nothing is re-read until you press Refresh. Point Data property (under Advanced, and shown automatically whenever it is not the default) at any property you like.</li>
+  <li><strong>Structure</strong> — every element the script is built from, joined to the live data: current value, required and conditional markers, and visibility rules as readable expressions. Hidden elements are dimmed and the detail pane says which rule fails and what the field holds right now. It also shows Set Values assignments, Set Errors and validation messages, and in multi-language scripts the resolved custom labels, with a warning when a key is missing. Follow step (on by default) keeps the current step selected as the script moves on. The Definition property can be changed too; like Data property it is under Advanced and shown automatically whenever it is not the default.</li>
+  <li><strong>Remote actions</strong> — every Apex call the page makes, with Data Mappers and Integration Procedures named by bundle or key, batched calls split apart, and errors flagged even inside a successful response. Show input, output and options per call, diff a call against the previous one to the same place, filter to errors or slow calls, and expand long error messages with Show more. Calls are kept across page reloads unless you untick Preserve on reload. OmniStudio only is always visible, and when filters hide calls the list says how many (&ldquo;N calls hidden&rdquo;) and offers Show all.</li>
+  <li><strong>Linked together</strong> — jump from a value in Data to its element in Structure and back, see the calls an element makes, and use Inspect element (under Advanced) to select the host element in the Elements tab and leave it as <code>$omni</code> in the Console. Child scripts (under Advanced) also lists scripts nested inside another one.</li>
+  <li><strong>Mask values</strong> — a switch (off by default) that replaces strings and numbers with placeholders in everything you copy, save or export, so a payload is safer to paste into a ticket. It always starts off.</li>
+  <li><strong>Scope bar</strong> — the OmniScript picker lists each script once, by its Type/SubType/Language, and applies to every tab.</li>
+  <li><strong>Settings for the session</strong> — the Advanced switch, Data view, property names and the other switches and the Slower than value last until DevTools is closed; nothing is stored apart from the tab order. Restore default settings in the help panel puts every setting back to its default without reloading DevTools (the Advanced switch stays as it is); the same place lists each setting that differs (with a Reset for each), and a Custom settings button appears in the scope bar while any do.
+  <li><strong>Keyboard and screen readers</strong> — the element tree and call list move with the arrow keys or <kbd>j</kbd>/<kbd>k</kbd>, tabs switch with the arrow keys or <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> and can be dragged into any order (or moved with <kbd>Alt</kbd>+<kbd>Shift</kbd>+arrows), which is kept, <kbd>/</kbd> focuses the filter, and <kbd>?</kbd> shows the help with every shortcut. Controls report their state to screen readers.</li>
+  <li><strong>Guidance</strong> — empty states that list what to try (including Reload page to capture from the start), and tooltips that name the shortcut keys.</li>
+</ul>
+<p>Replay, which recorded the steps you keep repeating and replayed them, is now an extension of its own: <a href="../omniscript-replay/index.html">OmniScript Replay</a>.</p>
+
+<h2>Install</h2>
+<p><a href="https://chromewebstore.google.com/detail/lpijhdhnblimbdlhgkdapdldahdhkfpc?utm_source=item-share-cb">Chrome Web Store</a> ·
+<a href="https://github.com/mskrzypczynski/omniscript-data-inspector">source on GitHub</a> (MIT)</p>
+
+<h2>Privacy</h2>
+<p>Only the storage permission, for the order of the tabs; no host access. Nothing is sent anywhere, and the OmniScript and its data are never changed.
+Read the <a href="privacy.html">full privacy policy</a>, or the
+<a href="https://github.com/mskrzypczynski/omniscript-data-inspector">source</a> — it is all there is.</p>
+
+<h2>Support</h2>
+<p>Free, and staying that way. If it saved you an afternoon, you can
+<a href="https://buycoffee.to/mskrz">buy me a coffee ☕</a>.</p>
+
+<footer>Mikołaj Skrzypczyński · independent developer tools. Not affiliated with Salesforce, Inc.</footer>
+</body>
+</html>

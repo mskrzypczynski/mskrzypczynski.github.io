@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OmniScript Replay</title>
+<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+<nav class="crumbs"><a href="../index.html">← All extensions</a></nav>
+
+<h1>OmniScript Replay</h1>
+<p class="sub">Record the OmniScript steps you keep repeating, then replay them the way a person would, in a Chrome DevTools panel. Experimental.</p>
+
+<p>Testing step six of an OmniScript means typing steps one to five again, every time.
+This adds a DevTools tab that records them once and replays them for you: it types into
+the fields, picks the options, presses the buttons you pressed, waits for the page and
+presses Next, then leaves you on the step you are testing.</p>
+
+<h2>What it does</h2>
+<ul>
+  <li><strong>Record</strong> — press Record, go through the steps you keep repeating and press Stop on the step you want to test. The values are read from the script's own data JSON, so prefilled values and steps passed before pressing Record count too.</li>
+  <li><strong>Replay</strong> — Press Record, go through the steps you keep repeating and press Stop on the step you want to test; the values are read from the script's own data JSON, so prefilled values and steps passed before pressing Record count too. Replay reloads the page (Reload page first is on by default), waits for each step to finish loading, fills it in, presses the in-step actions you pressed while recording (DataRaptor, Integration Procedure, Set Values…) and waits for them, then presses Next, and leaves you on the step you are testing. Every field it leaves alone and every value that did not take is in the log. Going back is recorded too: a move back with Previous, or with a custom component's own button (one that navigates with omniNavigateTo), is replayed the same way, with the values of the second pass. A recording keeps the page's URL parameters, so you can replay with other input such as a date passed from a Flow, and for a script that opens from a button in a flyout or modal, pressing Record before opening it records the clicks that open it. When a Next ends one script and another takes its place, recording and replay carry on into it. Other buttons you press (in custom components, or on the page outside the script) are recorded and pressed again, and a page change is replayed with the button that made it, so a flow can span several pages. A recording remembers the page it started on, so Replay can open it from anywhere. Each recording lists its steps, values and actions; the replay outlines every field it fills and button it presses, presses Next on a step a changed value made appear, and on the step the script is on, a recording lists what it pressed there, so you can press one or all of them again. A running replay can be paused, stepped one recorded step at a time, or sent back a step. Clicks and typing are sent the way a mouse and keyboard send them, so components that react to mousedown or to each keystroke take them. A stepper shows how far a replay has got, step by step. Edit test data opens a recording in a form, one field per value and step, with no JSON needed (Tree and Raw views are there for advanced users), to replay with other test data, choose a different Stop at step, pause before each Next, add dropdown options the page does not list (Add missing options), and export or import recordings to share them. Text, number, date, checkbox, radio, select, lookup, multi-select and type-ahead elements are replayed, also inside blocks, and custom LWCs from the controls they draw. Edit Block rows are replayed too: for each recorded row the page doesn't have yet, the replay presses New, fills the row's fields and presses Save, in the order you did it. Repeat Blocks, repeated rows of plain blocks, files and signatures are not. Each step is replayed in the order you worked: the fields you changed, the actions and buttons you pressed and the Edit Blocks you used, one after another. A failed replay waits for you: fix the page, then Try again or go Back a step. Start at begins a replay at any recorded step without reloading. Typeaheads are typed and then picked from the options they fetch. Elements drawn by your own LWCs (custom LWCs and LWC overrides) are recorded from what you type and press in them. The panel has a Recordings | Settings switch, so the options stay out of the way. Button presses anywhere in the script are recorded, and Edit Block rows are replayed the way you added them (the add button, the row's fields one by one, the save button). Timing (typing speed, the pauses after a field and after a button, how long an action may stay quiet) can be set under Replay options. Fields are typed one at a time like a person types them, each left with Tab, with a short pause after each (Wait after each field) so the page can validate before the next one. Buttons inside custom components, such as a Select on a card, are recorded, and the Steps list shows under each step what was recorded there. Extend adds steps to a recording: it replays to the end, or to a step you choose, then records on from there. Custom components that draw their controls late (after an Integration Procedure, or after another choice in them) are waited for, and a step whose own Next is hidden is left with the custom Next button you pressed. In Edit test data each value shows its element type, and a custom component's values and controls are grouped in a box. A Languages card holds the languages you test in, each with its date format and number style (only English (US) is there to start; add your own): a replay can run once per ticked language with the language URL parameter set (c__LanguageCode in Lightning, language in Experience Cloud), types dates and numbers the way that language writes them, and logs the LanguageCode the script reports. Buttons are found by their attributes, icon or position when their label is in another language, or by alternative labels separated by |. The log says which value went into which field and which buttons were pressed.</li>
+  <li><strong>Checks and results</strong> — add checks to a step in Edit test data (a field's value equals, does not equal, contains, is empty or is not empty; a text is shown or not shown; the step the script goes on to), or turn a step's recorded values into checks with Check these values. Every run ends as PASS, FAIL, STOPPED or ERROR, each check is logged ✓ or ✗, and the recording's row shows its last result. Stop when a check fails ends a run at the first failed check.</li>
+  <li><strong>Run report</strong> — Copy report copies the run as text; Save report downloads it as one self-contained HTML file to attach to a defect, as text or as JSON, one section per language when you run several. Mask values masks it.</li>
+  <li><strong>Tests as files</strong> — export one test to <code>&lt;name&gt;.omniscript-test.json</code> or the listed ones to <code>&lt;script key&gt;-tests.json</code>, with their checks. Import several files at once, or drop them on the Recordings card: a preview shows each test as new, identical or with the same id as one you have, and you choose Replace, Keep both or Skip before anything changes. The file format is described in the README.</li>
+  <li><strong>Replay all and Duplicate</strong> — Replay all runs the listed tests one after another in the order shown (move them with ▲ / ▼), each from its own start, goes on after a failure and ends with a summary of every test's result; Stop ends the whole suite. Duplicate copies a recording to run the same steps with other test data. Extend, Rename, Duplicate, Export and Delete are in each row's ⋯ menu.</li>
+  <li><strong>Like a person</strong> — real pointer and key events, one key at a time, fields left with Tab, and waits on conditions (spinners, options, data settling, the next step), plus short pauses you can set under Timing. Every wait has a timeout, and the log says what it is waiting for.</li>
+  <li><strong>Mask values</strong> — a switch (off by default) that replaces strings and numbers with placeholders in exported recordings (their values, the labels of the buttons pressed, custom component labels and Edit Block rows), so a recording is safer to share. It always starts off.</li>
+  <li><strong>Scope bar</strong> — the OmniScript picker lists each script by its Type/SubType/Language. Frame and Child scripts are under Advanced.</li>
+  <li><strong>Keyboard and screen readers</strong> — <kbd>?</kbd> shows the help with everything it does. Controls report their state to screen readers.</li>
+</ul>
+<p>Looking at a script's data, structure or remote actions instead? That is <a href="../omniscript-data-inspector/index.html">OmniScript Data Inspector</a>, where Replay started as a tab.</p>
+
+<h2>Install</h2>
+<p>Chrome Web Store listing coming soon ·
+<a href="https://github.com/mskrzypczynski/omniscript-replay">source on GitHub</a> (GPL-3.0)</p>
+
+<h2>Privacy</h2>
+<p>Only the storage permission, for your recordings and the replay options; no host access. Nothing is sent anywhere. The page is changed only while you replay a recording.
+Read the <a href="privacy.html">full privacy policy</a>, or the
+<a href="https://github.com/mskrzypczynski/omniscript-replay">source</a> — it is all there is.</p>
+
+<h2>Support</h2>
+<p>Free, and staying that way. If it saved you an afternoon, you can
+<a href="https://buycoffee.to/mskrz">buy me a coffee ☕</a>.</p>
+
+<footer>Mikołaj Skrzypczyński · independent developer tools. Not affiliated with Salesforce, Inc.</footer>
+</body>
+</html>
