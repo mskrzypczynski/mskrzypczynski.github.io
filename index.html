@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mikołaj Skrzypczyński · Developer tools for Salesforce OmniStudio</title>
 <meta name="description" content="Browser extensions for Salesforce OmniStudio developers: find any OmniScript, Integration Procedure, Data Mapper or FlexCard, and see what a running OmniScript holds. No analytics, nothing sent anywhere but your own org." />
+<link rel="icon" href="assets/brand/ms-icon-dark.svg" type="image/svg+xml" />
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Developer tools for Salesforce OmniStudio" />
+<meta property="og:description" content="Find any OmniStudio asset and see what a running OmniScript holds. No analytics, nothing sent anywhere but your own org." />
+<meta property="og:image" content="https://mskrzypczynski.github.io/assets/og.png" />
+<meta property="og:url" content="https://mskrzypczynski.github.io/" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="color-scheme" content="light dark" />
 <link rel="stylesheet" href="portfolio.css" />
 </head>
@@ -15,14 +24,14 @@
 <header class="top">
   <div class="wrap top-row">
     <a class="brand" href="./" aria-label="Home">
-      <span class="brand-mark" aria-hidden="true">{=}</span>
+      <img class="brand-mark" src="assets/brand/ms-icon-dark.svg" alt="" width="32" height="32" />
       <span>Mikołaj Skrzypczyński</span>
     </a>
     <nav aria-label="Sections">
       <a href="#tools">Tools</a>
       <a href="#privacy">Privacy</a>
-      <a href="#about">About</a>
-      <a href="#support">Support</a>
+      <a href="#about">About me</a>
+      <a href="#coffee">Coffee</a>
     </nav>
   </div>
 </header>
@@ -33,9 +42,7 @@
     <div class="wrap">
       <p class="eyebrow">Developer tools for Salesforce OmniStudio</p>
       <h1>See what your OmniScripts are doing, and get to the right version fast.</h1>
-      <p class="lede">Browser extensions for people who build OmniScripts, Integration
-      Procedures, Data Mappers and FlexCards. They read your own org, as you, from
-      your browser, and send nothing anywhere else.</p>
+      <p class="lede">Browser extensions for OmniStudio developers. They read your org as you and send nothing anywhere else.</p>
       <ul class="pills" aria-label="How the tools work">
         <li>No analytics, no server</li>
         <li>Least permission</li>
@@ -63,12 +70,11 @@
             </div>
           </div>
           <p class="badges"><span class="badge live">On the Chrome Web Store</span><span class="badge">Free</span></p>
-          <p>Find any OmniScript, Integration Procedure, DataRaptor or FlexCard in the
-          org of the tab you are on. See every version, open the right one.</p>
+          <p>Find any OmniStudio asset in your org and open the right version.</p>
           <ul class="ticks">
-            <li>Search as you type, or paste a <code>Type_SubType_Language</code> key straight from a log.</li>
-            <li>Every version as a chip, the active one in green; <kbd>Enter</kbd> opens it.</li>
-            <li>Opens the right designer for core OmniStudio or the Vlocity packages.</li>
+            <li>Search by name or paste a <code>Type_SubType_Language</code> key.</li>
+            <li>Every version, the active one marked.</li>
+            <li>Opens the right designer, core or managed package.</li>
           </ul>
           <p class="links">
             <a class="btn primary" href="https://chromewebstore.google.com/detail/fjoaadephbjggbhejmphobgkfcgmlmmp?utm_source=item-share-cb">Add to Chrome</a>
@@ -77,10 +83,41 @@
             <a href="https://github.com/mskrzypczynski/omnistudio-finder">Source</a>
           </p>
         </div>
-        <figure class="shot narrow">
-          <img src="assets/screens/finder.png" width="680" height="640" loading="lazy"
-            alt="OmniStudio Finder's popup over a Lightning page: a search box, type filters, and OmniScripts and FlexCards listed with their version chips and Open buttons." />
-        </figure>
+        <div class="tour narrow" data-tour style="--ratio: 640 / 760">
+          <div class="tour-stage">
+          <figure class="tour-slide" id="finder-slide-1" role="tabpanel" aria-labelledby="finder-tab-1">
+            <div class="tour-frame"><img src="assets/tours/finder/1-all-assets.webp" width="640" height="760" loading="lazy" alt="OmniStudio Finder's popup listing OmniScripts and FlexCards, each with version chips, the active version marked in green." /></div>
+            <figcaption><b>Every asset, every version</b> All OmniScripts, IPs, Data Mappers and FlexCards, with versions.</figcaption>
+          </figure>
+          <figure class="tour-slide" id="finder-slide-2" role="tabpanel" aria-labelledby="finder-tab-2">
+            <div class="tour-frame"><img src="assets/tours/finder/2-key-search.webp" width="640" height="760" loading="lazy" alt="The popup's search box holding the key Account_Onboarding, with the two matching OmniScripts listed below." /></div>
+            <figcaption><b>Paste a key from a log</b> The script a key names comes up first.</figcaption>
+          </figure>
+          <figure class="tour-slide" id="finder-slide-3" role="tabpanel" aria-labelledby="finder-tab-3">
+            <div class="tour-frame"><img src="assets/tours/finder/3-version-history.webp" width="640" height="760" loading="lazy" alt="Integration Procedures filtered in the popup, each with a row of version chips and an Open button for the active version." /></div>
+            <figcaption><b>Any version, one click away</b> The active version is marked; any version opens.</figcaption>
+          </figure>
+          <figure class="tour-slide" id="finder-slide-4" role="tabpanel" aria-labelledby="finder-tab-4">
+            <div class="tour-frame"><img src="assets/tours/finder/4-help-light.webp" width="640" height="760" loading="lazy" alt="The popup in the light theme with its help open: Finding things and Opening things." /></div>
+            <figcaption><b>Help in the popup</b> Search tips and shortcuts, light or dark.</figcaption>
+          </figure>
+          <figure class="tour-slide" id="finder-slide-5" role="tabpanel" aria-labelledby="finder-tab-5">
+            <div class="tour-frame"><img src="assets/tours/finder/5-settings.webp" width="720" height="740" loading="lazy" alt="OmniStudio Finder's settings page: which designer to open, the navigation bar on record pages, and where to open it." /></div>
+            <figcaption><b>Your designer, your way</b> Core or managed designer, same tab or new.</figcaption>
+          </figure>
+          </div>
+          <div class="tour-bar">
+            <button type="button" class="tour-step" data-step="-1" aria-label="Previous screenshot">‹</button>
+            <div class="tour-tabs" role="tablist" aria-label="OmniStudio Finder screenshots">
+            <button type="button" role="tab" id="finder-tab-1" aria-controls="finder-slide-1" aria-selected="true">Find</button>
+            <button type="button" role="tab" id="finder-tab-2" aria-controls="finder-slide-2" aria-selected="false" tabindex="-1">Paste a key</button>
+            <button type="button" role="tab" id="finder-tab-3" aria-controls="finder-slide-3" aria-selected="false" tabindex="-1">Versions</button>
+            <button type="button" role="tab" id="finder-tab-4" aria-controls="finder-slide-4" aria-selected="false" tabindex="-1">Help</button>
+            <button type="button" role="tab" id="finder-tab-5" aria-controls="finder-slide-5" aria-selected="false" tabindex="-1">Settings</button>
+            </div>
+            <button type="button" class="tour-step" data-step="1" aria-label="Next screenshot">›</button>
+          </div>
+        </div>
       </article>
 
       <article class="tool flip">
@@ -92,29 +129,54 @@
               <p class="kind">Chrome extension · DevTools panel</p>
             </div>
           </div>
-          <p class="badges"><span class="badge live">On the Chrome Web Store</span><span class="badge">Free</span><span class="badge pro">Pro coming</span></p>
-          <p>Live OmniScript data, structure and calls, in a DevTools panel next to the
-          page you are testing.</p>
+          <p class="badges"><span class="badge live">On the Chrome Web Store</span><span class="badge">Free</span></p>
+          <p>See what a running OmniScript holds, in a DevTools panel.</p>
           <ul class="ticks">
-            <li>The live data JSON, with what changed highlighted as you click through.</li>
-            <li>Every element joined to its data, with visibility rules you can read.</li>
-            <li>Every remote call, with errors flagged even inside an HTTP 200.</li>
+            <li>The live data, as you click through.</li>
+            <li>Why a field is hidden or Next is blocked.</li>
+            <li>Every call, failures flagged.</li>
           </ul>
-          <p class="note">The free edition stays free. Pro will add the deeper debugging
-          work on top: test calls, debug runs, comparisons and change history.</p>
           <p class="links">
             <a class="btn primary" href="https://chromewebstore.google.com/detail/lpijhdhnblimbdlhgkdapdldahdhkfpc?utm_source=item-share-cb">Add to Chrome</a>
             <a href="omniscript-data-inspector/index.html">Details</a>
             <a href="omniscript-data-inspector/privacy.html">Privacy</a>
           </p>
         </div>
-        <figure class="shot">
-          <picture>
-            <source srcset="assets/screens/inspector-dark.png" media="(prefers-color-scheme: dark)" />
-            <img src="assets/screens/inspector-light.png" width="1280" height="800" loading="lazy"
-              alt="OmniScript Data Inspector's Structure tab: the script's steps and elements on the left, and the visibility rule of a hidden field on the right." />
-          </picture>
-        </figure>
+        <div class="tour" data-tour style="--ratio: 1280 / 800">
+          <div class="tour-stage">
+          <figure class="tour-slide" id="inspector-slide-1" role="tabpanel" aria-labelledby="inspector-tab-1">
+            <div class="tour-frame"><img src="assets/tours/inspector/1-data-tree.webp" width="1280" height="800" loading="lazy" alt="Data tab: the OmniScript's data as a tree, with the values that changed in the last read highlighted." /></div>
+            <figcaption><b>The live data</b> Tree, form or raw, updated as you go.</figcaption>
+          </figure>
+          <figure class="tour-slide" id="inspector-slide-2" role="tabpanel" aria-labelledby="inspector-tab-2">
+            <div class="tour-frame"><img src="assets/tours/inspector/2-structure.webp" width="1280" height="800" loading="lazy" alt="Structure tab: the script's elements on the left, and the visibility rule of a hidden field on the right with the value it needs and the value it has." /></div>
+            <figcaption><b>Why is this field hidden?</b> The rule that hides it and the value it sees.</figcaption>
+          </figure>
+          <figure class="tour-slide" id="inspector-slide-3" role="tabpanel" aria-labelledby="inspector-tab-3">
+            <div class="tour-frame"><img src="assets/tours/inspector/4-step-validation.webp" width="1280" height="800" loading="lazy" alt="Structure tab with a step selected: its Validation lists a required field that is empty." /></div>
+            <figcaption><b>Why can't I press Next?</b> What is required and still empty.</figcaption>
+          </figure>
+          <figure class="tour-slide" id="inspector-slide-4" role="tabpanel" aria-labelledby="inspector-tab-4">
+            <div class="tour-frame"><img src="assets/tours/inspector/3-remote-actions.webp" width="1280" height="800" loading="lazy" alt="Calls tab: five calls listed, the failed Integration Procedure selected, with the reason and its output." /></div>
+            <figcaption><b>Every call, failures flagged</b> Input and output; failures flagged even with HTTP 200.</figcaption>
+          </figure>
+          <figure class="tour-slide" id="inspector-slide-5" role="tabpanel" aria-labelledby="inspector-tab-5">
+            <div class="tour-frame"><img src="assets/tours/inspector/5-dark-structure.webp" width="1280" height="800" loading="lazy" alt="The Structure tab in the dark theme." /></div>
+            <figcaption><b>Light or dark</b> Follows the DevTools theme.</figcaption>
+          </figure>
+          </div>
+          <div class="tour-bar">
+            <button type="button" class="tour-step" data-step="-1" aria-label="Previous screenshot">‹</button>
+            <div class="tour-tabs" role="tablist" aria-label="OmniScript Data Inspector screenshots">
+            <button type="button" role="tab" id="inspector-tab-1" aria-controls="inspector-slide-1" aria-selected="true">Data</button>
+            <button type="button" role="tab" id="inspector-tab-2" aria-controls="inspector-slide-2" aria-selected="false" tabindex="-1">Structure</button>
+            <button type="button" role="tab" id="inspector-tab-3" aria-controls="inspector-slide-3" aria-selected="false" tabindex="-1">Next</button>
+            <button type="button" role="tab" id="inspector-tab-4" aria-controls="inspector-slide-4" aria-selected="false" tabindex="-1">Calls</button>
+            <button type="button" role="tab" id="inspector-tab-5" aria-controls="inspector-slide-5" aria-selected="false" tabindex="-1">Dark</button>
+            </div>
+            <button type="button" class="tour-step" data-step="1" aria-label="Next screenshot">›</button>
+          </div>
+        </div>
       </article>
 
       <article class="tool small">
@@ -125,9 +187,8 @@
             <p class="kind">Chrome extension · DevTools panel</p>
           </div>
         </div>
-        <p class="badges"><span class="badge exp">Experimental</span></p>
-        <p>Record the OmniScript steps you keep repeating, then replay them the way a
-        person would, and land on the step you are testing. Not on the store yet.</p>
+        <p class="badges"><span class="badge exp">In development</span></p>
+        <p>Record OmniScript steps once, replay them on every test.</p>
         <p class="links">
           <a href="omniscript-replay/index.html">Details</a>
           <a href="omniscript-replay/privacy.html">Privacy</a>
@@ -140,10 +201,10 @@
     <div class="wrap">
       <h2 id="principles-title" class="section-title">How they are built</h2>
       <ul class="grid4">
-        <li><b>No tracking</b><span>No analytics, no server of my own. Your org's data goes to your org and nowhere else.</span></li>
-        <li><b>Least permission</b><span>Only what a feature needs, and the privacy policy says exactly what that is.</span></li>
-        <li><b>Open source</b><span>The free editions are GPL-3.0, worth reading for anything that touches your session.</span></li>
-        <li><b>Read before write</b><span>Reading is the default. Nothing changes your org without showing you what it will do first.</span></li>
+        <li><b>No tracking</b><span>No analytics, no server.</span></li>
+        <li><b>Least permission</b><span>Only what each feature needs.</span></li>
+        <li><b>Open source</b><span>GPL-3.0, read it yourself.</span></li>
+        <li><b>Read before write</b><span>Reading is the default.</span></li>
       </ul>
     </div>
   </section>
@@ -151,20 +212,19 @@
   <section id="privacy" class="privacy" aria-labelledby="privacy-title">
     <div class="wrap">
       <h2 id="privacy-title" class="section-title">Privacy policies</h2>
-      <p class="section-lede">Each tool has its own policy: what it reads, what it keeps
-      in your browser, and where anything is sent.</p>
+      <p class="section-lede">What each tool reads, keeps and sends.</p>
       <ul class="grid3">
         <li>
           <a href="omnistudio-finder/privacy.html"><b>OmniStudio Finder</b></a>
-          <span>Uses your session for the org in your tab, to list and open its assets. Keeps its settings in your browser.</span>
+          <span>Uses your session for the org in your tab. Keeps settings in your browser.</span>
         </li>
         <li>
           <a href="omniscript-data-inspector/privacy.html"><b>OmniScript Data Inspector</b></a>
-          <span>Reads the page you inspect in DevTools. Keeps panel preferences in your browser.</span>
+          <span>Reads the page you inspect. Sends nothing.</span>
         </li>
         <li>
           <a href="omniscript-replay/privacy.html"><b>OmniScript Replay</b></a>
-          <span>Records and replays steps on the page. Keeps recordings in your browser.</span>
+          <span>Keeps recordings in your browser. Sends nothing.</span>
         </li>
       </ul>
     </div>
@@ -173,48 +233,47 @@
   <section id="about" class="about" aria-labelledby="about-title">
     <div class="wrap about-grid">
       <div>
-        <h2 id="about-title" class="section-title">About</h2>
-        <p>I'm Mikołaj Skrzypczyński, a Salesforce OmniStudio developer. I build the
-        tools I want when I work on OmniScripts, Integration Procedures, Data Mappers
-        and FlexCards: finding the right version fast, seeing what a script actually
-        holds, and not retyping the same five steps again.</p>
+        <h2 id="about-title" class="section-title">About me</h2>
+        <p>Salesforce OmniStudio developer on insurance projects. I build the tools I
+        need in my own work.</p>
         <p class="actions">
           <a class="btn" href="mailto:mskrz@proton.me">mskrz@proton.me</a>
           <a class="btn" href="https://github.com/mskrzypczynski">GitHub</a>
         </p>
       </div>
-      <ul class="chips" aria-label="Skills and tools">
+      <ul class="chips" aria-label="Skills">
         <li>Salesforce</li>
+        <li>Industries: Insurance</li>
         <li>OmniStudio</li>
         <li>OmniScripts</li>
         <li>Integration Procedures</li>
         <li>Data Mappers</li>
         <li>FlexCards</li>
-        <li>Vlocity packages</li>
-        <li>Salesforce REST API</li>
-        <li>SOQL</li>
+        <li>Vlocity Insurance</li>
         <li>Lightning Web Components</li>
+        <li>Apex</li>
+        <li>SOQL</li>
         <li>JavaScript</li>
         <li>Chrome extensions</li>
-        <li>DevTools panels</li>
-        <li>Jest</li>
-        <li>Playwright</li>
-        <li>GitHub Actions</li>
       </ul>
     </div>
   </section>
 
-  <section id="support" class="support" aria-labelledby="support-title">
+  <section id="coffee" class="support" aria-labelledby="coffee-title">
     <div class="wrap">
       <div class="support-box">
       <div>
-        <h2 id="support-title" class="section-title">Support</h2>
-        <p>If one of the tools saved you an afternoon, you can buy me a coffee. Bug
-        reports and ideas are just as welcome.</p>
+        <h2 id="coffee-title" class="section-title">Buy me a coffee</h2>
+        <p>The tools are free. If one saved you time, a coffee helps.</p>
+        <p class="bugs">Bug or idea? <a href="mailto:mskrz@proton.me">Email me</a> or open a <a href="https://github.com/mskrzypczynski">GitHub</a> issue.</p>
       </div>
       <p class="actions">
-        <a class="btn" href="https://ko-fi.com/mskrz">Ko-fi <small>EUR, by card</small></a>
-        <a class="btn" href="https://buycoffee.to/mskrz">buycoffee.to <small>PLN, card or BLIK</small></a>
+        <a class="btn coffee" href="https://ko-fi.com/mskrz">
+          <svg class="coffee-icon kofi" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons/kofi.svg#kofi" /></svg>
+          Ko-fi <small>EUR, by card</small></a>
+        <a class="btn coffee" href="https://buycoffee.to/mskrz">
+          <span class="coffee-icon buycoffee" aria-hidden="true"></span>
+          buycoffee.to <small>PLN, card or BLIK</small></a>
       </p>
       </div>
     </div>
@@ -223,8 +282,16 @@
 </main>
 
 <footer class="foot">
-  <div class="wrap">Mikołaj Skrzypczyński · independent developer tools. Not affiliated with Salesforce, Inc.</div>
+  <div class="wrap foot-row">
+    <span>© 2026 Mikołaj Skrzypczyński. Not affiliated with Salesforce, Inc.</span>
+    <nav aria-label="Footer">
+      <a href="#privacy">Privacy policies</a>
+      <a href="https://github.com/mskrzypczynski">GitHub</a>
+      <a href="mailto:mskrz@proton.me">Email</a>
+    </nav>
+  </div>
 </footer>
 
+<script src="tours.js" defer></script>
 </body>
 </html>
