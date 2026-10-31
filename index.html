@@ -77,10 +77,41 @@
             <a href="https://github.com/mskrzypczynski/omnistudio-finder">Source</a>
           </p>
         </div>
-        <figure class="shot narrow">
-          <img src="assets/screens/finder.png" width="680" height="640" loading="lazy"
-            alt="OmniStudio Finder's popup over a Lightning page: a search box, type filters, and OmniScripts and FlexCards listed with their version chips and Open buttons." />
-        </figure>
+        <div class="tour narrow" data-tour style="--ratio: 640 / 760">
+          <div class="tour-stage">
+          <figure class="tour-slide" id="finder-slide-1" role="tabpanel" aria-labelledby="finder-tab-1">
+            <div class="tour-frame"><img src="assets/tours/finder/1-all-assets.webp" width="640" height="760" loading="lazy" alt="OmniStudio Finder's popup listing OmniScripts and FlexCards, each with version chips, the active version marked in green." /></div>
+            <figcaption><b>Every asset, every version</b> Every OmniScript, Integration Procedure, DataRaptor and FlexCard of the org in your tab, each with its versions.</figcaption>
+          </figure>
+          <figure class="tour-slide" id="finder-slide-2" role="tabpanel" aria-labelledby="finder-tab-2">
+            <div class="tour-frame"><img src="assets/tours/finder/2-key-search.webp" width="640" height="760" loading="lazy" alt="The popup's search box holding the key Account_Onboarding, with the two matching OmniScripts listed below." /></div>
+            <figcaption><b>Paste a key from a log</b> Paste a Type_SubType_Language key and the script it names is the first result.</figcaption>
+          </figure>
+          <figure class="tour-slide" id="finder-slide-3" role="tabpanel" aria-labelledby="finder-tab-3">
+            <div class="tour-frame"><img src="assets/tours/finder/3-version-history.webp" width="640" height="760" loading="lazy" alt="Integration Procedures filtered in the popup, each with a row of version chips and an Open button for the active version." /></div>
+            <figcaption><b>Any version, one click away</b> Each version is a chip; the active one is marked, and any one opens in its designer.</figcaption>
+          </figure>
+          <figure class="tour-slide" id="finder-slide-4" role="tabpanel" aria-labelledby="finder-tab-4">
+            <div class="tour-frame"><img src="assets/tours/finder/4-help-light.webp" width="640" height="760" loading="lazy" alt="The popup in the light theme with its help open: Finding things and Opening things." /></div>
+            <figcaption><b>Help in the popup</b> How to search and open things, and the keyboard shortcuts, right where you use them. Light or dark, as your browser is.</figcaption>
+          </figure>
+          <figure class="tour-slide" id="finder-slide-5" role="tabpanel" aria-labelledby="finder-tab-5">
+            <div class="tour-frame"><img src="assets/tours/finder/5-settings.webp" width="720" height="740" loading="lazy" alt="OmniStudio Finder's settings page: which designer to open, the navigation bar on record pages, and where to open it." /></div>
+            <figcaption><b>Your designer, your way</b> Choose which designer opens, core or the managed package, and whether it opens in a new tab.</figcaption>
+          </figure>
+          </div>
+          <div class="tour-bar">
+            <button type="button" class="tour-step" data-step="-1" aria-label="Previous screenshot">‹</button>
+            <div class="tour-tabs" role="tablist" aria-label="OmniStudio Finder screenshots">
+            <button type="button" role="tab" id="finder-tab-1" aria-controls="finder-slide-1" aria-selected="true">Find</button>
+            <button type="button" role="tab" id="finder-tab-2" aria-controls="finder-slide-2" aria-selected="false" tabindex="-1">Paste a key</button>
+            <button type="button" role="tab" id="finder-tab-3" aria-controls="finder-slide-3" aria-selected="false" tabindex="-1">Versions</button>
+            <button type="button" role="tab" id="finder-tab-4" aria-controls="finder-slide-4" aria-selected="false" tabindex="-1">Help</button>
+            <button type="button" role="tab" id="finder-tab-5" aria-controls="finder-slide-5" aria-selected="false" tabindex="-1">Settings</button>
+            </div>
+            <button type="button" class="tour-step" data-step="1" aria-label="Next screenshot">›</button>
+          </div>
+        </div>
       </article>
 
       <article class="tool flip">
@@ -92,16 +123,14 @@
               <p class="kind">Chrome extension · DevTools panel</p>
             </div>
           </div>
-          <p class="badges"><span class="badge live">On the Chrome Web Store</span><span class="badge">Free</span><span class="badge pro">Pro coming</span></p>
+          <p class="badges"><span class="badge live">On the Chrome Web Store</span><span class="badge">Free</span></p>
           <p>Live OmniScript data, structure and calls, in a DevTools panel next to the
           page you are testing.</p>
           <ul class="ticks">
-            <li>The live data JSON, with what changed highlighted as you click through.</li>
+            <li>The live data JSON, read as you click through the script.</li>
             <li>Every element joined to its data, with visibility rules you can read.</li>
             <li>Every remote call, with errors flagged even inside an HTTP 200.</li>
           </ul>
-          <p class="note">The free edition stays free. Pro will add the deeper debugging
-          work on top: test calls, debug runs, comparisons and change history.</p>
           <p class="links">
             <a class="btn primary" href="https://chromewebstore.google.com/detail/lpijhdhnblimbdlhgkdapdldahdhkfpc?utm_source=item-share-cb">Add to Chrome</a>
             <a href="omniscript-data-inspector/index.html">Details</a>
@@ -226,5 +255,6 @@
   <div class="wrap">Mikołaj Skrzypczyński · independent developer tools. Not affiliated with Salesforce, Inc.</div>
 </footer>
 
+<script src="tours.js" defer></script>
 </body>
 </html>

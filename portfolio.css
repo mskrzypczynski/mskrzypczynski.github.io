@@ -204,3 +204,44 @@ kbd { border: 1px solid var(--line); border-bottom-width: 2px; padding: 0 5px; b
 .support-box .actions { margin: 0; }
 
 .foot { padding: 32px 0 48px; color: var(--dim); font-size: 14px; }
+
+/* -------------------------------------------------------------- tours */
+
+/* One screenshot at a time with its caption, chosen by the tabs below it
+ * (tours.js). Without the script only the first screenshot shows. */
+.tour { min-width: 0; }
+.tour-stage { position: relative; touch-action: pan-y; }
+.tour:not(.ready) .tour-slide ~ .tour-slide,
+.tour:not(.ready) .tour-bar { display: none; }
+.tour-slide { margin: 0; }
+.tour-slide[hidden] { display: none; }
+.tour.ready .tour-slide:not([hidden]) { animation: tour-in 220ms ease-out; }
+@keyframes tour-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .tour.ready .tour-slide:not([hidden]) { animation: none; } }
+
+.tour-frame {
+  display: grid; place-items: center; aspect-ratio: var(--ratio, 16 / 10);
+  background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px;
+  overflow: hidden; box-shadow: var(--shadow);
+}
+.tour-frame img { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+.tour-slide figcaption { margin-top: 14px; color: var(--dim); font-size: 15px; min-height: 3.2em; }
+.tour-slide figcaption b { display: block; color: var(--fg); font-size: 16px; margin-bottom: 2px; }
+
+.tour-bar { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+.tour-tabs { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; justify-content: center; }
+.tour-tabs [role="tab"] {
+  font: inherit; font-size: 13.5px; font-weight: 600; color: var(--dim);
+  background: transparent; border: 1px solid var(--line); border-radius: 999px;
+  padding: 4px 12px; cursor: pointer;
+}
+.tour-tabs [role="tab"]:hover { color: var(--fg); background: var(--surface-2); }
+.tour-tabs [role="tab"][aria-selected="true"] { color: var(--accent-fg); background: var(--accent); border-color: var(--accent); }
+.tour-step {
+  flex: none; width: 34px; height: 34px; border-radius: 50%; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface); color: var(--fg);
+  font-size: 20px; line-height: 1;
+}
+.tour-step:hover { background: var(--surface-2); }
+@media (max-width: 520px) { .tour-step { display: none; } }
+.tour.narrow { max-width: 500px; justify-self: center; width: 100%; }
