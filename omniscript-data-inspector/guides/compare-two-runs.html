@@ -19,6 +19,11 @@ kbd {
   border: 1px solid var(--line, #d8dee4); border-bottom-width: 2px; border-radius: 4px;
   background: var(--card, #f9fafb); font: 12px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
+.ctl-chip {
+  display: inline-block; padding: 0 6px; white-space: nowrap; font-size: 0.92em; line-height: 1.45;
+  color: var(--fg, #1f2328); background: var(--card, #f9fafb);
+  border: 1px solid var(--line, #d8dee4); border-bottom-width: 2px; border-radius: 4px;
+}
 .search { position: sticky; top: 0; z-index: 2; margin: 0 -22px 18px; padding: 10px 22px; background: var(--bg, #fff); border-bottom: 1px solid var(--line, #d8dee4); }
 .search input {
   width: 100%; padding: 8px 10px; font: inherit; color: var(--fg, #1f2328);
@@ -84,12 +89,12 @@ blockquote.note { margin: 14px 0; padding: 8px 14px; border-left: 3px solid var(
 <h3>Watch the data change</h3>
 <ol><li>Open the <strong>Data</strong> tab and pick your script in the top bar. <strong>Auto-refresh</strong> is on, so the tree is read again on a timer while you use the page.</li><li>Open the branches you care about. The tree keeps them open across updates.</li><li>Use the page, for example fill in a field or press Next. A value that changed since the previous read flashes amber for a few seconds, and a collapsed branch that holds a change is marked with a dot, so you know where to open. See <a href="../reference.html#data-amber-highlight">Amber highlight</a>.</li><li>To read the data at your own pace, untick <strong>Auto-refresh</strong>: nothing is read again until you press <strong>Refresh</strong>. See <a href="../reference.html#data-auto-refresh">Auto-refresh</a>.</li></ol>
 <h3>Keep a copy of before and after</h3>
-<ol><li>Before the step, turn on <strong>Mask values</strong> if the data is real, then press <strong>Export</strong> → <strong>Save file…</strong>. The file is the page's own text, in its own key order.</li><li>Do the step on the page.</li><li>Save the data again, and compare the two files with the diff tool you already use. See <a href="../reference.html#data-export-data">Export data</a>.</li></ol>
+<ol><li>Before the step, turn on <span class="ctl-chip">Mask values</span> if the data is real, then press <strong>Export</strong> → <strong>Save file…</strong>. The file is the page's own text, in its own key order.</li><li>Do the step on the page.</li><li>Save the data again, and compare the two files with the diff tool you already use. See <a href="../reference.html#data-export-data">Export data</a>.</li></ol>
 <p>The Raw view shows the same text with line numbers that match the tree, which helps when you read a diff.</p>
 <h3>See the calls of the step</h3>
 <ol><li>Open the <strong>Calls</strong> tab and press <strong>Clear list</strong> just before the step, so only its calls are listed. See <a href="../reference.html#actions-clear-list">Clear list</a>.</li><li>Do the step on the page. Each Data Mapper, Integration Procedure and Remote Action call appears as it is made, with its time.</li><li>Click a call: <strong>Input</strong> shows what it sent, <strong>Output</strong> what came back. A &quot;repeat ×2&quot; tag marks a call sent twice with the same input. See <a href="../reference.html#actions-repeated-calls">Repeated calls</a>.</li><li>While Structure follows the script, each call knows its step, and <code>step:</code> in the filter box keeps the calls made on one step. See <a href="../reference.html#actions-step">Step</a>.</li></ol>
 <h3>Check what the script computes</h3>
-<ol><li>Open the <strong>Structure</strong> tab. <strong>Follow current step</strong> keeps the step the script is on selected.</li><li>Select a Set Values element of the step. Its <strong>Set Values</strong> tab lists each assignment: the Expression as written, the Computed value it gives now and the Current value the target holds. An amber differs tag marks a target that holds something else. See <a href="../reference.html#structure-set-values">Set Values</a>.</li><li>Select a field and open <strong>Current value</strong> to see what it holds now, or press <strong>Show in Data</strong> to find it in the tree.</li></ol>
+<ol><li>Open the <strong>Structure</strong> tab. <span class="ctl-chip">Follow current step</span> keeps the step the script is on selected.</li><li>Select a Set Values element of the step. Its <strong>Set Values</strong> tab lists each assignment: the Expression as written, the Computed value it gives now and the Current value the target holds. An amber differs tag marks a target that holds something else. See <a href="../reference.html#structure-set-values">Set Values</a>.</li><li>Select a field and open <strong>Current value</strong> to see what it holds now, or press <strong>Show in Data</strong> to find it in the tree.</li></ol>
 <p>If a value came from a call that failed, read <a href="why-did-this-call-fail.html">Why did this call fail, and what did it send?</a>. To follow one value back to where it was set, read <a href="where-did-this-value-come-from.html">Where did this value come from?</a>.</p>
 <p class="related">Every control is described in the <a href="../reference.html">reference</a>. More <a href="index.html">guides</a>.</p>
 <p class="stamp">Written for OmniScript Data Inspector 2.0.0.</p>

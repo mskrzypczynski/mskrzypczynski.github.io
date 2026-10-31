@@ -12,8 +12,8 @@ The JSON the selected OmniScript is holding right now, re-read on a timer.
 
 ### Start here
 
-1. Pick your OmniScript in the top bar (press Rescan if the list is empty). Its data appears as a tree.
-2. Use the page: changed values flash amber, and Auto-refresh keeps the tree live.
+1. Pick your OmniScript in the top bar (press **Rescan** if the list is empty). Its data appears as a tree.
+2. Use the page: changed values flash amber, and **Auto-refresh** keeps the tree live.
 3. Type in the filter to narrow the tree. A path such as Step:Rows\|2:Field or key=value works too.
 4. Hover a row for its buttons (copy, show in Structure), or right-click it.
 
@@ -51,7 +51,7 @@ Shown in the top bar's second row, with Show the Frame row ticked in Settings. A
 
 **Re-read the data of the selected script now.**
 
-The blue main button while Auto-refresh is off. With Auto-refresh on, the tab updates itself and Refresh is a plain button. Rescan in the top bar is different: it looks for scripts and frames again.
+The blue main button while **Auto-refresh** is off. With **Auto-refresh** on, the tab updates itself and Refresh is a plain button. **Rescan** in the top bar is different: it looks for scripts and frames again.
 
 It reads the data property of the selected script in full.
 
@@ -61,7 +61,7 @@ It reads the data property of the selected script in full.
 
 **Keep the data live: re-read it about once a second.**
 
-Untick it for manual mode: the data is read only when you press Refresh or change the property or script, never by a rescan or by switching tabs. The status bar then says Manual mode. While text is selected in the tree, updates wait so you can copy it.
+Untick it for manual mode: the data is read only when you press **Refresh** or change the property or script, never by a rescan or by switching tabs. The status bar then says Manual mode. While text is selected in the tree, updates wait so you can copy it.
 
 The rate is Refresh rate in Settings; it slows to every few seconds while nothing changes, and touching the panel brings the fast rate back. Polling stops while the panel is off screen. Updates also wait while the pointer is on a copy button, until you release the selection.
 
@@ -91,7 +91,7 @@ Any property name works, and a name that is not listed can still be typed. The l
 
 Hover a row, or move to it with the keyboard, for small icon buttons after its value. The overlapping sheets copy the value as JSON, or the whole branch; % copies a %merge% field. A plus or minus box opens or closes a whole branch. An arrow button on a record Id opens that record in a new tab.
 
-The Form's rows have the same buttons, except the plus or minus box. They never make a row taller, and a row you only clicked does not keep them. From the keyboard, Tab from a focused row goes to its first button and Tab again to the next; Shift+Tab comes back. Only the focused row's buttons are in the Tab order. The icon turns into a check mark for a moment once copied. The % button gives a path such as %Step:Rows\|2:Code% (the same as Copy as %merge% field in the row menu); it is a path, so Mask values leaves it as it is. The plus or minus box is the same as Alt+click on the row, and it holds while a filter is on. Dragging to select several rows still copies them as clean indented text. A value is taken for a Salesforce record Id when it is 15 or 18 letters and digits with a digit among the first nine, not only digits; an 18-character Id must also end with its checksum, so a word such as a name is not taken for one. The record button opens the page's own address plus the Id; the panel sends nothing, your browser opens it. The Id stays plain text, so selecting and copying it works as before. The button is not shown when the page's address cannot be read.
+The Form's rows have the same buttons, except the plus or minus box. They never make a row taller, and a row you only clicked does not keep them. From the keyboard, Tab from a focused row goes to its first button and Tab again to the next; Shift+Tab comes back. Only the focused row's buttons are in the Tab order. The icon turns into a check mark for a moment once copied. The % button gives a path such as %Step:Rows\|2:Code% (the same as Copy as %merge% field in the row menu); it is a path, so **Mask values** leaves it as it is. The plus or minus box is the same as Alt+click on the row, and it holds while a filter is on. Dragging to select several rows still copies them as clean indented text. A value is taken for a Salesforce record Id when it is 15 or 18 letters and digits with a digit among the first nine, not only digits; an 18-character Id must also end with its checksum, so a word such as a name is not taken for one. The record button opens the page's own address plus the Id; the panel sends nothing, your browser opens it. The Id stays plain text, so selecting and copying it works as before. The button is not shown when the page's address cannot be read.
 
 <a id="data-show-in-structure-button"></a>
 
@@ -119,7 +119,7 @@ On screen the tree and the Raw view still show the data itself. Selections copie
 
 The view switch is first on the toolbar and stays put. Tree is the collapsible tree. Form lists each key as a labelled row. Raw is the page's own text.
 
-The view names keep their words at every panel width. The choice of Tree, Form or Raw is kept by Remember my settings (on by default). Expand all and Collapse all stay in place in every view and are greyed out where there is nothing to open.
+The view names keep their words at every panel width. The choice of Tree, Form or Raw is kept by Remember my settings (on by default). **Expand all** and **Collapse all** stay in place in every view and are greyed out where there is nothing to open.
 
 <a id="data-tree-view"></a>
 
@@ -135,9 +135,9 @@ The view the tab opens in. Every key shows its type, and the twisty opens a bran
 
 **Open every branch of the Tree or Form, or close them to the top level.**
 
-They stay in the same place in every view. In Raw there is nothing to open, so they are greyed out. While a filter is active, Expand all opens every match and Collapse all closes every branch but the top one.
+They stay in the same place in every view. In Raw there is nothing to open, so they are greyed out. While a filter is active, **Expand all** opens every match and **Collapse all** closes every branch but the top one.
 
-In a big tree Expand all opens the first branches and says how many (see Big data). When they are greyed out, their tooltip says to switch to the Tree or the Form.
+In a big tree **Expand all** opens the first branches and says how many (see Big data). When they are greyed out, their tooltip says to switch to the Tree or the Form.
 
 <a id="data-form-view"></a>
 
@@ -147,7 +147,7 @@ In a big tree Expand all opens the first branches and says how many (see Big dat
 
 Each key is a row with its label and value. An object or a list shows "3 items": click it, or press Enter or → on the row, to open it in place; ← closes it. The filter box works as in the Tree. Right-click a row for the Tree row's menu.
 
-Form lists the data the way the page's form is laid out, with the rows the Structure tab's Current value Form has. A row's label is the label of the element that owns the key, with the element's name dimmed after it. A key with no element of its own (or a script whose definition has not been read) is its own label. A value is plain monospace text. Rows are the Tree's branches, so what is open in the Tree is open in the Form, and Expand all and Collapse all work on both. The filter box narrows the rows by label, key or value as it narrows the Tree, with the way down to each match and everything under a key or label that matched; an OmniScript path or key=value selects the rows the Tree would. Right-click a row, or press the menu key (or Shift+F10) on it, for the Tree row's menu: Show in Structure, copy the value, the path or the merge field, filter, open record. A row has the Tree's buttons after its value, on hover and for the keyboard (see Buttons on a row): copy as JSON, copy as a %merge% field, Show in Structure and, on a record Id, open the record. Mask values applies as in the Tree, also to a selection dragged across rows. Like the Tree, the Form pins the open groups the first visible row sits inside at the top while you scroll (see Sticky path). Tab goes to the rows (one at a time is in the tab order); the up and down arrows, Home and End move between them, and c copies the focused row's value. Export (Copy JSON, Save file…) copies or saves the data, not the view. A very long list is drawn up to 400 rows, and a line below the last one says how many are left; filter, or use the Tree or Raw, to reach them.
+Form lists the data the way the page's form is laid out, with the rows the Structure tab's Current value Form has. A row's label is the label of the element that owns the key, with the element's name dimmed after it. A key with no element of its own (or a script whose definition has not been read) is its own label. A value is plain monospace text. Rows are the Tree's branches, so what is open in the Tree is open in the Form, and **Expand all** and **Collapse all** work on both. The filter box narrows the rows by label, key or value as it narrows the Tree, with the way down to each match and everything under a key or label that matched; an OmniScript path or key=value selects the rows the Tree would. Right-click a row, or press the menu key (or Shift+F10) on it, for the Tree row's menu: Show in Structure, copy the value, the path or the merge field, filter, open record. A row has the Tree's buttons after its value, on hover and for the keyboard (see Buttons on a row): copy as JSON, copy as a %merge% field, Show in Structure and, on a record Id, open the record. **Mask values** applies as in the Tree, also to a selection dragged across rows. Like the Tree, the Form pins the open groups the first visible row sits inside at the top while you scroll (see Sticky path). Tab goes to the rows (one at a time is in the tab order); the up and down arrows, Home and End move between them, and c copies the focused row's value. Export (Copy JSON, Save file…) copies or saves the data, not the view. A very long list is drawn up to 400 rows, and a line below the last one says how many are left; filter, or use the Tree or Raw, to reach them.
 
 <a id="data-filter"></a>
 
@@ -191,7 +191,7 @@ Every match is marked. Enter and Shift+Enter walk the matches, and the status ba
 
 **Copy exactly the text you highlight, or the value you clicked in.** (Ctrl/Cmd+C)
 
-Select a few characters of a value and only those are copied. A selection across several rows is copied as clean indented text. With nothing highlighted, click inside a value (tree or Raw) and copy: you get the whole value, a string without its quotes when the caret is between them. Mask values applies to all of it.
+Select a few characters of a value and only those are copied. A selection across several rows is copied as clean indented text. With nothing highlighted, click inside a value (tree or Raw) and copy: you get the whole value, a string without its quotes when the caret is between them. **Mask values** applies to all of it.
 
 <a id="data-export-data"></a>
 
@@ -199,9 +199,9 @@ Select a few characters of a value and only those are copied. A selection across
 
 **Copy the data as JSON or save it to a file. Honours Mask values.**
 
-The Export button, at the end of the toolbar, opens a menu: Copy JSON and Save file…, which writes omniscript-\<time\>.json. Both write the page's own text, whatever the view, and replace strings and numbers when Mask values is on. The file may contain org data, so handle it accordingly. In a narrow panel Export is in the … menu.
+The Export button, at the end of the toolbar, opens a menu: Copy JSON and Save file…, which writes omniscript-\<time\>.json. Both write the page's own text, whatever the view, and replace strings and numbers when **Mask values** is on. The file may contain org data, so handle it accordingly. In a narrow panel Export is in the … menu.
 
-Both write the page's text in its own key order. A property that is not valid JSON cannot be copied or saved while Mask values is on.
+Both write the page's text in its own key order. A property that is not valid JSON cannot be copied or saved while **Mask values** is on.
 
 <a id="data-big-data"></a>
 
@@ -211,7 +211,7 @@ Both write the page's text in its own key order. A property that is not valid JS
 
 A tree of more than 1500 rows is drawn a window at a time as you scroll, so nothing is cut off. Dragging a selection across rows, or Ctrl/Cmd+A, copies only the rows drawn, and a toast says so (Copied 112 of 41,000 rows). Use the copy button on the branch, or Export, for everything.
 
-Expand all opens branches, not values, and says how many it opened if there are more than 20,000.
+**Expand all** opens branches, not values, and says how many it opened if there are more than 20,000.
 
 <a id="data-tree-form-raw"></a>
 
@@ -255,7 +255,7 @@ Every element the OmniScript is built from, read from its definition and joined 
 
 1. Pick your OmniScript in the top bar. The list shows every element of its definition.
 2. Click an element to see its value, properties, rules and calls on the right.
-3. Follow current step keeps the script's current step selected; Current step jumps back to it.
+3. **Follow current step** keeps the script's current step selected; **Current step** jumps back to it.
 4. Type in the filter to find an element by name, type or label.
 
 <a id="structure-definition-property"></a>
@@ -266,7 +266,7 @@ Every element the OmniScript is built from, read from its definition and joined 
 
 Set it in Settings (the gear), under Data, in Reading another page, next to Data property. It starts fresh every DevTools session. The default is jsonDef. Click the field to pick from the properties the script exposes. A change applies at once and the page is scanned again.
 
-The field is not in the Structure toolbar. It offers the same fuzzy list of properties as the Data tab. The Settings gear in the top bar counts it while it is not jsonDef. When no script is found, the list says so in one line with a Rescan button and a More help link, the toolbar controls are greyed out and the detail pane is folded away until a script turns up.
+The field is not in the Structure toolbar. It offers the same fuzzy list of properties as the Data tab. The Settings gear in the top bar counts it while it is not jsonDef. When no script is found, the list says so in one line with a **Rescan** button and a More help link, the toolbar controls are greyed out and the detail pane is folded away until a script turns up.
 
 <a id="structure-refresh"></a>
 
@@ -274,7 +274,7 @@ The field is not in the Structure toolbar. It offers the same fuzzy list of prop
 
 **Read the definition and custom labels again; your selection and folds stay.**
 
-Use it after you edit the script in the Designer, when you do not want to wait for the automatic read. It does not read the data JSON; the Data tab's Refresh does that. Rescan at the top looks for scripts and frames instead.
+Use it after you edit the script in the Designer, when you do not want to wait for the automatic read. It does not read the data JSON; the Data tab's Refresh does that. **Rescan** at the top looks for scripts and frames instead.
 
 It keeps its text when the toolbar is narrow, and is the one toolbar button that works while no script is found. The definition is also read again about every six seconds while this tab is open (see Editing in Designer).
 
@@ -326,7 +326,7 @@ The component is found through the lwcId in the definition. It needs an open sha
 
 For an element that calls a Data Mapper, Integration Procedure or class, the tab starts with Sends and Response node, read from its settings, then On failure when set, and the name of what it calls. Below are the matching calls captured in Calls; click one to open it there. The tab is there before any call was captured.
 
-Sends is sendJSONPath, with sendJSONNode and the extra payload; the whole data when no path is set; only the extra payload when sendOnlyExtraPayload is on. Response node is responseJSONNode, with responseJSONPath; when none is set it says none set and that the answer lands in the data root, the top level of the data. The place in the data is a button that opens it in the Data tab when the data holds it now. When the action sets extra input, an Additional input card follows (and a Remote options card for its remote options): each Name, the Value as written and the Computed value, what it comes to with the %merge% fields filled in from the data (tagged estimated ≈ for a formula, can't tell with the reason in the tooltip). Copy in the card's header puts the table on the clipboard; Mask values replaces what the data holds. The matching calls show time, result and duration. Best effort: a property a build names differently simply shows less.
+Sends is sendJSONPath, with sendJSONNode and the extra payload; the whole data when no path is set; only the extra payload when sendOnlyExtraPayload is on. Response node is responseJSONNode, with responseJSONPath; when none is set it says none set and that the answer lands in the data root, the top level of the data. The place in the data is a button that opens it in the Data tab when the data holds it now. When the action sets extra input, an Additional input card follows (and a Remote options card for its remote options): each Name, the Value as written and the Computed value, what it comes to with the %merge% fields filled in from the data (tagged estimated ≈ for a formula, can't tell with the reason in the tooltip). Copy in the card's header puts the table on the clipboard; **Mask values** replaces what the data holds. The matching calls show time, result and duration. Best effort: a property a build names differently simply shows less.
 
 <a id="structure-name"></a>
 
@@ -372,7 +372,7 @@ The column sits at the right edge of the list, just before the Valid column and 
 
 **Expand all and Collapse all open or fold every section of the list.**
 
-Click a section's chevron to fold it; a folded section shows how many elements it holds, such as (3). Expand all and Collapse all, the icon buttons after the View menu, do every section. Folding also works while a filter is on. A long step keeps its row pinned under the column header as you scroll.
+Click a section's chevron to fold it; a folded section shows how many elements it holds, such as (3). **Expand all** and **Collapse all**, the icon buttons after the View menu, do every section. Folding also works while a filter is on. A long step keeps its row pinned under the column header as you scroll.
 
 Steps and blocks that contain other elements are set in a heavier type, with a hairline above them. Everything starts expanded. The two buttons do not touch the detail pane, whose JSON trees have their own pair when they are on show. A folded section hides its matches too, and they come back when you unfold it. A faint guide runs down each level of indent. Selecting a step or block tints everything inside it, at any depth, in one shade, and draws a strong bracket along its own guide for the full height of what it holds; hovering a section header lights a lighter bracket for its subtree on top of that, so you can see where a block inside the selected step begins and ends. The pinned row is the step you are in; the next step's row takes its place when it arrives.
 
@@ -392,7 +392,7 @@ The last column of the list, at the right edge after the Marks column and a hair
 
 **Keep the step the script is on selected as it moves on.**
 
-On by default. Picking an element by hand pauses following: a small dot appears after the label and the tooltip says it is paused. Press Current step, or tick the box again, to resume. Filters are left alone.
+On by default. Picking an element by hand pauses following: a small dot appears after the label and the tooltip says it is paused. Press **Current step**, or tick the box again, to resume. Filters are left alone.
 
 The label itself never changes, so the toolbar does not move. Pressing Esc in the list pauses it too (see Summary).
 
@@ -424,7 +424,7 @@ It is left out for an element that has no place in the data.
 
 The status bar names the step, for example "Plan Selection (step 4 of 5)"; hover it for where that was read from. If it names no step, the definition did not say which one the script is on.
 
-It also resumes Follow current step when that was paused.
+It also resumes **Follow current step** when that was paused.
 
 <a id="structure-value"></a>
 
@@ -442,7 +442,7 @@ Open the Current value tab (see Current value views). For a radio or select with
 
 A tab that does not apply is left out, never greyed. A pick opens on its default tab: Current value when the element has a value, Validation for a step that may stop Next, Visibility for an element with a show rule, otherwise Properties. JSON opens only when you pick it.
 
-A tab you pick stays for the elements that have it. Order, each with an icon: Current value (Set Values for a Set Values element), Options (for a choice element that lists its options), Properties, Visibility, Validation, Calls, JSON. Left out when it does not apply: Current value while the data holds nothing for the element (a Formula element keeps it, for its Formula card), Options for an element that lists none, Properties for an element with none, Visibility for an element with no rule that nothing else uses, Validation for an element that has none (a step gets one while something may stop Next on it), Calls for an action whose settings say nothing and that no captured call matches. A tab comes back when its data does. A Set Errors or Messaging element also opens on Validation. With Remember my settings, the tab you picked is kept for the next time DevTools opens (not JSON; Show internal on the Properties tab is kept as well). JSON is last and is not a default: it is the element as JSON, as the Designer's Edit Properties as JSON shows it, for when the readable tabs are not enough, and the next element does not follow you there, unless it is the only tab the element has. What a tab says is drawn as cards, one frame for every fact: a bordered box whose header line holds the card's name in small capitals, the verdict as a tag when there is one (Fails, Passes, Hidden, Shown, Can't tell; hover it for the whole sentence), other tags (estimated ≈) and Copy at the right; hover the header for what the card is. Inside are labelled rows (the label in small capitals, the value beside it, or above it in a pane narrower than 480 px, with a divider between rows) or a table whose cells stack under their column's name in a narrow pane. Names and values are in a monospace font, words in the panel's own; an element's name is a link that selects it; what the panel cannot know is dimmed and in italics (can't tell, not in data); a state is a tag after its value: differs (amber) when a computed value and the current value are not the same, estimated ≈ (outlined) for what a formula the panel evaluates itself comes to, read from the data (grey) for a value the panel took from the data because it cannot work it out. A card's Copy copies it as text, with Mask values applied. Expand all and Collapse all appear only on a tab that draws a JSON tree (Current value in its Tree view, and JSON), the filter box on a tree, on the Form and on Properties, and the toolbar's Copy on JSON. In a pane narrower than 600 px the tabs show a short name beside the icon (Value, Opts., Props, Visib., Valid., Calls, JSON); the full name is the tab's tooltip and stays for screen readers. Right-click a line in any tree of the pane for the same menu as in Data: copy the value, the key, the OmniScript path or the %merge% field, and open or close a branch (Mask values applies to what is copied).
+A tab you pick stays for the elements that have it. Order, each with an icon: Current value (Set Values for a Set Values element), Options (for a choice element that lists its options), Properties, Visibility, Validation, Calls, JSON. Left out when it does not apply: Current value while the data holds nothing for the element (a Formula element keeps it, for its Formula card), Options for an element that lists none, Properties for an element with none, Visibility for an element with no rule that nothing else uses, Validation for an element that has none (a step gets one while something may stop Next on it), Calls for an action whose settings say nothing and that no captured call matches. A tab comes back when its data does. A Set Errors or Messaging element also opens on Validation. With Remember my settings, the tab you picked is kept for the next time DevTools opens (not JSON; Show internal on the Properties tab is kept as well). JSON is last and is not a default: it is the element as JSON, as the Designer's Edit Properties as JSON shows it, for when the readable tabs are not enough, and the next element does not follow you there, unless it is the only tab the element has. What a tab says is drawn as cards, one frame for every fact: a bordered box whose header line holds the card's name in small capitals, the verdict as a tag when there is one (Fails, Passes, Hidden, Shown, Can't tell; hover it for the whole sentence), other tags (estimated ≈) and Copy at the right; hover the header for what the card is. Inside are labelled rows (the label in small capitals, the value beside it, or above it in a pane narrower than 480 px, with a divider between rows) or a table whose cells stack under their column's name in a narrow pane. Names and values are in a monospace font, words in the panel's own; an element's name is a link that selects it; what the panel cannot know is dimmed and in italics (can't tell, not in data); a state is a tag after its value: differs (amber) when a computed value and the current value are not the same, estimated ≈ (outlined) for what a formula the panel evaluates itself comes to, read from the data (grey) for a value the panel took from the data because it cannot work it out. A card's Copy copies it as text, with **Mask values** applied. **Expand all** and **Collapse all** appear only on a tab that draws a JSON tree (Current value in its Tree view, and JSON), the filter box on a tree, on the Form and on Properties, and the toolbar's Copy on JSON. In a pane narrower than 600 px the tabs show a short name beside the icon (Value, Opts., Props, Visib., Valid., Calls, JSON); the full name is the tab's tooltip and stays for screen readers. Right-click a line in any tree of the pane for the same menu as in Data: copy the value, the key, the OmniScript path or the %merge% field, and open or close a branch (**Mask values** applies to what is copied).
 
 <a id="structure-json-tab"></a>
 
@@ -450,9 +450,9 @@ A tab you pick stays for the elements that have it. Order, each with an icon: Cu
 
 **The selected element exactly as the definition holds it, as a tree.**
 
-Open it from the tab strip, or from the Show JSON link under the Visibility and Validation cards. It is the place to look for what the readable tabs leave out. Expand all, Collapse all, Copy and the filter box work as on any tree.
+Open it from the tab strip, or from the Show JSON link under the Visibility and Validation cards. It is the place to look for what the readable tabs leave out. **Expand all**, **Collapse all**, Copy and the filter box work as on any tree.
 
-It is the same as the Designer's Edit Properties as JSON. It is never the tab a pick opens on, unless it is the only one the element has. Mask values masks the answers the element holds (its response and defaultValue entries) in the tree and in what is copied.
+It is the same as the Designer's Edit Properties as JSON. It is never the tab a pick opens on, unless it is the only one the element has. **Mask values** masks the answers the element holds (its response and defaultValue entries) in the tree and in what is copied.
 
 <a id="structure-current-value-views"></a>
 
@@ -462,7 +462,7 @@ It is the same as the Designer's Edit Properties as JSON. It is never the tab a 
 
 A step or block opens on Form: each key is a row with its label and a plain value; groups open in place. Tree is the JSON tree. Raw is the JSON text with the tree's line numbers. The filter box narrows Form and Tree. Copy in the card header copies the value as JSON.
 
-Current value opens on a Current value card on every element type, before any other card. A simple value (text, a number, true or false, an empty value) is shown in a monospace font with a quiet type hint after it (text, number, true/false, empty); while the data holds nothing for the element the card says not in data, dimmed (a Formula element keeps the tab for its Formula card). An object or a list is a tree inside the card. The switch Form \| Tree \| Raw sits in the card's header beside Copy, on a step or a block. In Form, each key's row shows the label of the element that owns the key with the element's name dimmed after it, else the key alone (hover for the key and the element's type), and true and false written as words, with the type hint after a number, a true/false or an empty value. An object or a list shows as "n items" with a chevron that opens it in place, one level at a time; the rows of a repeat or edit block read Row 1, Row 2 and carry the labels of the block's own elements. A very long list is cut after 400 rows, which the Tree and Raw views show in full. The choice is kept while the panel is open, and across sessions with Remember my settings. The groups you opened on a step are kept while it stays selected and forgotten when you pick another; a row of a repeat block that carries an Id is remembered by it, so removing a row does not open another. Copy works from all three views and for a simple value (masked with Mask values on); the toolbar has no Copy of its own on this tab. The filter box narrows the Form to the rows whose label or key contains the text, among the groups that are open, and the status bar says how many rows of how many are shown. Expand all and Collapse all belong to the Tree.
+Current value opens on a Current value card on every element type, before any other card. A simple value (text, a number, true or false, an empty value) is shown in a monospace font with a quiet type hint after it (text, number, true/false, empty); while the data holds nothing for the element the card says not in data, dimmed (a Formula element keeps the tab for its Formula card). An object or a list is a tree inside the card. The switch Form \| Tree \| Raw sits in the card's header beside Copy, on a step or a block. In Form, each key's row shows the label of the element that owns the key with the element's name dimmed after it, else the key alone (hover for the key and the element's type), and true and false written as words, with the type hint after a number, a true/false or an empty value. An object or a list shows as "n items" with a chevron that opens it in place, one level at a time; the rows of a repeat or edit block read Row 1, Row 2 and carry the labels of the block's own elements. A very long list is cut after 400 rows, which the Tree and Raw views show in full. The choice is kept while the panel is open, and across sessions with Remember my settings. The groups you opened on a step are kept while it stays selected and forgotten when you pick another; a row of a repeat block that carries an Id is remembered by it, so removing a row does not open another. Copy works from all three views and for a simple value (masked with **Mask values** on); the toolbar has no Copy of its own on this tab. The filter box narrows the Form to the rows whose label or key contains the text, among the groups that are open, and the status bar says how many rows of how many are shown. **Expand all** and **Collapse all** belong to the Tree.
 
 <a id="structure-properties-tab"></a>
 
@@ -482,7 +482,7 @@ The table shows the element's propSetMap: a readable name on the left, the value
 
 It lists the script's Type/SubType/Language, element counts by kind, what it calls, the elements custom components override and its custom labels. It also shows the step the script is on. Press Esc in the list to come back to it.
 
-A row appears only while it has something to say. Also its version and whether it is active and reusable (when the definition carries them). The element count is the figure the status bar gives, split into steps and each kind, such as 22: 4 steps · 14 fields · 2 actions. What it calls (Data Mappers, Integration Procedures and Remote Actions) is one button per name that selects the first element that calls it, with ×n when several do. Overridden: N lists the elements a custom Lightning web component overrides, each name selecting its element. Custom labels show keys, languages and how many are missing. The furthest step the script has been on is listed too, only when that is a different one. After Esc, Follow current step does not select anything again until you pick an element, press Current step or tick Follow current step, and shows its pause dot meanwhile. Best effort: a field the definition does not carry is left out.
+A row appears only while it has something to say. Also its version and whether it is active and reusable (when the definition carries them). The element count is the figure the status bar gives, split into steps and each kind, such as 22: 4 steps · 14 fields · 2 actions. What it calls (Data Mappers, Integration Procedures and Remote Actions) is one button per name that selects the first element that calls it, with ×n when several do. Overridden: N lists the elements a custom Lightning web component overrides, each name selecting its element. Custom labels show keys, languages and how many are missing. The furthest step the script has been on is listed too, only when that is a different one. After Esc, **Follow current step** does not select anything again until you pick an element, press **Current step** or tick **Follow current step**, and shows its pause dot meanwhile. Best effort: a field the definition does not carry is left out.
 
 <a id="structure-visibility-tab"></a>
 
@@ -492,7 +492,7 @@ A row appears only while it has something to say. Also its version and whether i
 
 The Visibility card judges the element's show rule (Conditional View in the Designer) against the data. The tag in its header says Hidden, Shown or Can't tell; hover it for the sentence. The table lists each condition: a mark for whether it is met now, the Field, what it Must be and what it Is now.
 
-The tag is Hidden (grey: a hidden element is normal), Shown (green) or Can't tell, with estimated ≈ when it rests on a formula's estimate. Its tooltip reads: Always shown; Shown: its condition is true; Hidden: Step:Plan is "Standard", not "Premium" for a single rule; Hidden: 2 of 3 conditions fail (1 of 3 conditions fails) when every one is needed; Hidden: no condition is true (0 of 3) when one is enough; or that the panel cannot tell if the rule is true here and what the script treats it as, which a Verdict row then says too. An element a parent hides has a Hidden by row with the parent, a link, and why. The marks are neutral (● met, ○ not met, ? can't tell), because a met condition is good on a show rule and the reason a Set Errors fails, so the colour is on the card's verdict. Field is the element's name, a link that selects it, with the field as written in the tooltip; Must be reads = "Premium", ≠ "", ≥ 18; Is now is never blank: empty, not in data, or can't tell for a formula or an unusual operator, dimmed. Under each condition the same is said in plain words, such as FO\_Age is 30, which is 18 or more, or FO\_HasCard is null, which counts as not true. A group says what it needs and how it stands, All of these must be true; 1 of 2 is not, or One of these must be true; none is; a nested group is indented and has its own mark. In a pane narrower than 480 px each condition starts with its mark and its plain words, then Field, Must be and Is now, each label above its value. The As written row ends the card: the rule exactly as the Designer defines it, on one line. Copy copies the card as text, each condition with its plain words; with Mask values on, what the data holds is replaced and the plain words are left out. The JSON tab holds the element as JSON. Best effort: a rule whose value is a formula (it starts with =) is evaluated here, marked ≈ on its mark and estimated ≈ in the header; see Formulas. Unusual operators and formulas that cannot be evaluated are can't tell and never guessed.
+The tag is Hidden (grey: a hidden element is normal), Shown (green) or Can't tell, with estimated ≈ when it rests on a formula's estimate. Its tooltip reads: Always shown; Shown: its condition is true; Hidden: Step:Plan is "Standard", not "Gold" for a single rule; Hidden: 2 of 3 conditions fail (1 of 3 conditions fails) when every one is needed; Hidden: no condition is true (0 of 3) when one is enough; or that the panel cannot tell if the rule is true here and what the script treats it as, which a Verdict row then says too. An element a parent hides has a Hidden by row with the parent, a link, and why. The marks are neutral (● met, ○ not met, ? can't tell), because a met condition is good on a show rule and the reason a Set Errors fails, so the colour is on the card's verdict. Field is the element's name, a link that selects it, with the field as written in the tooltip; Must be reads = "Gold", ≠ "", ≥ 18; Is now is never blank: empty, not in data, or can't tell for a formula or an unusual operator, dimmed. Under each condition the same is said in plain words, such as FO\_Age is 30, which is 18 or more, or FO\_HasCard is null, which counts as not true. A group says what it needs and how it stands, All of these must be true; 1 of 2 is not, or One of these must be true; none is; a nested group is indented and has its own mark. In a pane narrower than 480 px each condition starts with its mark and its plain words, then Field, Must be and Is now, each label above its value. The As written row ends the card: the rule exactly as the Designer defines it, on one line. Copy copies the card as text, each condition with its plain words; with **Mask values** on, what the data holds is replaced and the plain words are left out. The JSON tab holds the element as JSON. Best effort: a rule whose value is a formula (it starts with =) is evaluated here, marked ≈ on its mark and estimated ≈ in the header; see Formulas. Unusual operators and formulas that cannot be evaluated are can't tell and never guessed.
 
 <a id="structure-set-values"></a>
 
@@ -502,7 +502,7 @@ The tag is Hidden (grey: a hidden element is normal), Shown (green) or Can't tel
 
 The Set Values tab has one row per assignment: the Target element, the Expression as written, the Computed value it gives now and the Current value the target holds. An amber differs tag marks a mismatch. A formula is evaluated best effort and tagged estimated ≈; one it cannot evaluate says can't tell. Copy copies the table.
 
-A Current value card comes first only while the data holds something under the element's name. Target is the element by its name, a link that selects it (the path as written is in the tooltip and in a copy). Computed value is the value the target gets when the element runs, with the %merge% fields filled in from the live data. Current value is the dimmed not in data while the target holds nothing. For a formula's estimate, the tooltip of differs says it differs from the estimate. A formula that cannot be evaluated, or that reads a field with no value yet, says can't tell, the tooltip says why, and it is never tagged differs. In a pane narrower than 480 px each assignment stacks. Copy is tab separated; with Mask values on, what the data holds is replaced and text written in the definition, such as a fixed value, is kept. The element's JSON is behind its JSON tab, as for every element.
+A Current value card comes first only while the data holds something under the element's name. Target is the element by its name, a link that selects it (the path as written is in the tooltip and in a copy). Computed value is the value the target gets when the element runs, with the %merge% fields filled in from the live data. Current value is the dimmed not in data while the target holds nothing. For a formula's estimate, the tooltip of differs says it differs from the estimate. A formula that cannot be evaluated, or that reads a field with no value yet, says can't tell, the tooltip says why, and it is never tagged differs. In a pane narrower than 480 px each assignment stacks. Copy is tab separated; with **Mask values** on, what the data holds is replaced and text written in the definition, such as a fixed value, is kept. The element's JSON is behind its JSON tab, as for every element.
 
 <a id="structure-options-tab"></a>
 
@@ -512,7 +512,7 @@ A Current value card comes first only while the data holds something under the e
 
 For a Select, Radio, Multi-select, Lookup or Type Ahead element that lists its options, the Options card shows each option's Label and Value and ticks Selected on the one the data holds. A value that matches no option gets an amber No match tag, and a chip in the detail head opens this tab. Copy copies the table.
 
-A Multi-select ticks every option it holds. When the data holds a value that is none of the options, nothing is ticked, the card's header carries the amber No match tag (hover it for the value), and the amber chip in the detail head says No option matches it. An option list that comes from a Data Mapper, an object or custom code has no options of its own and gets no tab. With Mask values on, Selected reads (masked) on every row of a copy, so which option is selected is not copied.
+A Multi-select ticks every option it holds. When the data holds a value that is none of the options, nothing is ticked, the card's header carries the amber No match tag (hover it for the value), and the amber chip in the detail head says No option matches it. An option list that comes from a Data Mapper, an object or custom code has no options of its own and gets no tab. With **Mask values** on, Selected reads (masked) on every row of a copy, so which option is selected is not copied.
 
 <a id="structure-formula-card"></a>
 
@@ -522,7 +522,7 @@ A Multi-select ticks every option it holds. When the data holds a value that is 
 
 On a Formula element's Current value tab. Expression is as written; Computed value is what it comes to now, tagged estimated ≈. If the panel cannot evaluate it but the data holds the value, that value shows, tagged read from the data; otherwise it says can't tell. Elements it reads lists what the formula reads.
 
-The card follows the Current value card, which stays even when the Formula card repeats its value. Hover the tags for why. In Elements it reads, each element is shown with what it holds now; its name is a link that selects the element (the field as written is in the tooltip; a field that is no element opens its place in Data while the data holds it). The card stays while the data holds no value for the formula. Copy copies the card as text; with Mask values on, what the data holds is replaced.
+The card follows the Current value card, which stays even when the Formula card repeats its value. Hover the tags for why. In Elements it reads, each element is shown with what it holds now; its name is a link that selects the element (the field as written is in the tooltip; a field that is no element opens its place in Data while the data holds it). The card stays while the data holds no value for the formula. Copy copies the card as text; with **Mask values** on, what the data holds is replaced.
 
 <a id="structure-merge-fields-card"></a>
 
@@ -532,7 +532,7 @@ The card follows the Current value card, which stays even when the Formula card 
 
 A Text Block, Headline or Messaging element holds no value of its own, so its Properties tab starts with this card: each field the text reads, once, in reading order, with what the data holds now. A field that names an element links to it; any other field opens its place in Data.
 
-The card is left out for a text that reads no field. A linked element shows its label with its name after it. A value is tagged estimated ≈ for a Formula element's estimate, and the dimmed not in data shows for a field the data does not have. Copy copies the table as text; with Mask values on, what the data holds is replaced.
+The card is left out for a text that reads no field. A linked element shows its label with its name after it. A value is tagged estimated ≈ for a Formula element's estimate, and the dimmed not in data shows for a field the data does not have. Copy copies the table as text; with **Mask values** on, what the data holds is replaced.
 
 <a id="structure-validation-tab"></a>
 
@@ -666,7 +666,7 @@ Plain words match the call's name (class, method, bundle or key). Prefixes combi
 - step:text matches the script's step (step:"Order Review" for spaces).
 - repeat: keeps repeated calls.
 
-in:text finds calls whose input, options or output hold the text, as a key or a value, and shows the hit under the name. step:text keeps the calls made while the script was on a step whose name or key holds the text. repeat: (or repeats) keeps only the calls that repeat an earlier one and the calls they repeat, and takes no text. With Mask values on, in: matches keys only. The tooltip of the box lists every prefix.
+in:text finds calls whose input, options or output hold the text, as a key or a value, and shows the hit under the name. step:text keeps the calls made while the script was on a step whose name or key holds the text. repeat: (or repeats) keeps only the calls that repeat an earlier one and the calls they repeat, and takes no text. With **Mask values** on, in: matches keys only. The tooltip of the box lists every prefix.
 
 <a id="actions-tab-badge"></a>
 
@@ -676,7 +676,7 @@ in:text finds calls whose input, options or output hold the text, as a key or a 
 
 The number on the Calls tab is grey and counts the calls in view. It turns red and reads "✕ 2" as soon as any call failed, so a failure shows from the other tabs. Hover it for the counts.
 
-The cross and the number mean it does not rest on the colour. The tooltip says which it is ("2 failed calls of 12 captured", "12 calls in view"). A filter in the filter box or Failed only does not hide a failure from the badge or turn it off: it counts every call the list may show, which is OmniStudio's calls, and shows 0 in grey while a filter hides all of them. It is absent only while nothing is captured.
+The cross and the number mean it does not rest on the colour. The tooltip says which it is ("2 failed calls of 12 captured", "12 calls in view"). A filter in the filter box or **Failed only** does not hide a failure from the badge or turn it off: it counts every call the list may show, which is OmniStudio's calls, and shows 0 in grey while a filter hides all of them. It is absent only while nothing is captured.
 
 <a id="actions-copy-input"></a>
 
@@ -684,7 +684,7 @@ The cross and the number mean it does not rest on the colour. The tooltip says w
 
 **Copy the call's input as JSON.**
 
-The \{ \} button in a call's detail pane copies the bare input as JSON, ready to paste into a test or another tool. Honours Mask values.
+The \{ \} button in a call's detail pane copies the bare input as JSON, ready to paste into a test or another tool. Honours **Mask values**.
 
 <a id="actions-raw-view"></a>
 
@@ -694,7 +694,7 @@ The \{ \} button in a call's detail pane copies the bare input as JSON, ready to
 
 Right-click a call and choose Show raw. The detail pane shows the request as the page sent it and the answer as it came back, each with its own Copy. Fields that look like credentials show as \<hidden\>. Back, or Esc, returns to the call.
 
-The request is the Aura action, or the LWR, REST or Visualforce body. Each side is numbered, wrapped text; JSON is laid out for reading. The answer is kept only up to 20 KB, and when it was longer the view says "Cut at 20 KB". Fields that look like a credential (a token, csrf value, authorization, session, cookie or API key, in the request and in the answer) are shown as \<hidden\> and counted in a note, with Mask values on or off; Mask values replaces every other value in what is shown and copied. Text that is not JSON cannot be masked, so it is not shown while Mask values is on (an Aura error answer is laid out like any JSON; an answer cut at 20 KB cannot be masked). Choosing another call also returns to the detail. A chain's row has no row menu and no request of its own: open one of its calls, then right-click it.
+The request is the Aura action, or the LWR, REST or Visualforce body. Each side is numbered, wrapped text; JSON is laid out for reading. The answer is kept only up to 20 KB, and when it was longer the view says "Cut at 20 KB". Fields that look like a credential (a token, csrf value, authorization, session, cookie or API key, in the request and in the answer) are shown as \<hidden\> and counted in a note, with **Mask values** on or off; **Mask values** replaces every other value in what is shown and copied. Text that is not JSON cannot be masked, so it is not shown while **Mask values** is on (an Aura error answer is laid out like any JSON; an answer cut at 20 KB cannot be masked). Choosing another call also returns to the detail. A chain's row has no row menu and no request of its own: open one of its calls, then right-click it.
 
 <a id="actions-trees-in-the-call-detail"></a>
 
@@ -702,9 +702,9 @@ The request is the Aura action, or the LWR, REST or Visualforce body. Each side 
 
 **Copy a value, key, path or merge field from a call's tree.**
 
-Right-click a row of the Input, Options or Output tree to copy its value, key, OmniScript path or %merge% field, or to open or close the branch. Copied values honour Mask values.
+Right-click a row of the Input, Options or Output tree to copy its value, key, OmniScript path or %merge% field, or to open or close the branch. Copied values honour **Mask values**.
 
-A section the page sent as JSON inside a string is decoded, and one that is plain text says so instead of showing a tree. Expand all and Collapse all appear only where there is a tree, and Copy only where there is something to copy.
+A section the page sent as JSON inside a string is decoded, and one that is plain text says so instead of showing a tree. **Expand all** and **Collapse all** appear only where there is a tree, and Copy only where there is something to copy.
 
 <a id="actions-show-in-structure"></a>
 
@@ -762,7 +762,7 @@ The first call carries the chainable (or queueableChainable) option, its answer 
 
 Result, the last column, is what the answer says: ✓ green for succeeded, ✕ red for failed, – grey when nothing useful came back. Hover it for the word and the HTTP status, which is the transport. A 200 with Failed means Apex returned an error inside a successful response.
 
-The glyph is a second cue besides the colour. Hover for which rule fired; the detail line then says "HTTP 200 · Failed", and Aura's own state word is in the Raw view. The words are Succeeded, Failed, No response and No body. A call counts as failed, too, when no response came back (No response, in grey: aborted or offline), when the response is not JSON or an Aura system error, or when the session expired (client out of sync). A 2xx with an empty body shows No body in grey and is not counted as failed: DevTools hands back an empty body when it no longer holds the content. The Output tab then shows the raw text that came back, unless Mask values is on.
+The glyph is a second cue besides the colour. Hover for which rule fired; the detail line then says "HTTP 200 · Failed", and Aura's own state word is in the Raw view. The words are Succeeded, Failed, No response and No body. A call counts as failed, too, when no response came back (No response, in grey: aborted or offline), when the response is not JSON or an Aura system error, or when the session expired (client out of sync). A 2xx with an empty body shows No body in grey and is not counted as failed: DevTools hands back an empty body when it no longer holds the content. The Output tab then shows the raw text that came back, unless **Mask values** is on.
 
 <a id="actions-started-took"></a>
 
@@ -806,7 +806,7 @@ A call the row marks as failed opens on its Output tab, and its failure banner s
 
 **Right-click a call for its copy, compare, re-run and select actions.**
 
-Right-click a call for Copy name, Copy input (honours Mask values) and Show raw (see Raw view).
+Right-click a call for Copy name, Copy input (honours **Mask values**) and Show raw (see Raw view).
 
 The call the menu is open for is outlined while it is open.
 
@@ -824,7 +824,7 @@ Calls are captured only while DevTools is open. Use Reload page to capture from 
 
 **Replace strings and numbers with placeholders in what the Calls tab shows and exports.**
 
-With the top bar's Mask values on, Export, Show raw, the failure text and the in: hit lines replace strings and numbers with placeholders, as the trees do. Mask values at start in Settings turns it on every time the panel opens.
+With the top bar's **Mask values** on, Export, Show raw, the failure text and the in: hit lines replace strings and numbers with placeholders, as the trees do. Mask values at start in Settings turns it on every time the panel opens.
 
 The raw text of an undecodable response is hidden. A Data Mapper name that was read from the call's input (not from its options) counts as a value and is masked too, in Copy name, Copy report and Export.
 
@@ -852,7 +852,7 @@ The list keeps the last 500 calls, and at most 200 of them that are not OmniStud
 
 **Write the visible calls to a JSON file.**
 
-Export, in the toolbar, writes the visible calls, to a JSON file. It may contain org data, so handle it accordingly. Honours Mask values.
+Export, in the toolbar, writes the visible calls, to a JSON file. It may contain org data, so handle it accordingly. Honours **Mask values**.
 
 Each call is written with its URL, whether it failed and why, and the request it travelled in.
 
@@ -887,7 +887,7 @@ The top bar, the settings and the rest of the shell. It is the same on every tab
 Nothing is listed in the top bar. Try these in order.
 
 - Open a page that runs an OmniScript and let it finish loading.
-- Press Rescan, or reload the page with DevTools open.
+- Press **Rescan**, or reload the page with DevTools open.
 - Still nothing: see Show the Frame row and Data property in Settings, under Data, in Reading another page.
 
 The script may sit inside an iframe, or keep its data on another property. The panel also looks again every few seconds. Every frame, document and open shadow root is searched; closed shadow roots cannot be read.
@@ -907,11 +907,11 @@ Change the theme in DevTools. The panel follows at once, even while it is open.
 
 ### Help for a control
 
-**Open the help at the entry for one control** (?)
+**Open the help at the entry for one control** (h)
 
-Right-click a button or switch and choose Help: \<name\>, or press ? while it has focus. The help shows only that control's entry, with its name in the filter box. Type in the box, or clear it, to see the rest.
+Right-click a button or switch and choose Help: \<name\>, or press h while it has focus. The help shows only that control's entry, with its name in the filter box. Type in the box, or clear it, to see the rest.
 
-Works on the buttons and switches of the top bar and of every tab's toolbar (Rescan, Mask values, Refresh, Auto-refresh, the views, Expand all, Follow current step, Recording and so on). Text fields keep the browser's own right-click menu.
+Works on the buttons and switches of the top bar and of every tab's toolbar (**Rescan**, **Mask values**, **Refresh**, **Auto-refresh**, the views, **Expand all**, **Follow current step**, **Recording** and so on). Text fields keep the browser's own right-click menu.
 
 <a id="everywhere-searching-this-help"></a>
 
@@ -1009,7 +1009,7 @@ Settings last until DevTools is closed, and the settings are kept in this browse
 
 **Replace strings and numbers with placeholders in everything that leaves the panel.**
 
-Tick Mask values in the top bar (Mask, in a narrow panel). While it is on, strings and numbers are replaced with placeholders in everything that leaves the panel: copies, saved files, exports and Copy report. Structure and keys are kept. It is off when DevTools opens unless Mask values at start is ticked.
+Tick **Mask values** in the top bar (Mask, in a narrow panel). While it is on, strings and numbers are replaced with placeholders in everything that leaves the panel: copies, saved files, exports and Copy report. Structure and keys are kept. It is off when DevTools opens unless Mask values at start is ticked.
 
 Covered: Copy JSON, Save file, the per-row copy buttons, the Structure value copy, the Calls export and Copy report. The status bar says "Masking copies and exports" while it is on. The switch itself is never remembered.
 
@@ -1049,7 +1049,7 @@ Kept: the settings listed in the dialog, the views you last chose (Data: Tree, F
 
 **Choose which OmniScript, and which frame, every tab reads.**
 
-The OmniScript picker lists the scripts on the page; the choice applies to every tab. Rescan looks again. Mask values applies to everything that leaves the panel. The Frame picker, Embedded scripts and Inspect element are in a second row, shown with Show the Frame row in Settings.
+The OmniScript picker lists the scripts on the page; the choice applies to every tab. **Rescan** looks again. **Mask values** applies to everything that leaves the panel. The Frame picker, **Embedded scripts** and **Inspect element** are in a second row, shown with Show the Frame row in Settings.
 
 Scripts are listed by Type/SubType/Language when their definition says (hover for the element), otherwise by element. Frame filters the list to one document; All frames searches everything.
 
@@ -1097,9 +1097,9 @@ In a panel narrower than 600 px each toolbar moves some controls into the … bu
 
 **Look for OmniScripts and frames on the page again.**
 
-Press it after opening a new OmniScript or changing the page. To re-read the script you already have, use Refresh on its tab.
+Press it after opening a new OmniScript or changing the page. To re-read the script you already have, use **Refresh** on its tab.
 
-The panel also looks again by itself every few seconds while it is visible, so Rescan is only needed when you do not want to wait.
+The panel also looks again by itself every few seconds while it is visible, so **Rescan** is only needed when you do not want to wait.
 
 <a id="everywhere-open-in-designer"></a>
 
@@ -1133,12 +1133,12 @@ If a script is not listed, see No OmniScript found.
 At the foot: the selected script's name and each tab's status on the left, what is being read on the right.
 
 - Data shows the type, size and last change; Calls shows the number of calls, how many failed, and Recording or Paused.
-- At the far right: the extension version, a Buy me a coffee button (optional; opens Ko-fi or buycoffee.to in a new tab, and the panel passes nothing to either) and the unofficial note.
+- At the far right: the extension version, a **Buy me a coffee** button (optional; opens buycoffee.to in a new tab, and the panel passes nothing to it).
 
 Data: "Type/SubType/Language · 7.2 KB" on the left (the element's tag name stands in for a script without one), then "Live · changed 10:43:31 AM" on the right, with "N matches" while a filter in the Raw view is on and "N embedded scripts hidden" when OmniScripts nested in this one are left out. Hover it for the element, the property read, how many scripts are listed and how many other components of a listed script are hidden.
 
 - Calls: "5 calls · 1 failed" (failed only when there is one) and "Recording" or "Paused". It names a choice only when it is not the default: "clears on reload", "failed only" and "text: …" for the filter box.
-- Text that does not fit is cut with … and is in full in the tooltip. The Buy me a coffee button is optional and free of conditions: it opens a small menu with Ko-fi (EUR, by card) or buycoffee.to (PLN, by card or BLIK); the one you pick opens in a new tab. In a narrow panel the right side shrinks to the coffee icon and the version. The foot of this help links to the same page.
+- Text that does not fit is cut with … and is in full in the tooltip. The Buy me a coffee button is optional: it opens buycoffee.to in a new tab. In a narrow panel the right side shrinks to the coffee icon and the version. The foot of this help links to the same page.
 
 <a id="keys"></a>
 
@@ -1162,4 +1162,4 @@ Single keys; ignored while typing in a field.
 | <kbd>Ctrl</kbd> <kbd>\</kbd> | Focus mode (Structure and Calls): hide or show the list (Cmd+\\ on a Mac) |
 | <kbd>Ctrl</kbd> <kbd>=</kbd> <kbd>-</kbd> <kbd>0</kbd> | Text size: larger, smaller, back to Medium (Cmd on a Mac) |
 | <kbd>,</kbd> | Open or close the settings |
-| <kbd>?</kbd> | Show or hide this help; on a focused control, open its entry |
+| <kbd>h</kbd> | Show or hide this help; on a focused control, open its entry |
