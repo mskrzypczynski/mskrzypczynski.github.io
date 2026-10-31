@@ -3,37 +3,228 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mikołaj Skrzypczyński — Chrome extensions</title>
-<link rel="stylesheet" href="style.css" />
+<title>Mikołaj Skrzypczyński · Developer tools for Salesforce OmniStudio</title>
+<meta name="description" content="Browser extensions for Salesforce OmniStudio developers: find any OmniScript, Integration Procedure, Data Mapper or FlexCard, and see what a running OmniScript holds. No analytics, nothing sent anywhere but your own org." />
+<meta name="color-scheme" content="light dark" />
+<link rel="stylesheet" href="portfolio.css" />
 </head>
 <body>
-<h1>Chrome extensions</h1>
-<p class="sub">Free developer tools for Salesforce OmniStudio. No analytics, no tracking, nothing sent to anyone but your own org.</p>
 
-<a class="card" href="omniscript-data-inspector/index.html">
-  <h3>OmniScript Data Inspector</h3>
-  <p>Live OmniScript data, structure and remote action log, in a DevTools panel.</p>
-</a>
+<a class="skip" href="#tools">Skip to the tools</a>
 
-<a class="card" href="omniscript-replay/index.html">
-  <h3>OmniScript Replay</h3>
-  <p>Record the OmniScript steps you keep repeating, then replay them the way a person would, in a DevTools panel. Experimental.</p>
-</a>
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="./" aria-label="Home">
+      <span class="brand-mark" aria-hidden="true">{=}</span>
+      <span>Mikołaj Skrzypczyński</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#tools">Tools</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#about">About</a>
+      <a href="#support">Support</a>
+    </nav>
+  </div>
+</header>
 
-<a class="card" href="omnistudio-finder/index.html">
-  <h3>OmniStudio Finder</h3>
-  <p>Find OmniScripts, Integration Procedures, DataRaptors and FlexCards in your Salesforce org. See every version, open the right one.</p>
-</a>
+<main>
 
-<p class="sub">Source:
-<a href="https://github.com/mskrzypczynski/omniscript-data-inspector">omniscript-data-inspector</a> (GPL-3.0) ·
-<a href="https://github.com/mskrzypczynski/omniscript-replay">omniscript-replay</a> (GPL-3.0) ·
-<a href="https://github.com/mskrzypczynski/omnistudio-finder">omnistudio-finder</a> (GPL-3.0)</p>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Developer tools for Salesforce OmniStudio</p>
+      <h1>See what your OmniScripts are doing, and get to the right version fast.</h1>
+      <p class="lede">Browser extensions for people who build OmniScripts, Integration
+      Procedures, Data Mappers and FlexCards. They read your own org, as you, from
+      your browser, and send nothing anywhere else.</p>
+      <ul class="pills" aria-label="How the tools work">
+        <li>No analytics, no server</li>
+        <li>Least permission</li>
+        <li>Open source, GPL-3.0</li>
+        <li>Core and Vlocity packages</li>
+      </ul>
+      <div class="actions">
+        <a class="btn primary" href="#tools">See the tools</a>
+        <a class="btn" href="https://github.com/mskrzypczynski">GitHub</a>
+      </div>
+    </div>
+  </section>
 
-<h2>Support</h2>
-<p>These are free and staying that way. If one saved you an afternoon, you can
-<a href="https://buycoffee.to/mskrz">buy me a coffee ☕</a>.</p>
+  <section id="tools" class="tools" aria-labelledby="tools-title">
+    <div class="wrap">
+      <h2 id="tools-title" class="section-title">Tools</h2>
 
-<footer>Mikołaj Skrzypczyński · independent developer tools. Not affiliated with Salesforce, Inc.</footer>
+      <article class="tool">
+        <div class="tool-text">
+          <div class="tool-head">
+            <img class="tool-icon" src="assets/omnistudio-finder.png" alt="" width="40" height="40" />
+            <div>
+              <h3><a href="omnistudio-finder/index.html">OmniStudio Finder</a></h3>
+              <p class="kind">Chrome extension · toolbar popup</p>
+            </div>
+          </div>
+          <p class="badges"><span class="badge live">On the Chrome Web Store</span><span class="badge">Free</span></p>
+          <p>Find any OmniScript, Integration Procedure, DataRaptor or FlexCard in the
+          org of the tab you are on. See every version, open the right one.</p>
+          <ul class="ticks">
+            <li>Search as you type, or paste a <code>Type_SubType_Language</code> key straight from a log.</li>
+            <li>Every version as a chip, the active one in green; <kbd>Enter</kbd> opens it.</li>
+            <li>Opens the right designer for core OmniStudio or the Vlocity packages.</li>
+          </ul>
+          <p class="links">
+            <a class="btn primary" href="https://chromewebstore.google.com/detail/fjoaadephbjggbhejmphobgkfcgmlmmp?utm_source=item-share-cb">Add to Chrome</a>
+            <a href="omnistudio-finder/index.html">Details</a>
+            <a href="omnistudio-finder/privacy.html">Privacy</a>
+            <a href="https://github.com/mskrzypczynski/omnistudio-finder">Source</a>
+          </p>
+        </div>
+        <figure class="shot narrow">
+          <img src="assets/screens/finder.png" width="680" height="640" loading="lazy"
+            alt="OmniStudio Finder's popup over a Lightning page: a search box, type filters, and OmniScripts and FlexCards listed with their version chips and Open buttons." />
+        </figure>
+      </article>
+
+      <article class="tool flip">
+        <div class="tool-text">
+          <div class="tool-head">
+            <img class="tool-icon" src="assets/omniscript-data-inspector.png" alt="" width="40" height="40" />
+            <div>
+              <h3><a href="omniscript-data-inspector/index.html">OmniScript Data Inspector</a></h3>
+              <p class="kind">Chrome extension · DevTools panel</p>
+            </div>
+          </div>
+          <p class="badges"><span class="badge live">On the Chrome Web Store</span><span class="badge">Free</span><span class="badge pro">Pro coming</span></p>
+          <p>Live OmniScript data, structure and calls, in a DevTools panel next to the
+          page you are testing.</p>
+          <ul class="ticks">
+            <li>The live data JSON, with what changed highlighted as you click through.</li>
+            <li>Every element joined to its data, with visibility rules you can read.</li>
+            <li>Every remote call, with errors flagged even inside an HTTP 200.</li>
+          </ul>
+          <p class="note">The free edition stays free. Pro will add the deeper debugging
+          work on top: test calls, debug runs, comparisons and change history.</p>
+          <p class="links">
+            <a class="btn primary" href="https://chromewebstore.google.com/detail/lpijhdhnblimbdlhgkdapdldahdhkfpc?utm_source=item-share-cb">Add to Chrome</a>
+            <a href="omniscript-data-inspector/index.html">Details</a>
+            <a href="omniscript-data-inspector/privacy.html">Privacy</a>
+          </p>
+        </div>
+        <figure class="shot">
+          <picture>
+            <source srcset="assets/screens/inspector-dark.png" media="(prefers-color-scheme: dark)" />
+            <img src="assets/screens/inspector-light.png" width="1280" height="800" loading="lazy"
+              alt="OmniScript Data Inspector's Structure tab: the script's steps and elements on the left, and the visibility rule of a hidden field on the right." />
+          </picture>
+        </figure>
+      </article>
+
+      <article class="tool small">
+        <div class="tool-head">
+          <span class="tool-icon glyph" aria-hidden="true">⏵</span>
+          <div>
+            <h3><a href="omniscript-replay/index.html">OmniScript Replay</a></h3>
+            <p class="kind">Chrome extension · DevTools panel</p>
+          </div>
+        </div>
+        <p class="badges"><span class="badge exp">Experimental</span></p>
+        <p>Record the OmniScript steps you keep repeating, then replay them the way a
+        person would, and land on the step you are testing. Not on the store yet.</p>
+        <p class="links">
+          <a href="omniscript-replay/index.html">Details</a>
+          <a href="omniscript-replay/privacy.html">Privacy</a>
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="principles" aria-labelledby="principles-title">
+    <div class="wrap">
+      <h2 id="principles-title" class="section-title">How they are built</h2>
+      <ul class="grid4">
+        <li><b>No tracking</b><span>No analytics, no server of my own. Your org's data goes to your org and nowhere else.</span></li>
+        <li><b>Least permission</b><span>Only what a feature needs, and the privacy policy says exactly what that is.</span></li>
+        <li><b>Open source</b><span>The free editions are GPL-3.0, worth reading for anything that touches your session.</span></li>
+        <li><b>Read before write</b><span>Reading is the default. Nothing changes your org without showing you what it will do first.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="privacy" class="privacy" aria-labelledby="privacy-title">
+    <div class="wrap">
+      <h2 id="privacy-title" class="section-title">Privacy policies</h2>
+      <p class="section-lede">Each tool has its own policy: what it reads, what it keeps
+      in your browser, and where anything is sent.</p>
+      <ul class="grid3">
+        <li>
+          <a href="omnistudio-finder/privacy.html"><b>OmniStudio Finder</b></a>
+          <span>Uses your session for the org in your tab, to list and open its assets. Keeps its settings in your browser.</span>
+        </li>
+        <li>
+          <a href="omniscript-data-inspector/privacy.html"><b>OmniScript Data Inspector</b></a>
+          <span>Reads the page you inspect in DevTools. Keeps panel preferences in your browser.</span>
+        </li>
+        <li>
+          <a href="omniscript-replay/privacy.html"><b>OmniScript Replay</b></a>
+          <span>Records and replays steps on the page. Keeps recordings in your browser.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="about" class="about" aria-labelledby="about-title">
+    <div class="wrap about-grid">
+      <div>
+        <h2 id="about-title" class="section-title">About</h2>
+        <p>I'm Mikołaj Skrzypczyński, a Salesforce OmniStudio developer. I build the
+        tools I want when I work on OmniScripts, Integration Procedures, Data Mappers
+        and FlexCards: finding the right version fast, seeing what a script actually
+        holds, and not retyping the same five steps again.</p>
+        <p class="actions">
+          <a class="btn" href="mailto:mskrz@proton.me">mskrz@proton.me</a>
+          <a class="btn" href="https://github.com/mskrzypczynski">GitHub</a>
+        </p>
+      </div>
+      <ul class="chips" aria-label="Skills and tools">
+        <li>Salesforce</li>
+        <li>OmniStudio</li>
+        <li>OmniScripts</li>
+        <li>Integration Procedures</li>
+        <li>Data Mappers</li>
+        <li>FlexCards</li>
+        <li>Vlocity packages</li>
+        <li>Salesforce REST API</li>
+        <li>SOQL</li>
+        <li>Lightning Web Components</li>
+        <li>JavaScript</li>
+        <li>Chrome extensions</li>
+        <li>DevTools panels</li>
+        <li>Jest</li>
+        <li>Playwright</li>
+        <li>GitHub Actions</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="support" class="support" aria-labelledby="support-title">
+    <div class="wrap">
+      <div class="support-box">
+      <div>
+        <h2 id="support-title" class="section-title">Support</h2>
+        <p>If one of the tools saved you an afternoon, you can buy me a coffee. Bug
+        reports and ideas are just as welcome.</p>
+      </div>
+      <p class="actions">
+        <a class="btn" href="https://ko-fi.com/mskrz">Ko-fi <small>EUR, by card</small></a>
+        <a class="btn" href="https://buycoffee.to/mskrz">buycoffee.to <small>PLN, card or BLIK</small></a>
+      </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">Mikołaj Skrzypczyński · independent developer tools. Not affiliated with Salesforce, Inc.</div>
+</footer>
+
 </body>
 </html>
