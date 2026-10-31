@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Report a problem · OmniScript Data Inspector</title>
+<meta name="description" content="Copy the panel's short report, save a masked debug bundle, check what is in it, and fill in the issue form." />
+<link rel="stylesheet" href="../../style.css" />
+<style>
+.sub { margin-bottom: 18px; }
+.lede { color: var(--dim, #57606a); margin: 0 0 14px; }
+kbd {
+  display: inline-block; min-width: 1.5em; padding: 0 5px; text-align: center;
+  border: 1px solid var(--line, #d8dee4); border-bottom-width: 2px; border-radius: 4px;
+  background: var(--card, #f9fafb); font: 12px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.search { position: sticky; top: 0; z-index: 2; margin: 0 -22px 18px; padding: 10px 22px; background: var(--bg, #fff); border-bottom: 1px solid var(--line, #d8dee4); }
+.search input {
+  width: 100%; padding: 8px 10px; font: inherit; color: var(--fg, #1f2328);
+  background: var(--card, #f9fafb); border: 1px solid var(--line, #d8dee4); border-radius: 6px;
+}
+.search input:focus { outline: 2px solid var(--accent, #0969da); outline-offset: 1px; }
+.toc { padding: 12px 16px; margin: 0 0 8px; border: 1px solid var(--line, #d8dee4); border-radius: 8px; background: var(--card, #f9fafb); }
+.toc > ul { list-style: none; margin: 0; padding: 0; }
+.toc > ul > li { margin: 0 0 4px; }
+.toc details { margin-top: 2px; }
+.toc summary { cursor: pointer; color: var(--dim, #57606a); font-size: 14px; }
+.toc details ul { columns: 2; column-gap: 24px; padding-left: 18px; margin: 6px 0; font-size: 14px; }
+.toc details li { margin: 0 0 2px; break-inside: avoid; }
+.group > h2 { margin-top: 40px; }
+h2[id], h3[id], h4[id] { scroll-margin-top: 70px; }
+.entry { margin: 0 0 6px; }
+.entry h3, .entry h4 { margin: 20px 0 4px; font-size: 16px; }
+.entry h3 a, .entry h4 a, .group > h2 a { color: inherit; text-decoration: none; }
+.entry h3 a:hover, .entry h4 a:hover, .group > h2 a:hover { text-decoration: underline; }
+.entry p, .entry ul { margin: 0 0 6px; }
+.entry li { margin-bottom: 4px; }
+.subsection { font-size: 15px; color: var(--dim, #57606a); margin: 26px 0 0; }
+.start { margin: 4px 0 8px; padding: 10px 16px; border: 1px solid var(--line, #d8dee4); border-radius: 8px; background: var(--card, #f9fafb); }
+.start h3 { margin: 0 0 4px; font-size: 15px; }
+.start ol { margin: 0; padding-left: 22px; }
+table.keys, table.plain { width: 100%; border-collapse: collapse; font-size: 14px; margin: 8px 0 16px; }
+table.keys th, table.keys td, table.plain th, table.plain td { padding: 6px 8px; border-bottom: 1px solid var(--line, #d8dee4); vertical-align: top; text-align: left; }
+table.keys th { white-space: nowrap; font-weight: 400; width: 1%; }
+blockquote.note { margin: 14px 0; padding: 8px 14px; border-left: 3px solid var(--accent, #0969da); background: var(--card, #f9fafb); color: var(--fg, #1f2328); }
+.related { margin-top: 30px; }
+.empty { color: var(--dim, #57606a); }
+[hidden] { display: none !important; }
+@media (max-width: 520px) {
+  body { padding: 28px 16px 60px; }
+  .search { margin: 0 -16px 18px; padding: 10px 16px; }
+  .toc details ul { columns: 1; }
+}
+</style>
+</head>
+<body>
+<nav class="crumbs"><a href="../../index.html">← All extensions</a> · <a href="../index.html">OmniScript Data Inspector</a> · <a href="index.html">Guides</a></nav>
+<h1>Report a problem</h1>
+<p class="sub">Copy the panel's short report, save a masked debug bundle, check what is in it, and fill in the issue form.</p>
+<p>Something in the panel is wrong, missing or confusing. A good write-up lets the developer reproduce it without a round of questions. It needs four things: the version, the package flavour, a short text the panel writes for you, and a debug bundle with your data masked.</p>
+<h3>Before you start</h3>
+<ol><li>Turn on <strong>Mask values</strong> in the top bar. While it is on, everything that leaves the panel has its strings and numbers replaced with placeholders. Keys, structure, element names and step names stay. It is off when DevTools opens unless Mask values at start is ticked in Settings, so check it every time. See <a href="../reference.html#everywhere-mask-values">Mask values</a>.</li><li>Get the panel into the state where the problem shows: the right tab, the right step, the call selected.</li></ol>
+<h3>Copy the report</h3>
+<ol><li>Open Settings: the gear in the top bar, or press <code>,</code>. The <strong>Tools</strong> row has <strong>Copy report</strong>, <strong>Save a debug bundle</strong> and <strong>Open bundle…</strong>.</li><li>Press <strong>Copy report</strong>. It puts a few lines of Markdown on the clipboard: the script, the extension version, the step it is on, the size of the data, the number of Problems, what may stop Next on that step and the last five failed calls with their reasons. A line whose fact is not known is left out. Nothing is sent anywhere. See <a href="../reference.html#everywhere-copy-report">Copy report</a>.</li></ol>
+<h3>Save a debug bundle</h3>
+<ol><li>In the Tools row of Settings, press <strong>Save a debug bundle</strong>. You get one file, <code>omniscript-debug-&lt;time&gt;.json</code>, saved on your computer.</li><li>It holds the version, your settings, the selected script and its step, the data, the last 12 reads of it, the script's definition, the last 50 captured calls and what each tab is showing. With <strong>Mask values</strong> on, the data, calls and filter text are masked. See <a href="../reference.html#everywhere-debug-bundle">Debug bundle</a>.</li></ol>
+<blockquote class="note">Only the answers in the script's definition are masked. Its labels, Set Values and other text are kept and can hold real values, so look at the file before you share it.</blockquote>
+<h3>Look inside before you send it</h3>
+<p>You can check what the bundle shows without sending it anywhere.</p>
+<ol><li>In the Tools row of Settings, press <strong>Open bundle…</strong> and pick the file. The panel shows the script as it was when it was saved, read-only. A bar says &quot;Bundle: &lt;file&gt; · read-only&quot; with <strong>Back to live</strong>.</li><li>Click through Data, Structure and Calls. If you can see a value you would not want to share, save the bundle again with <strong>Mask values</strong> on.</li><li>Press <strong>Back to live</strong> when you are done. See <a href="../reference.html#everywhere-open-bundle">Open bundle</a>.</li></ol>
+<p>You can do the same without installing anything, with the <a href="../viewer/">bundle viewer</a> on this site. The file is read in your browser and goes nowhere.</p>
+<h3>Fill in the issue form</h3>
+<ol><li>Open the <a href="https://github.com/mskrzypczynski/omniscript-data-inspector/issues/new?template=bug.yml">bug report form</a> on GitHub.</li><li><strong>Extension version</strong>: at the bottom right of the panel, or on <code>chrome://extensions</code>.</li><li><strong>Package flavour</strong>: core OmniStudio, a managed package (vlocity_cmt, vlocity_ins or vlocity_ps), or not sure.</li><li><strong>What you did and what happened</strong>: the tab, the steps, what you expected and what you saw. A screenshot helps. Check that it shows no real data.</li><li><strong>Copy report</strong>: paste the text from the clipboard.</li><li><strong>Masked debug bundle</strong>: drag the file into the box.</li><li>Tick the box that confirms Mask values was on and nothing shows real data.</li></ol>
+<p>Please do not paste real org data anywhere. If the problem is in a particular call or a hidden field, the guides <a href="why-did-this-call-fail.html">Why did this call fail, and what did it send?</a> and <a href="why-is-this-field-hidden.html">Why is this field hidden?</a> show what to look at first.</p>
+<p class="related">Every control is described in the <a href="../reference.html">reference</a>. More <a href="index.html">guides</a>.</p>
+<footer>OmniScript Data Inspector 2.0.0 · generated from the panel's own help, so it matches that version · Unofficial tool, not affiliated with Salesforce, Inc.</footer>
+</body>
+</html>

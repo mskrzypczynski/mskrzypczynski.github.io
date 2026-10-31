@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>OmniScript Data Inspector: bundle viewer</title>
+  <link rel="stylesheet" href="panel.css" />
+  <link rel="stylesheet" href="viewer.css" />
+</head>
+<body>
+  <div id="viewer-bar" class="viewer-bar" role="region" aria-label="Bundle viewer" hidden>
+    <span class="viewer-drop">Drop a debug bundle here, or</span>
+    <button id="viewer-open" type="button" class="icon-btn" title="Pick a debug bundle (a .json file saved with Save a debug bundle). It is read in this browser only and shown read-only.">Open bundle…</button>
+    <span class="viewer-note">The file stays in this browser: nothing is uploaded and nothing is sent anywhere.</span>
+    <a id="viewer-store" class="viewer-store" href="#" target="_blank" rel="noopener" title="OmniScript Data Inspector in the Chrome Web Store (opens in a new tab)">Get the extension</a>
+  </div>
+  <p id="viewer-hint" class="viewer-hint" role="status" hidden></p>
+  <noscript><p class="viewer-hint">This viewer needs JavaScript.</p></noscript>
+  <script src="viewer-hint.js"></script>
+
+  <header class="scope">
+    <label class="field" data-help="Top bar">
+      <span>OmniScript</span>
+      <select id="target"></select>
+    </label>
+    <button id="open-designer" data-help="Open in Designer" data-icon="external" class="icon-btn tiny" title="Open this OmniScript in its designer, in a new tab" hidden>Open in Designer</button>
+    <button id="rescan" data-help="Rescan" data-icon="rescan" class="icon-btn tiny" title="Look for scripts and frames again (finds a newly opened OmniScript or a changed page). To re-read the data of the script you already have, use Refresh">Rescan</button>
+    <span class="scope-break" aria-hidden="true"></span>
+    <label class="field checkbox mask-switch" data-help="Mask values" title="Replace strings and numbers with placeholders in everything that leaves the panel: Copy JSON, Save file, the per-row copy button, the Structure value copy and the Calls export. Structure and keys are kept. Off when DevTools opens, unless Mask values at start is on in Settings">
+      <input id="mask-values" type="checkbox" />
+      <span class="label-full">Mask values</span><span class="label-short" aria-hidden="true">Mask</span>
+    </label>
+    <button id="advanced" data-help="Advanced" class="switch" role="switch" aria-checked="false" title="Show the less common controls: Collapse done steps, Highlight on hover, Visible only, Timeline, Compare definition and Export on Structure; the failed-only filter on Calls. Turning it off puts those filters and options back to their defaults. Lasts until DevTools is closed"><span class="switch-track"><span class="switch-knob"></span></span><span>Advanced</span></button>
+    <button id="settings" data-help="Settings" data-icon="gear" class="icon-btn tiny settings-btn" title="Settings (,)" aria-expanded="false" aria-haspopup="dialog" aria-controls="settings-overlay">Settings</button>
+    <button id="help" class="icon-btn tiny help-btn" title="What this tab does, with shortcuts (?)" aria-expanded="false" aria-haspopup="dialog" aria-controls="help-overlay">?</button>
+    <div class="scope-extra adv">
+      <label class="field" data-help="Top bar">
+        <span>Frame</span>
+        <select id="frame" title="Limit the list to one document, or leave on All frames"></select>
+      </label>
+      <label class="field checkbox" data-help="Embedded scripts" title="Also list embedded scripts: OmniScripts placed inside another one, and the components inside a script that carry its data. Off by default, so each script is listed once, not once per element">
+        <input id="show-nested" type="checkbox" />
+        <span>Embedded scripts</span>
+      </label>
+      <button id="select" data-help="Inspect element" data-icon="inspect" class="icon-btn tiny" title="Select this OmniScript's element in the Elements panel and leave it available as $omni in the Console">Inspect element</button>
+    </div>
+  </header>
+
+  <!-- Shown only while a debug bundle is loaded (Open bundle… in the settings). -->
+  <div id="session-bar" class="session-bar" role="status" hidden>
+    <span id="session-text" class="session-text"></span>
+    <button id="session-back" type="button" class="icon-btn tiny" title="Close the loaded file and read the page again">Back to live</button>
+  </div>
+
+  <div class="tabrow">
+  <nav class="tabstrip" role="tablist" aria-label="Views">
+    <button id="tab-data" class="tab is-on" role="tab" aria-selected="true" aria-controls="view-data" tabindex="0" title="Data. Drag to reorder the tabs (or Alt+Shift+← / →)"><svg class="tab-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5.5 2.5C4 2.5 4 3.5 4 5v1.2c0 .9-.6 1.6-1.5 1.8.9.2 1.5.9 1.5 1.8V11c0 1.5 0 2.5 1.5 2.5M10.5 2.5c1.5 0 1.5 1 1.5 2.5v1.2c0 .9.6 1.6 1.5 1.8-.9.2-1.5.9-1.5 1.8V11c0 1.5 0 2.5-1.5 2.5M6.8 6.8h2.4M6.8 9.2h2.4"/></svg><span class="tab-label">Data</span></button>
+    <button id="tab-structure" class="tab" role="tab" aria-selected="false" aria-controls="view-structure" tabindex="-1" title="Structure. Drag to reorder the tabs (or Alt+Shift+← / →)"><svg class="tab-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 3h4M3 3v10M5 8h4M5 13h4M3 8h2M3 13h2"/><rect x="9" y="6.5" width="4.5" height="3" rx=".8"/><rect x="9" y="11.5" width="4.5" height="3" rx=".8"/><rect x="7" y="1.5" width="4.5" height="3" rx=".8"/></svg><span class="tab-label">Structure</span></button>
+    <button id="tab-actions" class="tab" role="tab" aria-selected="false" aria-controls="view-actions" tabindex="-1" title="Calls: the Data Mapper, Integration Procedure and Apex calls the page makes. Drag to reorder the tabs (or Alt+Shift+← / →)">
+      <svg class="tab-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 5.5h10M10 3l2.5 2.5L10 8M13.5 10.5h-10M6 8l-2.5 2.5L6 13"/></svg><span class="tab-label">Calls</span> <span id="actions-count" class="badge" title="Calls in view; red when any failed" hidden></span>
+    </button>
+  </nav>
+  <button id="compare-json" type="button" data-help="Compare JSON" data-icon="compare" class="icon-btn tiny tabrow-btn" title="Compare two JSON values side by side (Ctrl/Cmd+Shift+L)" aria-haspopup="dialog" aria-controls="compare-json-overlay">Compare JSON</button>
+  </div>
+
+
+  <!-- ------------------------------------------------------ Data tab -->
+  <section id="view-data" class="view" role="tabpanel" aria-labelledby="tab-data">
+    <header class="toolbar">
+      <div class="bar">
+        <div class="seg" role="group" aria-label="View">
+          <button id="view-tree" data-help="Tree / Form / Raw" data-icon="tree" class="seg-btn icon-btn is-on" aria-pressed="true" title="Show the data as a collapsible tree: every key with its type, with line numbers that match Raw">Tree</button>
+          <button id="view-form" data-help="Form view" data-icon="props" class="seg-btn icon-btn" aria-pressed="false" title="Show the data as the page's form: a label and a value for each key, lists and objects opening in place">Form</button>
+          <button id="view-raw" data-help="Tree / Form / Raw" data-icon="raw" class="seg-btn icon-btn" aria-pressed="false" title="Show the data as the page holds it, pretty-printed, with the same line numbers as the Tree">Raw</button>
+          <button id="view-sizes" data-help="Sizes" data-icon="sizes" class="seg-btn icon-btn" aria-pressed="false" title="Show which values take the most space: a table of the top-level keys by size (click a row to drill into it), or a treemap of the same keys (click a key to zoom into it). Click a path to find it in the tree">Sizes</button>
+          <button id="view-changes" data-help="Changes view" data-icon="rules" class="seg-btn icon-btn" aria-pressed="false" hidden title="Show the last 200 values that changed, with the time and the step the script was on. Click one to see the value before and after, or use its tree icon to find it in the tree. Cleared by Clear marks">Changes</button>
+        </div>
+
+        <button id="refresh" data-help="Refresh" data-icon="refresh" class="icon-btn keep-label" title="Read the data property of the selected script in full, right now. Auto-refresh does this by itself; with it off, Refresh is the way to update. Rescan (top) instead looks for scripts and frames again">Refresh</button>
+
+        <label class="field checkbox" data-help="Auto-refresh" title="Re-read about once a second (Refresh rate in Settings), slowing to every few seconds while nothing changes. Untick for manual mode: the data is read only when you press Refresh or change the property or script, never by a rescan or tab switch">
+          <input id="live" type="checkbox" checked />
+          <span>Auto-refresh</span>
+        </label>
+
+        <label class="field checkbox" data-help="Changes" title="Keep a record of what changes: marks on the changed values, Changed only, Previous change / Next change, Clear marks, Compare data and the Changes view. Changed values flash amber either way. Off by default; unticking drops the marks and the Changes view">
+          <input id="data-changes" type="checkbox" />
+          <span>Track changes</span>
+        </label>
+
+        <input id="filter" data-help="Filter" type="search" aria-label="Filter keys and values" placeholder="Filter keys and values" title="Filter keys and values. Also takes an OmniScript path such as Step:Rows|2:Field, key=value, or a $ query such as $.Step.Rows[*].Code or $..Code (/)" spellcheck="false" />
+
+        <button id="expand" data-help="Views" data-icon="expand" data-overflow class="icon-btn" title="Expand everything">Expand all</button>
+        <button id="collapse" data-help="Views" data-icon="collapse" data-overflow class="icon-btn" title="Collapse to the top level">Collapse all</button>
+        <button id="copy" data-help="Copying" data-icon="copy" data-overflow class="icon-btn" title="Copy the whole data as JSON. Honours Mask values.">Copy JSON</button>
+        <button id="download" data-help="Tree / Form / Raw" data-icon="download" data-overflow class="icon-btn" title="Write the data to a file. It may contain org data, so handle it accordingly">Save file</button>
+      </div>
+
+      <div id="changes-bar" class="bar changes-bar" hidden>
+        <span class="bar-label">Changes</span>
+        <span class="bar-group">
+          <label class="field checkbox" data-help="Changes" title="Show only the values that changed since the marks were cleared">
+            <input id="changed-only" type="checkbox" />
+            <span>Changed only</span>
+          </label>
+          <button id="prev-change" data-help="Changes" data-icon="chevron-left" class="icon-btn" title="Jump to the previous marked change (p)">Previous change</button>
+          <button id="next-change" data-help="Changes" data-icon="chevron-right" data-icon-end class="icon-btn" title="Jump to the next marked change (n)">Next change</button>
+          <span id="change-count" class="bar-note">none marked</span>
+        </span>
+        <span class="bar-group">
+          <button id="clear-changes" data-help="Changes" data-icon="clear" class="icon-btn" title="Forget which values changed, and empty the Changes view">Clear marks</button>
+          <button id="compare-toggle" data-help="Compare data" data-icon="compare" class="icon-btn" aria-pressed="false" title="Diff two of the last reads of the data, or a JSON file you load: what changed between them">Compare data</button>
+        </span>
+      </div>
+    </header>
+
+    <div id="watch" class="bar watch" hidden></div>
+    <div id="compare-panel" class="compare" hidden></div>
+
+    <main id="viewport" class="viewport" tabindex="0"></main>
+  </section>
+
+  <!-- ------------------------------------------------- Structure tab -->
+  <section id="view-structure" class="view" role="tabpanel" aria-labelledby="tab-structure" hidden>
+    <header class="toolbar">
+      <div class="bar">
+        <button id="struct-refresh" data-help="Refresh" data-icon="refresh" class="icon-btn keep-label" title="Reload the definition of the selected script now. Rescan (top) instead looks for scripts and frames again">Refresh</button>
+        <button id="struct-current" data-help="Current step" data-icon="target" class="icon-btn" title="Select and scroll to the step the OmniScript is on now">Current step</button>
+
+        <label class="field checkbox" data-help="Follow current step" title="Keep the current step selected as the script moves on (on by default)">
+          <input id="struct-follow" type="checkbox" checked />
+          <span>Follow current step</span>
+        </label>
+
+        <input id="struct-filter" data-help="Filter" type="search" aria-label="Filter elements" placeholder="Filter by name, type, label or label text" title="Filter by name, type, label or label text. override: lists the elements a custom component overrides; override:name only those of that component (/)" spellcheck="false" />
+
+        <label class="field checkbox" data-help="Actions only" title="Show only the elements that call a Data Mapper, an Integration Procedure or another action">
+          <input id="struct-actions-only" type="checkbox" />
+          <span>Actions<span class="narrow-hide"> only</span></span>
+        </label>
+
+        <label class="field checkbox adv" data-help="Collapse done steps" title="Fold each step once the script has passed it, so the area you are working in stays in view. Opens again if the script returns to it">
+          <input id="struct-autocollapse" type="checkbox" />
+          <span>Collapse done steps</span>
+        </label>
+        <label class="field checkbox adv" data-help="Highlight on page" title="Outline the hovered element's component on the inspected page (best effort: needs the element's lwcId from the definition)">
+          <input id="struct-hover" type="checkbox" />
+          <span>Highlight on hover</span>
+        </label>
+        <label class="field checkbox adv" data-help="Hidden elements" title="Hide elements that are not shown right now: their show rules are false, or a parent is hidden">
+          <input id="struct-visible-only" type="checkbox" />
+          <span>Visible only</span>
+        </label>
+
+        <button id="struct-expand" data-help="Sections" data-overflow data-icon="expand" class="icon-btn" title="Expand everything">Expand all</button>
+        <button id="struct-collapse" data-help="Sections" data-overflow data-icon="collapse" class="icon-btn" title="Collapse to the top level">Collapse all</button>
+
+        <button id="struct-problems" data-help="Problems" class="icon-btn" aria-pressed="false" hidden title="List what the definition proves wrong: a name used twice, a Set Errors aimed at a name that is not an element, a missing custom label, an empty show rule. Names that are not in the data yet are listed separately and not counted. Shown only while there are any; click again to close the list">Problems (0)</button>
+
+        <button id="struct-timeline" data-help="Timeline" data-overflow data-icon="timeline" class="icon-btn icon-only adv" aria-pressed="false" title="Show the step timeline in the detail pane: one row per visit to a step with when it began, how long the script stayed, the calls that started during it and the size of the last data JSON read. It also shows whenever no element is selected">Timeline</button>
+        <button id="struct-compare" data-help="Compare definition" data-overflow data-icon="compare" class="icon-btn icon-only adv" title="Pick a definition file (the jsonDef text) or a debug bundle that holds one, and list what was added, removed, renamed or changed since then. The file is read here and kept in memory only, never sent anywhere">Compare definition…</button>
+        <input id="struct-compare-file" data-help="Compare definition" type="file" accept=".json,application/json" hidden />
+        <button id="struct-export" data-help="Export" data-overflow data-icon="download" class="icon-btn icon-only adv" aria-haspopup="menu" title="Export this script: its structure as Markdown or CSV, its custom labels as CSV, or the definition itself as JSON (the baseline for Compare definition). Only the definition goes out, never values from the data">Export</button>
+      </div>
+    </header>
+
+    <div class="split">
+      <div id="struct-list" class="log-list"></div>
+      <div id="struct-detail" class="log-detail"></div>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------- Calls tab -->
+  <section id="view-actions" class="view" role="tabpanel" aria-labelledby="tab-actions" hidden>
+    <header class="toolbar">
+      <div class="bar">
+        <button id="log-record" data-help="Recording / Paused" data-icon="dot" class="icon-btn is-recording" aria-pressed="true" aria-label="Recording" title="Capturing calls. Click to pause">Recording</button>
+        <button id="log-clear" data-help="Clear list" data-icon="clear" class="icon-btn" title="Remove every captured call from the list">Clear list</button>
+
+        <input id="log-filter" data-help="Filter box" type="search" aria-label="Filter calls" placeholder="Class or method; in: url: step: slow: repeat:" title="Filter by class or method. Prefixes: in: searches inputs, options and outputs; url: the request URL; step: the OmniScript step; slow:800 calls that took at least 800 ms (slow: alone uses the threshold from Settings); repeat: only repeated calls and the ones they repeat (/)" spellcheck="false" />
+
+        <label class="field checkbox" data-help="All Apex calls" title="Show every Apex call the page makes. Off: only OmniStudio's (Data Mappers, Integration Procedures and OmniStudio Apex)">
+          <input id="log-show-all" type="checkbox" />
+          <span>All Apex calls</span>
+        </label>
+        <label class="field checkbox adv" data-help="Failed only" title="Show only calls that failed, for any reason the row marks as failed">
+          <input id="log-errors-only" type="checkbox" />
+          <span>Failed only</span>
+        </label>
+        <button id="log-new-call" data-overflow data-help="Test calls" data-icon="play" class="icon-btn" aria-haspopup="dialog" aria-expanded="false" hidden title="Compose a call to an Integration Procedure or a Data Mapper and send it to the org of this page, as your user (shown while Allow test calls is on in Settings)">New test call…</button>
+        <button id="log-export" data-overflow data-help="Select calls" data-icon="download" class="icon-btn" title="Write the selected calls to a file, or the visible calls when none is selected. They may contain org data, so handle it accordingly. Honours Mask values">Export</button>
+      </div>
+    </header>
+
+    <div id="log-notes"></div>
+
+    <div id="log-selection" class="selection-bar" hidden>
+      <span id="log-selection-text" class="selection-text"></span>
+      <button id="log-selection-copy" class="icon-btn tiny" title="Copy this summary as text">Copy summary</button>
+      <button id="log-selection-clear" class="icon-btn tiny" title="Untick every selected call">Clear selection</button>
+      <div id="log-selection-chart" class="sel-chart" hidden>
+        <div id="log-selection-bar" class="sel-bar" role="group" aria-label="Time per request"></div>
+        <div id="log-selection-legend" class="sel-legend" hidden></div>
+      </div>
+    </div>
+
+    <div class="split">
+      <div id="log-list" class="log-list"></div>
+      <div id="log-detail" class="log-detail"></div>
+    </div>
+  </section>
+
+  <div id="help-overlay" class="help-overlay" hidden>
+    <div class="help-card" role="dialog" aria-modal="true" aria-label="Help" tabindex="-1">
+      <button id="help-close" class="icon-btn tiny help-close" title="Close (Esc)">✕</button>
+      <input id="help-search" class="help-search" type="search" placeholder="Filter help…" aria-label="Filter help" title="Show only the help entries and shortcuts that contain every word you type" autocomplete="off" />
+      <div id="help-body"></div>
+    </div>
+  </div>
+
+  <div id="settings-overlay" class="help-overlay settings-overlay" hidden>
+    <div class="help-card settings-card" role="dialog" aria-modal="true" aria-labelledby="settings-title" tabindex="-1">
+      <button id="settings-close" class="icon-btn tiny help-close" title="Close (Esc)">✕</button>
+      <h2 id="settings-title" class="settings-title">Settings</h2>
+      <div id="settings-body"></div>
+    </div>
+  </div>
+
+  <div id="compare-json-overlay" class="help-overlay compare-json-overlay" hidden>
+    <div class="help-card compare-json-card" role="dialog" aria-modal="true" aria-labelledby="compare-json-title" tabindex="-1">
+      <button id="compare-json-close" class="icon-btn tiny help-close" title="Close (Esc)">✕</button>
+      <h2 id="compare-json-title" class="settings-title">Compare JSON</h2>
+      <div id="compare-json-body" class="compare-json-body"></div>
+    </div>
+  </div>
+
+  <footer class="status">
+    <span id="status-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></span>
+    <span id="status-left">Looking for OmniScripts…</span>
+    <span id="status-right"></span>
+    <span id="status-mask" class="tag tag-info status-chip" hidden title="Mask values is on: everything that leaves the panel (copies, files, exports) has its strings and numbers replaced with placeholders">Masking copies and exports</span>
+    <span class="status-meta">
+      <span id="status-version" class="status-version" title="Extension version" hidden></span>
+      <button type="button" id="status-coffee" class="status-coffee" aria-haspopup="menu" title="Buy me a coffee: optional. Opens a menu with Ko-fi (EUR, card) and buycoffee.to (PLN, card, BLIK); the one you pick opens in a new tab. Nothing is sent from the panel"><span aria-hidden="true">☕</span><span class="status-coffee-text"> Buy me a coffee</span></button>
+      <span class="disclaimer">Unofficial, not affiliated with Salesforce</span>
+    </span>
+  </footer>
+
+  <!-- Real ES modules: app.js imports everything it needs (src/ui/*, which in
+       turn imports src/core/*), so the browser's module graph resolves the
+       load order instead of this list having to get it right by hand. -->
+  <script src="viewer-config.js"></script>
+  <script type="module" src="viewer.js"></script>
+</body>
+</html>

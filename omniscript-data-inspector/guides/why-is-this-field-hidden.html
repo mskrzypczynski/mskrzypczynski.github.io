@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Why is this field hidden? · OmniScript Data Inspector</title>
+<meta name="description" content="Find the rule that hides an element, see what the data holds now, and try other values without touching the page." />
+<link rel="stylesheet" href="../../style.css" />
+<style>
+.sub { margin-bottom: 18px; }
+.lede { color: var(--dim, #57606a); margin: 0 0 14px; }
+kbd {
+  display: inline-block; min-width: 1.5em; padding: 0 5px; text-align: center;
+  border: 1px solid var(--line, #d8dee4); border-bottom-width: 2px; border-radius: 4px;
+  background: var(--card, #f9fafb); font: 12px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.search { position: sticky; top: 0; z-index: 2; margin: 0 -22px 18px; padding: 10px 22px; background: var(--bg, #fff); border-bottom: 1px solid var(--line, #d8dee4); }
+.search input {
+  width: 100%; padding: 8px 10px; font: inherit; color: var(--fg, #1f2328);
+  background: var(--card, #f9fafb); border: 1px solid var(--line, #d8dee4); border-radius: 6px;
+}
+.search input:focus { outline: 2px solid var(--accent, #0969da); outline-offset: 1px; }
+.toc { padding: 12px 16px; margin: 0 0 8px; border: 1px solid var(--line, #d8dee4); border-radius: 8px; background: var(--card, #f9fafb); }
+.toc > ul { list-style: none; margin: 0; padding: 0; }
+.toc > ul > li { margin: 0 0 4px; }
+.toc details { margin-top: 2px; }
+.toc summary { cursor: pointer; color: var(--dim, #57606a); font-size: 14px; }
+.toc details ul { columns: 2; column-gap: 24px; padding-left: 18px; margin: 6px 0; font-size: 14px; }
+.toc details li { margin: 0 0 2px; break-inside: avoid; }
+.group > h2 { margin-top: 40px; }
+h2[id], h3[id], h4[id] { scroll-margin-top: 70px; }
+.entry { margin: 0 0 6px; }
+.entry h3, .entry h4 { margin: 20px 0 4px; font-size: 16px; }
+.entry h3 a, .entry h4 a, .group > h2 a { color: inherit; text-decoration: none; }
+.entry h3 a:hover, .entry h4 a:hover, .group > h2 a:hover { text-decoration: underline; }
+.entry p, .entry ul { margin: 0 0 6px; }
+.entry li { margin-bottom: 4px; }
+.subsection { font-size: 15px; color: var(--dim, #57606a); margin: 26px 0 0; }
+.start { margin: 4px 0 8px; padding: 10px 16px; border: 1px solid var(--line, #d8dee4); border-radius: 8px; background: var(--card, #f9fafb); }
+.start h3 { margin: 0 0 4px; font-size: 15px; }
+.start ol { margin: 0; padding-left: 22px; }
+table.keys, table.plain { width: 100%; border-collapse: collapse; font-size: 14px; margin: 8px 0 16px; }
+table.keys th, table.keys td, table.plain th, table.plain td { padding: 6px 8px; border-bottom: 1px solid var(--line, #d8dee4); vertical-align: top; text-align: left; }
+table.keys th { white-space: nowrap; font-weight: 400; width: 1%; }
+blockquote.note { margin: 14px 0; padding: 8px 14px; border-left: 3px solid var(--accent, #0969da); background: var(--card, #f9fafb); color: var(--fg, #1f2328); }
+.related { margin-top: 30px; }
+.empty { color: var(--dim, #57606a); }
+[hidden] { display: none !important; }
+@media (max-width: 520px) {
+  body { padding: 28px 16px 60px; }
+  .search { margin: 0 -16px 18px; padding: 10px 16px; }
+  .toc details ul { columns: 1; }
+}
+</style>
+</head>
+<body>
+<nav class="crumbs"><a href="../../index.html">← All extensions</a> · <a href="../index.html">OmniScript Data Inspector</a> · <a href="index.html">Guides</a></nav>
+<h1>Why is this field hidden?</h1>
+<p class="sub">Find the rule that hides an element, see what the data holds now, and try other values without touching the page.</p>
+<p>A field you expected is not on the screen. In OmniScript that usually means a show rule is false, or that the field sits inside something hidden. The Structure tab can tell you which, using the data the script holds right now, so you do not have to read the rule JSON.</p>
+<h3>Find the rule</h3>
+<ol><li>Open the <strong>Structure</strong> tab and pick your OmniScript in the top bar. Press <strong>Rescan</strong> if the list is empty.</li><li>Type part of the field's name, type or label in the filter box. See <a href="../reference.html#structure-filter">Filter</a>.</li><li>Look for a dimmed row with a closed eye: it is not shown right now, and the status bar counts these (&quot;2 hidden&quot;). Leave <strong>Visible only</strong> (under Advanced) off, or hidden rows are not listed. See <a href="../reference.html#structure-hidden-elements">Hidden elements</a>.</li><li>Click the row. When a rule hides the element, the <strong>Visibility</strong> tab opens with the reason. On another detail tab, a red chip in the head brings you back to it.</li></ol>
+<p>If there is no <strong>Visibility</strong> tab, the element has no show rule the panel can see. Children of a hidden element are hidden too, so check the step or block above it.</p>
+<h3>Read the Visibility tab</h3>
+<p>The first line is one plain sentence, such as <code>Hidden: Step:Plan is &quot;Standard&quot;, not &quot;Premium&quot;</code>. Below it is the rule as a table:</p>
+<ul><li><strong>✓ true now</strong> and <strong>✗ false now</strong> say whether the row is true, and <strong>? can't tell</strong> means the panel cannot work it out (a formula or an operator it does not evaluate).</li><li><strong>Field</strong> is what the rule reads. If the script has an element by that name, the name is a button that selects it.</li><li><strong>Must be</strong> is what the rule wants, for example <code>= &quot;Premium&quot;</code>.</li><li><strong>Is now</strong> is what the data holds. It reads <code>(empty)</code> or <code>(not in data)</code> rather than staying blank.</li></ul>
+<p>A group reads <strong>ALL of these are true</strong> or <strong>ANY of these is true</strong>, with ✓ (holds now), ✗ (does not) or ? (can't tell) before it. The muted count after it, such as &quot;1 of 2 is false&quot;, shows where you stand. More in the <a href="../reference.html#structure-visibility-tab">Visibility tab</a> entry.</p>
+<h3>Try a different value</h3>
+<ol><li>Click an <strong>Is now</strong> cell, or press Enter on it.</li><li>Type a value and press Enter. Escape drops it.</li><li>The row, the roll-ups and the sentence at the top are recalculated, marked &quot;edited&quot; and &quot;(what if)&quot;.</li><li>Press <strong>Reset what-if</strong> to put every value back.</li></ol>
+<p>Nothing is written to the page. See <a href="../reference.html#structure-what-if">What if</a>.</p>
+<h3>Follow the field back</h3>
+<p>Turn <strong>Advanced</strong> on and the Visibility tab also lists <strong>Depends on</strong>, <strong>Used by</strong> and <strong>Written by</strong> (the Set Values elements that write into it). Each is a button that selects that element, so it is the quickest way to find what should have filled the field. See <a href="../reference.html#structure-depends-on-used-by-written-by">Depends on / Used by / Written by</a>. <strong>Show in Data</strong> opens the Data tab at the element's value.</p>
+<p>If <strong>Is now</strong> says <code>(not in data)</code>, the data holds nothing at that key yet. A Data Mapper or Set Values element that should have written it has not run, or wrote it somewhere else.</p>
+<h3>When the panel is unsure</h3>
+<ul><li>A <strong>?</strong> means an unusual operator or a formula the panel cannot evaluate. It never guesses.</li><li>A <strong>≈</strong> marks a formula the panel worked out itself, and the sentence says &quot;(estimated)&quot;. Treat it as a good hint, not a verdict. See <a href="../reference.html#structure-formulas">Formulas</a>.</li></ul>
+<p>The panel judges rules against the live data, not the <code>bShow</code> flag saved in the definition. If the two disagree, trust the Visibility tab.</p>
+<p>Next: if the field is visible but <strong>Next</strong> will not advance, read <a href="why-cant-i-press-next.html">Why can't I press Next?</a>.</p>
+<p class="related">Every control is described in the <a href="../reference.html">reference</a>. More <a href="index.html">guides</a>.</p>
+<footer>OmniScript Data Inspector 2.0.0 · generated from the panel's own help, so it matches that version · Unofficial tool, not affiliated with Salesforce, Inc.</footer>
+</body>
+</html>
