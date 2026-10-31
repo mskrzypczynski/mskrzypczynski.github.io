@@ -273,3 +273,48 @@ kbd { border: 1px solid var(--line); border-bottom-width: 2px; padding: 0 5px; b
 .foot nav { display: flex; gap: 16px; }
 .foot nav a { color: var(--dim); }
 .foot nav a:hover { color: var(--fg); }
+
+
+/* -------------------------------------------- tours, second look */
+
+/* A wide screenshot gets the card's whole width: the text sits above it. */
+.tool.wide, .tool.wide.flip { grid-template-columns: 1fr; gap: 28px; }
+.tool.wide .tool-text { order: 0; max-width: 760px; }
+
+.tour-stage .tour-step {
+  position: absolute; top: calc(50% - 40px); z-index: 2;
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--line); background: var(--surface); color: var(--fg);
+  box-shadow: var(--shadow); cursor: pointer; opacity: .92;
+}
+.tour-stage .tour-step:hover { opacity: 1; background: var(--surface-2); }
+.tour-stage .tour-step svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.tour-stage .prev { left: -14px; }
+.tour-stage .next { right: -14px; }
+@media (max-width: 520px) { .tour-stage .tour-step { display: none; } }
+.tour:not(.ready) .tour-stage .tour-step { display: none; }
+
+/* The switcher: one segmented bar instead of loose pills. */
+.tour-bar { justify-content: center; margin-top: 14px; }
+.tour-tabs {
+  flex: 0 1 auto; gap: 2px; padding: 3px; border-radius: 12px;
+  background: var(--surface-2); border: 1px solid var(--line);
+}
+.tour-tabs [role="tab"] {
+  border: 0; border-radius: 9px; padding: 6px 14px; font-size: 14px;
+  background: transparent; color: var(--dim);
+}
+.tour-tabs [role="tab"]:hover { background: transparent; color: var(--fg); }
+.tour-tabs [role="tab"][aria-selected="true"] {
+  background: var(--surface); color: var(--fg); box-shadow: 0 1px 2px rgb(16 24 40 / 12%), 0 1px 3px rgb(16 24 40 / 10%);
+}
+.tour-slide figcaption { text-align: center; min-height: 0; }
+.tour-frame { background: transparent; border: 0; box-shadow: none; }
+.tour-frame img { border-radius: 12px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+.grid2 { list-style: none; margin: 20px 0 0; padding: 0; display: grid; gap: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 700px) { .grid2 { grid-template-columns: 1fr; } }
+.grid2 li { display: flex; flex-direction: column; gap: 6px; padding: 20px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.grid2 b { font-size: 16px; }
+.grid2 span { color: var(--dim); font-size: 15px; }
+.grid2 a { text-decoration: none; }
+.grid2 a:hover b { text-decoration: underline; }
