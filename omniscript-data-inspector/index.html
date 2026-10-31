@@ -4,46 +4,66 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>OmniScript Data Inspector</title>
+<meta name="description" content="Live OmniScript data, structure and calls in a DevTools panel for Chrome, Edge and Firefox." />
+<link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="../favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png" />
+<meta name="color-scheme" content="light dark" />
+<link rel="stylesheet" href="../portfolio.css" />
 <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
-<nav class="crumbs"><a href="../index.html">← All extensions</a></nav>
+<a class="skip" href="#main">Skip to the content</a>
 
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="../" aria-label="Home">
+      <img class="brand-mark" src="../assets/brand/ms-icon-dark.svg" alt="" width="32" height="32" />
+      <span>Mikołaj Skrzypczyński</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="../#tools">Tools</a>
+      <a href="../#privacy">Privacy</a>
+      <a href="../#about">About me</a>
+      <a href="../#coffee">Coffee</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="doc">
 <h1>OmniScript Data Inspector</h1>
-<p class="sub">Live OmniScript data, structure and the calls it makes, in a DevTools panel for Chrome, Edge and Firefox.</p>
+<p class="sub">Live OmniScript data, structure and calls in a DevTools panel for Chrome, Edge and Firefox.</p>
 
-<p>Debugging an OmniScript is not a friendly experience. The data is in there somewhere,
-the calls happen out of sight, and a Data Mapper can fail while the response
-comes back as a cheerful HTTP 200. This adds a DevTools tab that just shows it.</p>
+<p class="actions"><a class="btn primary" href="https://chromewebstore.google.com/detail/lpijhdhnblimbdlhgkdapdldahdhkfpc?utm_source=item-share-cb">Chrome Web Store</a> <a class="btn" href="https://github.com/mskrzypczynski/omniscript-data-inspector">Source on GitHub</a></p>
 
 <h2>What it does</h2>
 <ul>
-  <li><strong>Data</strong> &mdash; the live data as a collapsible tree, a form (each key under the label of the element that owns it) or Raw text, re-read about once a second and quiet while nothing changes. A value that changes flashes amber, and a collapsed branch that holds a change is marked with a dot. The filter box takes words, an OmniScript path such as <code>Step:Rows|2:Field</code>, or <code>key=value</code>, and branches still open and close while you search. Right-click a row to open the record behind an Id, or to copy the value, the path or the <code>%merge%</code> field. Copy JSON and Save file keep the page's exact text; line numbers in the tree match the Raw view; the open branches stay pinned at the top while you scroll. Untick Auto-refresh for a true manual mode.</li>
-  <li><strong>Structure</strong> &mdash; every element the script is built from, joined to the live data. Selecting one opens a column of cards, the same frame for every fact: Current value first on every element (a step shows its values as a Form, a Tree or Raw text), then Formula, Set Values, Options, Visibility and Validation, each with its verdict in the header and a Copy. A show rule reads as a table of its conditions (met or not, must be, is now) with a plain-words verdict such as <em>Hidden: Plan is "Standard", not "Premium"</em>. A <strong>Valid</strong> column at the end of every row says at a glance what would stop Next now (&#10007;), what passes (&#10003;, on a step) and what the panel cannot tell (&ndash;), and the current step's <strong>Validation</strong> tab lists what may stop Next: required fields still empty in every row of a repeat block, validations and Set Errors that fire now, and custom components. A <strong>Properties</strong> tab explains each setting of an element; the <strong>Calls</strong> tab shows what an action sends and where the answer lands; with nothing selected the pane summarises the script. A hidden element shows a closed eye, a conditional one a small diamond; the marks sit in their own column, whose header opens a legend of every mark. Follow current step keeps the current step selected as the script moves on, and edits made in the Designer are picked up by themselves. Formulas are worked out as estimates, marked &asymp;, and never counted as a failure.</li>
-  <li><strong>Calls</strong> &mdash; every Data Mapper, Integration Procedure and Remote Action call the page makes, named by key, batched calls split apart, and a verdict that does not trust HTTP 200 (Succeeded or Failed, with no response, an expired session and an Aura system error told apart), with the failure text at the top of the detail. A chainable procedure that ran as several calls is one row, <em>chain &middot; N calls</em>, with each call under it, and repeated calls are tagged. Filter with words, <strong>Failed only</strong>, or <code>in:</code>, <code>url:</code>, <code>step:</code> and <code>repeat:</code>. Open a call for its Input, Output and Options, <strong>Copy input</strong>, or <strong>Show raw</strong> for the request exactly as the page sent it and the answer as it came back. The tab badge turns red as soon as a call fails, the list is kept across reloads, and Export saves the calls to JSON.</li>
-  <li><strong>Linked together</strong> &mdash; jump from a value in Data to its element in Structure and back, from an action to its calls, and from a call to the element that made it. <strong>Open in Designer</strong> opens the selected script in the OmniStudio Builder or the OmniScript Designer, deciding between core and a managed package from the host element, the definition, the page address and the calls seen; Settings can force either. Inspect element selects the host element in the Elements tab and leaves it as <code>$omni</code> in the Console.</li>
-  <li><strong>Mask values</strong> &mdash; a switch (off by default) that replaces strings and numbers with placeholders in everything you copy, save or export. Tick <strong>Mask values at start</strong> in Settings to have it on whenever DevTools opens. <strong>Copy report</strong> puts a few lines of Markdown for a ticket on the clipboard.</li>
-  <li><strong>Settings</strong> &mdash; the gear before <kbd>?</kbd> opens them: <strong>Text size</strong>, <strong>Mask values at start</strong>, <strong>Remember my settings</strong> (on by default: your settings and the views you last chose are kept in the browser's extension storage on your computer, never any data), the <strong>Refresh rate</strong> of the Data tab (Fast, Normal or Gentle), the Calls options, Open in Designer, every setting that differs from its default with a Reset, and <strong>Restore default settings</strong>. Hide the list with <kbd>Ctrl</kbd>+<kbd>\</kbd> to give the detail the whole width.</li>
-  <li><strong>Easy to step into</strong> &mdash; each tab is one list or tree, one filter box and a few buttons; the deeper tools sit in a menu, a detail tab, a filter prefix or the right-click menu. A short tour the first time, a searchable <kbd>?</kbd> help with a Start here list per tab, right-click any control for its help entry, and the <a href="reference.html">reference</a> and <a href="guides/">guides</a> on this site, generated from the same help. Light and dark, from 340 px up, keyboard and screen-reader friendly.</li>
+  <li><strong>Data.</strong> What the script holds right now, as a tree, a form or raw text. A value that changes flashes amber. Filter by words, a path or <code>key=value</code>.</li>
+  <li><strong>Structure.</strong> Every element joined to the live data, with its show rule, formula, Set Values and validation in plain words. It lists what may stop Next.</li>
+  <li><strong>Calls.</strong> Every Data Mapper, Integration Procedure and Remote Action call, with input and output. A failed call is marked even when the response is HTTP 200.</li>
+  <li><strong>Linked together.</strong> Jump from a value to its element and from a call to the element that made it. Open in Designer works for core and managed packages.</li>
+  <li><strong>Mask values.</strong> Strings and numbers become placeholders in everything you copy, save or export.</li>
 </ul>
-<p>Replay, which records the steps you keep repeating and replays them, is an extension of its own: <a href="../omniscript-replay/index.html">OmniScript Replay</a>.</p>
 
-<h2>Documentation</h2>
-<p><a href="reference.html">Reference</a> (every help entry, searchable) &middot; <a href="guides/">Guides</a> (get started, why is this field hidden, why can't I press Next, why did this call fail, what changed in this step, where did this value come from, what the panel keeps, report a problem) &middot; <a href="https://github.com/mskrzypczynski/omniscript-data-inspector/blob/main/CHANGELOG.md">Changelog</a></p>
-
-<h2>Install</h2>
-<p><a href="https://chromewebstore.google.com/detail/lpijhdhnblimbdlhgkdapdldahdhkfpc?utm_source=item-share-cb">Chrome Web Store</a> ·
-<a href="https://github.com/mskrzypczynski/omniscript-data-inspector">source on GitHub</a> (GPL-3.0), which also builds the Firefox package</p>
+<h2>Learn it</h2>
+<p>Start with <a href="guides/get-started.html">Get started in five minutes</a>, then the <a href="guides/">guides</a>. The <a href="reference.html">reference</a> describes every control.</p>
 
 <h2>Privacy</h2>
-<p>Only the storage permission, for the order of the tabs, the flags that the short tours were seen, the Mask values at start flag and, while Remember my settings is on, your settings and the views you last chose; no host access. Nothing is sent anywhere, and the OmniScript and its data are never changed.
-Read the <a href="privacy.html">full privacy policy</a>, or the
-<a href="https://github.com/mskrzypczynski/omniscript-data-inspector">source</a> — it is all there is.</p>
+<p>Nothing is sent anywhere and the OmniScript is never changed. The panel stores only your settings, in the browser, on this computer. Read the <a href="privacy.html">privacy policy</a>.</p>
 
 <h2>Support</h2>
-<p>If it saved you an afternoon, you can
-<a href="https://ko-fi.com/mskrz">buy me a coffee ☕</a> on Ko-fi (EUR, by card) or on <a href="https://buycoffee.to/mskrz">buycoffee.to</a> (PLN, by card or BLIK).</p>
+<p>Free and open source (GPL-3.0). If it saved you time, you can <a href="https://ko-fi.com/mskrz">buy me a coffee ☕</a> on Ko-fi (EUR, by card) or on <a href="https://buycoffee.to/mskrz">buycoffee.to</a> (PLN, by card or BLIK).</p>
+</main>
 
-<footer>Mikołaj Skrzypczyński · independent developer tools. Not affiliated with Salesforce, Inc.</footer>
+<footer class="foot">
+  <div class="wrap foot-row">
+    <span>© 2026 Mikołaj Skrzypczyński. Not affiliated with Salesforce, Inc.</span>
+    <nav aria-label="Footer">
+      <a href="../#privacy">Privacy policies</a>
+      <a href="https://github.com/mskrzypczynski">GitHub</a>
+      <a href="mailto:mskrz@proton.me">Email</a>
+    </nav>
+  </div>
+</footer>
 </body>
 </html>

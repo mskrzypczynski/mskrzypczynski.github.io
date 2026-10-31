@@ -14,8 +14,8 @@
   --ok-soft: #e3f4ee;
   --warn: #8a4b00;
   --warn-soft: #fbefdc;
-  --pro: #6d28d9;
-  --pro-soft: #f1eafd;
+  --tint: #6d28d9;
+  --tint-soft: #f1eafd;
   --shadow: 0 1px 2px rgb(16 24 40 / 6%), 0 8px 24px rgb(16 24 40 / 8%);
   --radius: 14px;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -36,8 +36,8 @@
     --ok-soft: #10291f;
     --warn: #f3bd6b;
     --warn-soft: #2c210f;
-    --pro: #c4b5fd;
-    --pro-soft: #241c3d;
+    --tint: #c4b5fd;
+    --tint-soft: #241c3d;
     --shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 8px 28px rgb(0 0 0 / 35%);
   }
 }
@@ -144,14 +144,14 @@ kbd { border: 1px solid var(--line); border-bottom-width: 2px; padding: 0 5px; b
 .badges { display: flex; flex-wrap: wrap; gap: 6px; }
 .badge { font-size: 12.5px; font-weight: 600; padding: 2px 10px; border-radius: 999px; background: var(--surface-2); color: var(--dim); }
 .badge.live { background: var(--ok-soft); color: var(--ok); }
-.badge.pro { background: var(--pro-soft); color: var(--pro); }
+.badge.tint { background: var(--tint-soft); color: var(--tint); }
 .badge.exp { background: var(--warn-soft); color: var(--warn); }
 
 .ticks { list-style: none; margin: 16px 0 0; padding: 0; }
 .ticks li { position: relative; padding: 0 0 0 26px; margin: 8px 0; }
 .ticks li::before { content: "✓"; position: absolute; left: 2px; color: var(--ok); font-weight: 700; }
 
-.note { font-size: 15px; color: var(--dim); padding: 10px 14px; border-radius: 10px; background: var(--pro-soft); }
+.note { font-size: 15px; color: var(--dim); padding: 10px 14px; border-radius: 10px; background: var(--tint-soft); }
 
 .links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; margin-top: 22px !important; font-weight: 600; font-size: 15px; }
 .links a:not(.btn) { text-decoration: none; }

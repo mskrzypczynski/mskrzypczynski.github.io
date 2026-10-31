@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Report a problem · OmniScript Data Inspector</title>
 <meta name="description" content="Turn Mask values on, copy the panel's short report, add what you did and what you saw, and fill in the issue form." />
+<link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="../../favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="../../assets/brand/apple-touch-icon.png" />
+<meta name="color-scheme" content="light dark" />
+<link rel="stylesheet" href="../../portfolio.css" />
 <link rel="stylesheet" href="../../style.css" />
 <style>
 .sub { margin-bottom: 18px; }
@@ -54,7 +59,25 @@ blockquote.note { margin: 14px 0; padding: 8px 14px; border-left: 3px solid var(
 </style>
 </head>
 <body>
-<nav class="crumbs"><a href="../../index.html">← All extensions</a> · <a href="../index.html">OmniScript Data Inspector</a> · <a href="index.html">Guides</a></nav>
+<a class="skip" href="#main">Skip to the content</a>
+
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="../../" aria-label="Home">
+      <img class="brand-mark" src="../../assets/brand/ms-icon-dark.svg" alt="" width="32" height="32" />
+      <span>Mikołaj Skrzypczyński</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="../../#tools">Tools</a>
+      <a href="../../#privacy">Privacy</a>
+      <a href="../../#about">About me</a>
+      <a href="../../#coffee">Coffee</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="doc">
+<nav class="crumbs"><a href="../index.html">OmniScript Data Inspector</a> · <a href="index.html">Guides</a></nav>
 <h1>Report a problem</h1>
 <p class="sub">Turn Mask values on, copy the panel's short report, add what you did and what you saw, and fill in the issue form.</p>
 <p>Something in the panel is wrong, missing or confusing. A good write-up lets the developer reproduce it without a round of questions. It needs the version, the package flavour, a short text the panel writes for you, and the steps that show the problem.</p>
@@ -69,6 +92,18 @@ blockquote.note { margin: 14px 0; padding: 8px 14px; border-left: 3px solid var(
 <ol><li>Open the <a href="https://github.com/mskrzypczynski/omniscript-data-inspector/issues/new?template=bug.yml">bug report form</a> on GitHub.</li><li><strong>Extension version</strong>: at the bottom right of the panel, or on the browser's extensions page.</li><li><strong>Package flavour</strong>: core OmniStudio, a managed package (vlocity_cmt, vlocity_ins or vlocity_ps), or not sure.</li><li><strong>What you did and what happened</strong>: the tab, the steps, what you expected and what you saw. A screenshot helps.</li><li><strong>Copy report</strong>: paste the text from the clipboard.</li><li><strong>Masked data or calls</strong> (optional): paste what you copied with Mask values on.</li><li>Tick the box that confirms Mask values was on and nothing shows real data.</li></ol>
 <p>Please do not paste real org data anywhere. If the problem is in a particular call or a hidden field, the guides <a href="why-did-this-call-fail.html">Why did this call fail, and what did it send?</a> and <a href="why-is-this-field-hidden.html">Why is this field hidden?</a> show what to look at first.</p>
 <p class="related">Every control is described in the <a href="../reference.html">reference</a>. More <a href="index.html">guides</a>.</p>
-<footer>OmniScript Data Inspector 2.0.0 · generated from the panel's own help, so it matches that version · Unofficial tool, not affiliated with Salesforce, Inc.</footer>
+<p class="stamp">Written for OmniScript Data Inspector 2.0.0.</p>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <span>© 2026 Mikołaj Skrzypczyński. Not affiliated with Salesforce, Inc.</span>
+    <nav aria-label="Footer">
+      <a href="../../#privacy">Privacy policies</a>
+      <a href="https://github.com/mskrzypczynski">GitHub</a>
+      <a href="mailto:mskrz@proton.me">Email</a>
+    </nav>
+  </div>
+</footer>
 </body>
 </html>
