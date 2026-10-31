@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Compare two runs · OmniScript Data Inspector</title>
+<meta name="description" content="See what changed in the data between two reads, what differs between two calls, and what changed in the script's definition." />
+<link rel="stylesheet" href="../../style.css" />
+<style>
+.sub { margin-bottom: 18px; }
+.lede { color: var(--dim, #57606a); margin: 0 0 14px; }
+kbd {
+  display: inline-block; min-width: 1.5em; padding: 0 5px; text-align: center;
+  border: 1px solid var(--line, #d8dee4); border-bottom-width: 2px; border-radius: 4px;
+  background: var(--card, #f9fafb); font: 12px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.search { position: sticky; top: 0; z-index: 2; margin: 0 -22px 18px; padding: 10px 22px; background: var(--bg, #fff); border-bottom: 1px solid var(--line, #d8dee4); }
+.search input {
+  width: 100%; padding: 8px 10px; font: inherit; color: var(--fg, #1f2328);
+  background: var(--card, #f9fafb); border: 1px solid var(--line, #d8dee4); border-radius: 6px;
+}
+.search input:focus { outline: 2px solid var(--accent, #0969da); outline-offset: 1px; }
+.toc { padding: 12px 16px; margin: 0 0 8px; border: 1px solid var(--line, #d8dee4); border-radius: 8px; background: var(--card, #f9fafb); }
+.toc > ul { list-style: none; margin: 0; padding: 0; }
+.toc > ul > li { margin: 0 0 4px; }
+.toc details { margin-top: 2px; }
+.toc summary { cursor: pointer; color: var(--dim, #57606a); font-size: 14px; }
+.toc details ul { columns: 2; column-gap: 24px; padding-left: 18px; margin: 6px 0; font-size: 14px; }
+.toc details li { margin: 0 0 2px; break-inside: avoid; }
+.group > h2 { margin-top: 40px; }
+h2[id], h3[id], h4[id] { scroll-margin-top: 70px; }
+.entry { margin: 0 0 6px; }
+.entry h3, .entry h4 { margin: 20px 0 4px; font-size: 16px; }
+.entry h3 a, .entry h4 a, .group > h2 a { color: inherit; text-decoration: none; }
+.entry h3 a:hover, .entry h4 a:hover, .group > h2 a:hover { text-decoration: underline; }
+.entry p, .entry ul { margin: 0 0 6px; }
+.entry li { margin-bottom: 4px; }
+.subsection { font-size: 15px; color: var(--dim, #57606a); margin: 26px 0 0; }
+.start { margin: 4px 0 8px; padding: 10px 16px; border: 1px solid var(--line, #d8dee4); border-radius: 8px; background: var(--card, #f9fafb); }
+.start h3 { margin: 0 0 4px; font-size: 15px; }
+.start ol { margin: 0; padding-left: 22px; }
+table.keys, table.plain { width: 100%; border-collapse: collapse; font-size: 14px; margin: 8px 0 16px; }
+table.keys th, table.keys td, table.plain th, table.plain td { padding: 6px 8px; border-bottom: 1px solid var(--line, #d8dee4); vertical-align: top; text-align: left; }
+table.keys th { white-space: nowrap; font-weight: 400; width: 1%; }
+blockquote.note { margin: 14px 0; padding: 8px 14px; border-left: 3px solid var(--accent, #0969da); background: var(--card, #f9fafb); color: var(--fg, #1f2328); }
+.related { margin-top: 30px; }
+.empty { color: var(--dim, #57606a); }
+[hidden] { display: none !important; }
+@media (max-width: 520px) {
+  body { padding: 28px 16px 60px; }
+  .search { margin: 0 -16px 18px; padding: 10px 16px; }
+  .toc details ul { columns: 1; }
+}
+</style>
+</head>
+<body>
+<nav class="crumbs"><a href="../../index.html">← All extensions</a> · <a href="../index.html">OmniScript Data Inspector</a> · <a href="index.html">Guides</a></nav>
+<h1>Compare two runs</h1>
+<p class="sub">See what changed in the data between two reads, what differs between two calls, and what changed in the script's definition.</p>
+<p>Something worked before and does not now, or a step changed a value you did not expect. The panel can put two states side by side: two reads of the data, two calls, or two versions of the script's definition.</p>
+<h3>Compare the data before and after a step</h3>
+<ol><li>Open the <strong>Data</strong> tab and tick <strong>Track changes</strong>. A Changes bar appears under the toolbar. Changed values stay marked until you press <strong>Clear marks</strong>. See <a href="../reference.html#data-changes">Changes</a>.</li><li>Click through the script, for example press Next on the page.</li><li>Press <strong>Previous change</strong> and <strong>Next change</strong> to walk the marked values, or open the <strong>Changes</strong> view for a list with the time and the step of each. See <a href="../reference.html#data-changes-view">Changes view</a>.</li><li>Press <strong>Compare data</strong>. Pick a <strong>Before</strong> and an <strong>After</strong> read from the last 12, each labelled with its time and step. <strong>Since this step began</strong> picks the first read of the current step and the latest. You can also load a JSON file as a read. See <a href="../reference.html#data-compare-data">Compare data</a>.</li></ol>
+<p>The two reads open <strong>Side by side</strong>: Before on the left, After on the right, the rows lined up. A changed value is amber, an added key green with a hatched gap on the other side, a removed one red. Unchanged keys fold to one grey line. <strong>Previous</strong> and <strong>Next</strong> (or the arrow keys) walk the differences. Rows of a list are lined up by Id or name first, so deleting one row reads as one gap. <strong>List</strong> shows the differences as a list instead. See <a href="../reference.html#everywhere-side-by-side">Side by side</a>.</p>
+<h3>Compare two calls</h3>
+<ol><li>Open the <strong>Calls</strong> tab and select a call.</li><li>Press <strong>Compare with previous</strong> (or <code>d</code>) to diff it against the earlier call to the same place. A failed call also gets <strong>Compare with last success</strong> (or <code>Shift+D</code>). The buttons appear only when the same place was called before.</li><li>To compare any two calls, press <code>b</code> on the first to make it the baseline, then select the other. A <strong>Compare</strong> tab sets the input, options and output of the two calls side by side, and its first line says how the baseline was chosen; a part with no difference says so on one line. See <a href="../reference.html#actions-compare">Compare</a>.</li><li>When both calls are debug runs of one kind, the comparison starts with their steps: the status and time before and after, the difference, and a totals row. A step that ran in one and was skipped in the other is tagged. Under it, two Integration Procedure runs compare their Original input and Response side by side. See <a href="../reference.html#actions-debug-tab">Debug tab</a>.</li></ol>
+<p>The <strong>Changes</strong> tab of a call sets the data before and after it side by side too. To compare any two JSON texts, such as two responses from a log, press <strong>Compare JSON…</strong> in the Tools row of Settings, paste them into Before and After, and press <strong>Compare</strong>. See <a href="../reference.html#everywhere-compare-json">Compare JSON</a>.</p>
+<h3>Compare the definition</h3>
+<ol><li>Before you change the script in the Designer, open <strong>Structure</strong>, turn on <strong>Advanced</strong> and choose <strong>Export</strong>, then <strong>Definition JSON</strong>. Keep the file. See <a href="../reference.html#structure-export">Export</a>.</li><li>After the change, press <strong>Compare definition…</strong> and pick that file. It may also be a debug bundle that holds the definition.</li><li>The elements are listed as Added, Removed, Renamed or Changed, with a note of what changed: label, required, show rule, validation, remote target, options, Set Values and help text. Click a name to select it. See <a href="../reference.html#structure-compare-definition">Compare definition</a>.</li></ol>
+<p>Comparisons honour <strong>Mask values</strong>: with it on, the values are placeholders and only the shape of the change is shown. To share what you found, see <a href="file-an-issue.html">Report a problem</a>.</p>
+<p class="related">Every control is described in the <a href="../reference.html">reference</a>. More <a href="index.html">guides</a>.</p>
+<footer>OmniScript Data Inspector 2.0.0 · generated from the panel's own help, so it matches that version · Unofficial tool, not affiliated with Salesforce, Inc.</footer>
+</body>
+</html>
