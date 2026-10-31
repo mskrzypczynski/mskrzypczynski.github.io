@@ -79,7 +79,10 @@ kbd { border: 1px solid var(--line); border-bottom-width: 2px; padding: 0 5px; b
 }
 .top-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 60px; }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--fg); text-decoration: none; font-weight: 650; white-space: nowrap; }
-.brand-mark { width: 32px; height: 32px; border-radius: 9px; flex: none; }
+.brand-mark {
+  display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 9px; flex: none;
+  background: #1b1f27; color: #f5c451; font: 700 13px var(--mono);
+}
 .top nav { display: flex; gap: 4px; }
 .top nav a { color: var(--dim); text-decoration: none; padding: 6px 10px; border-radius: 8px; font-size: 15px; }
 .top nav a:hover { color: var(--fg); background: var(--surface-2); }
