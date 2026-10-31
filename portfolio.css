@@ -79,10 +79,7 @@ kbd { border: 1px solid var(--line); border-bottom-width: 2px; padding: 0 5px; b
 }
 .top-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 60px; }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--fg); text-decoration: none; font-weight: 650; white-space: nowrap; }
-.brand-mark {
-  display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 9px;
-  background: #1b1f27; color: #f5c451; font: 700 13px var(--mono);
-}
+.brand-mark { width: 32px; height: 32px; border-radius: 9px; flex: none; }
 .top nav { display: flex; gap: 4px; }
 .top nav a { color: var(--dim); text-decoration: none; padding: 6px 10px; border-radius: 8px; font-size: 15px; }
 .top nav a:hover { color: var(--fg); background: var(--surface-2); }
@@ -259,3 +256,21 @@ kbd { border: 1px solid var(--line); border-bottom-width: 2px; padding: 0 5px; b
   color: #fff; background: rgb(255 255 255 / 14%); border: 1px solid rgb(255 255 255 / 30%);
   border-radius: 8px; padding: 5px 12px; cursor: pointer;
 }
+
+/* ------------------------------------------------------------ coffee */
+
+.support-box .bugs { margin-top: 10px; font-size: 15px; }
+.btn.coffee { gap: 10px; }
+.coffee-icon { width: 20px; height: 20px; flex: none; }
+.coffee-icon.kofi { fill: #ff5e5b; }
+/* buycoffee.to's mark is one colour, drawn in the text colour so it suits both themes. */
+.coffee-icon.buycoffee {
+  display: inline-block; background: currentColor;
+  -webkit-mask: url(assets/icons/buycoffee.png) center / contain no-repeat;
+  mask: url(assets/icons/buycoffee.png) center / contain no-repeat;
+}
+
+.foot-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; }
+.foot nav { display: flex; gap: 16px; }
+.foot nav a { color: var(--dim); }
+.foot nav a:hover { color: var(--fg); }

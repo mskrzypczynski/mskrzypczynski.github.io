@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mikołaj Skrzypczyński · Developer tools for Salesforce OmniStudio</title>
 <meta name="description" content="Browser extensions for Salesforce OmniStudio developers: find any OmniScript, Integration Procedure, Data Mapper or FlexCard, and see what a running OmniScript holds. No analytics, nothing sent anywhere but your own org." />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Developer tools for Salesforce OmniStudio" />
+<meta property="og:description" content="Find any OmniStudio asset and see what a running OmniScript holds. No analytics, nothing sent anywhere but your own org." />
+<meta property="og:image" content="https://mskrzypczynski.github.io/assets/og.png" />
+<meta property="og:url" content="https://mskrzypczynski.github.io/" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="color-scheme" content="light dark" />
 <link rel="stylesheet" href="portfolio.css" />
 </head>
@@ -15,14 +22,14 @@
 <header class="top">
   <div class="wrap top-row">
     <a class="brand" href="./" aria-label="Home">
-      <span class="brand-mark" aria-hidden="true">{=}</span>
+      <img class="brand-mark" src="assets/mark.svg" alt="" width="32" height="32" />
       <span>Mikołaj Skrzypczyński</span>
     </a>
     <nav aria-label="Sections">
       <a href="#tools">Tools</a>
       <a href="#privacy">Privacy</a>
       <a href="#about">About</a>
-      <a href="#support">Support</a>
+      <a href="#coffee">Coffee</a>
     </nav>
   </div>
 </header>
@@ -182,7 +189,7 @@
             <p class="kind">Chrome extension · DevTools panel</p>
           </div>
         </div>
-        <p class="badges"><span class="badge exp">Experimental</span></p>
+        <p class="badges"><span class="badge exp">In development</span></p>
         <p>Record the OmniScript steps you keep repeating, then replay them the way a
         person would, and land on the step you are testing. Not on the store yet.</p>
         <p class="links">
@@ -261,17 +268,24 @@
     </div>
   </section>
 
-  <section id="support" class="support" aria-labelledby="support-title">
+  <section id="coffee" class="support" aria-labelledby="coffee-title">
     <div class="wrap">
       <div class="support-box">
       <div>
-        <h2 id="support-title" class="section-title">Support</h2>
-        <p>If one of the tools saved you an afternoon, you can buy me a coffee. Bug
-        reports and ideas are just as welcome.</p>
+        <h2 id="coffee-title" class="section-title">Buy me a coffee</h2>
+        <p>The tools are free. If one of them saved you an afternoon, a coffee keeps
+        the next one coming.</p>
+        <p class="bugs">Found a bug or have an idea? Write to
+        <a href="mailto:mskrz@proton.me">mskrz@proton.me</a> or open an issue on
+        <a href="https://github.com/mskrzypczynski">GitHub</a>.</p>
       </div>
       <p class="actions">
-        <a class="btn" href="https://ko-fi.com/mskrz">Ko-fi <small>EUR, by card</small></a>
-        <a class="btn" href="https://buycoffee.to/mskrz">buycoffee.to <small>PLN, card or BLIK</small></a>
+        <a class="btn coffee" href="https://ko-fi.com/mskrz">
+          <svg class="coffee-icon kofi" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons/kofi.svg#kofi" /></svg>
+          Ko-fi <small>EUR, by card</small></a>
+        <a class="btn coffee" href="https://buycoffee.to/mskrz">
+          <span class="coffee-icon buycoffee" aria-hidden="true"></span>
+          buycoffee.to <small>PLN, card or BLIK</small></a>
       </p>
       </div>
     </div>
@@ -280,7 +294,14 @@
 </main>
 
 <footer class="foot">
-  <div class="wrap">Mikołaj Skrzypczyński · independent developer tools. Not affiliated with Salesforce, Inc.</div>
+  <div class="wrap foot-row">
+    <span>Mikołaj Skrzypczyński · independent developer tools. Not affiliated with Salesforce, Inc.</span>
+    <nav aria-label="Footer">
+      <a href="#privacy">Privacy policies</a>
+      <a href="https://github.com/mskrzypczynski">GitHub</a>
+      <a href="mailto:mskrz@proton.me">Email</a>
+    </nav>
+  </div>
 </footer>
 
 <script src="tours.js" defer></script>
