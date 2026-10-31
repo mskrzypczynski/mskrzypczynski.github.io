@@ -994,7 +994,7 @@ The top bar gear, or the , key. A count on it shows how many settings differ.
 
 Settings last until DevTools is closed, and the settings are kept in this browser's extension storage, on this computer, because Remember my settings is on by default; untick it and they are deleted. The tab order, the flags that the tours were seen and the Mask values at start flag are kept either way.
 
-- General: Text size (see its entry), Mask values at start (kept in this browser even with Remember my settings off; turning it off deletes it), Remember my settings (see their entries) and Show tours again (see Tour). Remember my settings, on by default, keeps the settings and the views you last chose, and puts them back the next time DevTools opens. Filters that hide rows (Failed only, Visible only, Actions only) and the property names start fresh every time. Unticking it deletes what was kept.
+- General: Text size (see its entry), Mask values at start (kept in this browser even with Remember my settings off; turning it off deletes it), Remember my settings (see their entries) and Show tours again (see Tour). Remember my settings, on by default, keeps the settings and the views you last chose, and puts them back the next time DevTools opens. Filters that hide rows (Failed only, Visible only) and the property names start fresh every time. Unticking it deletes what was kept.
 - Data: Refresh rate sets how often the Data tab reads (see its entry). Under it, the fold Reading another page holds Data property and Definition property, the element properties the Data and Structure tabs read (jsonDataStr and jsonDef by default; see their entries), and Show the Frame row, the top bar's second row (Frame, Embedded scripts, Inspect element), off by default. The fold opens by itself while any of them differs from its default.
 - Calls: Time format and Clear on reload.
 - Open in Designer: Auto, Builder (core) or Designer (managed) with a namespace; see the Open in Designer entry.
@@ -1081,7 +1081,7 @@ An OmniScript placed inside another one, and the components inside a script that
 
 Copy report, in the Tools row of Settings, puts a few lines of Markdown on the clipboard: the script, the extension version, the step, the size of the data and the last 5 failed calls. Mask values applies to values quoted in a failure reason. Nothing is sent anywhere.
 
-The script is written as Type/SubType/Language. What may stop Next is the step's Validation list, best effort. The failed calls come with their reasons and times. A line whose fact is not known is left out. Names and counts are kept when masking.
+The script is written as Type/SubType/Language. The failed calls come with their reasons and times. A line whose fact is not known is left out. Names and counts are kept when masking.
 
 <a id="everywhere-more"></a>
 
