@@ -281,18 +281,17 @@ kbd { border: 1px solid var(--line); border-bottom-width: 2px; padding: 0 5px; b
 .tool.wide, .tool.wide.flip { grid-template-columns: 1fr; gap: 28px; }
 .tool.wide .tool-text { order: 0; max-width: 760px; }
 
-.tour-stage .tour-step {
-  position: absolute; top: calc(50% - 40px); z-index: 2;
+.tour-bar .tour-step {
+  position: static; flex: none;
   display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
   border: 1px solid var(--line); background: var(--surface); color: var(--fg);
   box-shadow: var(--shadow); cursor: pointer; opacity: .92;
 }
-.tour-stage .tour-step:hover { opacity: 1; background: var(--surface-2); }
-.tour-stage .tour-step svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
-.tour-stage .prev { left: -14px; }
-.tour-stage .next { right: -14px; }
-@media (max-width: 520px) { .tour-stage .tour-step { display: none; } }
-.tour:not(.ready) .tour-stage .tour-step { display: none; }
+.tour-bar .tour-step:hover { opacity: 1; background: var(--surface-2); }
+.tour-bar .tour-step svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.tour-bar { gap: 10px; }
+.tour-bar .tour-step { width: 38px; height: 38px; box-shadow: none; opacity: 1; background: var(--surface-2); }
+@media (max-width: 520px) { .tour-bar .tour-step { display: none; } }
 
 /* The switcher: one segmented bar instead of loose pills. */
 .tour-bar { justify-content: center; margin-top: 14px; }
@@ -318,3 +317,8 @@ kbd { border: 1px solid var(--line); border-bottom-width: 2px; padding: 0 5px; b
 .grid2 span { color: var(--dim); font-size: 15px; }
 .grid2 a { text-decoration: none; }
 .grid2 a:hover b { text-decoration: underline; }
+/* The switcher stays one line; on a narrow screen it scrolls sideways inside itself. */
+.tour-tabs { flex-wrap: nowrap; overflow-x: auto; max-width: 100%; scrollbar-width: none; }
+.tour-tabs::-webkit-scrollbar { display: none; }
+.tour-tabs [role="tab"] { flex: none; padding: 6px 11px; }
+.tour-bar { min-width: 0; }
